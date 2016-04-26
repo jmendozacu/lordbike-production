@@ -1,0 +1,108 @@
+<?php
+$_product = $this->getProduct();
+$_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+$swatch_attributes = Mage::helper('colorselectorplus')->getSwatchAttributes();
+$title = Mage::getStoreConfig('color_selector_plus/colorselectorplusgeneral/title', Mage::app()->getStore());
+$hide = Mage::getStoreConfig('color_selector_plus/colorselectorplusgeneral/hidedropdown', Mage::app()->getStore());
+?>
+
+<?php if (count($_attributes)): ?>
+    <dl>
+      <?php foreach($_attributes as $_attribute): ?>
+      <?php $_productAttribute = $_attribute->getProductAttribute(); ?>
+      
+      <?php if(in_array($_productAttribute->getAttributeCode(), $swatch_attributes)): ?>
+        <?php $attributeId = $_attribute->getAttributeId();
+        $label     = $_attribute->getLabel(); ?>
+          
+            <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
+
+             <div id="color"class="section group">
+                
+                      <a><?php echo $label  ?>: </a>
+       
+
+                
+
+                                   
+             </div>
+      
+                  <div class="input-box section group">
+                    <form>
+                  <select  name="super_attribute[<?php echo $attributeId ?>]" id="attribute<?php echo $attributeId ?>" class="required-entry super-attribute-select <?php if($hide == 1) echo ' swatchSelect' ?>">
+                 
+                  </select>
+        </form>
+                  </div>
+                
+          <?php echo Mage::helper('colorselectorplus')->getSwatchHtml($_productAttribute->getAttributeCode(), $attributeId, $_product); ?>
+
+
+                </dd>
+        <?php else: ?>
+             <div id="color"class="section group">
+                                     <a><?php echo $label  ?>: </a>
+                        </div>
+            <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
+                <div class="input-box">
+                    <select onchange="addreload()" name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+                   
+                      </select>
+                  </div></dd>
+        <?php endif; ?>
+      
+      <?php endforeach; ?>
+      
+    </dl><div class="float-clearer">&nbsp;</div>
+
+  
+  <script type="text/javascript">
+    var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
+    function fireEvent(element,event){
+if (document.createEventObject){
+// dispatch for IE
+var evt = document.createEventObject();
+return element.fireEvent('on'+event,evt)
+}
+else{
+// dispatch for firefox + others
+var evt = document.createEvent("HTMLEvents");
+evt.initEvent(event, true, true ); // event type,bubbling,cancelable
+return !element.dispatchEvent(evt);
+}
+}
+Event.observe(window, 'load', function() {
+spConfig.settings[0].selectedIndex = 1;
+obj = spConfig.settings[0]; // this grabs the first select item
+Event.observe(obj,'change',function(){});
+fireEvent(obj,'change'); // this simulates selecting the first option, which triggers
+document.querySelector('.swatchSelected').click();
+
+
+
+
+
+});
+
+
+
+    </script>
+    <script>
+
+Event.observe(window, 'load', function() {
+spConfig.settings[1].selectedIndex = 1;
+obj = spConfig.settings[1]; // this grabs the first select item
+Event.observe(obj,'change',function(){});
+fireEvent(obj,'change'); // this simulates selecting the first option, which triggers
+});
+
+
+    </script>
+
+ 
+ 
+
+
+
+<?php endif; ?>
+

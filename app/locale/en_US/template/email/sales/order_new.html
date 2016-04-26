@@ -1,0 +1,258 @@
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+   
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>A Simple Responsive HTML Email</title>
+    <style type="text/css">
+    body {margin: 0; padding: 0; min-width: 100%!important;}
+    img {height: auto;}
+    .content {width: 100%; max-width: 800px;}
+    .header {padding: 40px 30px 20px 30px;}
+    .innerpadding {padding: 30px 30px 30px 30px;}
+    .borderbottom {border-bottom: 1px solid #f2eeed;}
+    .subhead {font-size: 15px; color: #ffffff; font-family: sans-serif; letter-spacing: 10px;}
+    .h1, .h2, .bodycopy {color: #153643; font-family: sans-serif;}
+    .h1 {font-size: 33px; line-height: 38px; font-weight: bold;}
+    .h2 {padding: 0 0 15px 0; font-size: 24px; line-height: 28px; font-weight: bold;font-family: sans-serif;}
+    .bodycopy {font-size: 16px; line-height: 22px;}
+    .button {text-align: center; font-size: 18px; font-family: sans-serif; font-weight: bold; padding: 0 30px 0 30px;}
+    .button a {color: #ffffff; text-decoration: none;}
+    .footer {padding: 20px 30px 15px 30px;}
+    .footercopy {font-family: sans-serif; font-size: 14px; color: #ffffff;}
+    .footercopy a {color: #ffffff; text-decoration: underline;}
+    @media only screen and (max-width: 550px), screen and (max-device-width: 550px) {
+    body[yahoo] .hide {display: none!important;}
+    body[yahoo] .buttonwrapper {background-color: transparent!important;}
+    body[yahoo] .button {padding: 0px!important;}
+    body[yahoo] .button a {background-color: #e05443; padding: 15px 15px 13px!important;}
+    body[yahoo] .unsubscribe {display: block; margin-top: 20px; padding: 10px 50px; background: #2f3942; border-radius: 5px; text-decoration: none!important; font-weight: bold;}
+    }
+    /*@media only screen and (min-device-width: 601px) {
+      .content {width: 600px !important;}
+      .col425 {width: 425px!important;}
+      .col380 {width: 380px!important;}
+      }*/
+    </style>
+  </head>
+
+  <body yahoo bgcolor="#ECE9E6">
+  <table width="100%" bgcolor="#ECE9E6" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+      <!--[if (gte mso 9)|(IE)]>
+        <table width="600" align="center" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td>
+      <![endif]-->     
+      <table bgcolor="#ffffff" class="content" align="center" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+          <td bgcolor="#fff" class="header" class="borderbottom">
+            <table width="210" align="left" cellpadding="0" cellspacing="0" >  
+              <tr>
+                <td height="70" style="padding: 0 20px 20px 0;">
+
+                </td>
+              </tr>
+            </table>
+            <table width="70" align="left" cellpadding="0" cellspacing="0" >  
+              <tr>
+                <td height="70" style="padding: 0 20px 20px 0;">
+                  <img class="fix" src="http://foldway.com/demo/skin/frontend/base/default/images/visor/foldway.png" width="300" height="auto" border="0" alt="" />
+                </td>
+              </tr>
+            </table>
+            <table width="210" align="left" cellpadding="0" cellspacing="0" >  
+              <tr>
+                <td height="70" style="padding: 0 20px 20px 0;">
+          
+                </td>
+              </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+              <table width="425" align="left" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td>
+            <![endif]-->
+               <!--[if (gte mso 9)|(IE)]>
+                  </td>
+                </tr>
+            </table>
+            <![endif]-->
+          </td>
+        </tr>
+        <tr>
+          <td class="innerpadding borderbottom">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="h2">
+                  Hello, {{htmlescape var=$order.getCustomerName()}}      
+                </td>
+              </tr>
+              <tr>
+                <td class="bodycopy">
+                  Thank you for your order from {{var store.getFrontendName()}}.
+                          Once your package ships we will send an email with a link to track your order.
+                          If you have any questions about your order please contact us at info@foldway.com.
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+
+             <tr>
+          <td class="innerpadding bodycopy">
+                               <h2 style="font-size:18px; font-weight:normal; margin:0;">Your Order #{{var order.increment_id}} <small>(placed on {{var order.getCreatedAtFormated('long')}})</small></h2>
+          </td>
+        </tr>
+
+             <tr>
+          <td class="innerpadding">
+              <table class="col380" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 357.5px; padding:0px 0px 25px 0px;">  
+                 <tr>
+               <td align="left" width="325" bgcolor="#3cd3ad" style="color:#373737 ;font-size:20px;FONT-WEIGHT:BOLD;font-family: sans-serif; padding:15px 9px 15px 9px; line-height:1em;">Billing Information:</td>
+              </tr> 
+              <tr>
+               <td valign="top" style="text-align: left;color: #000;font-size: 1em;height: 100px !important; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;">
+                                  {{var order.getBillingAddress().format('html')}}
+                              </td>
+              </tr>
+            
+            </table>
+               <table class="col380" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 25px;">  
+                 <tr>
+               <td align="left" width="25" bgcolor="#fff" style="font-size:13px; padding:5px 9px 6px 9px; line-height:1em;"></td>
+              </tr> 
+           
+            
+            </table>
+          
+              <table class="col380" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 357.5px; padding:0px 0px 25px 0px;">  
+                 <tr>
+                  <td align="left" width="325" bgcolor="#3cd3ad" style="color:#373737 ;font-size:20px;FONT-WEIGHT:BOLD;font-family: sans-serif; padding:15px 9px 15px 9px; line-height:1em;">Payment Method:</td>
+              </tr> 
+              <tr>
+               <td valign="top" style="text-align: left;color: #000;font-size: 1em;height: 100px !important; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;">
+                               {{var payment_html}}
+                              </td>
+              </tr>
+            
+            </table>
+
+
+
+
+
+
+            <!--[if (gte mso 9)|(IE)]>
+                  </td>
+                </tr>
+            </table>
+            <![endif]-->
+          </td>
+              </tr>
+
+             <tr>
+          <td class="innerpadding borderbottom">
+              <table class="col380" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 357.5px; padding:0px 0px 25px 0px;">  
+                 <tr>
+              <td align="left" width="325" bgcolor="#3cd3ad" style="color:#373737 ;font-size:20px;FONT-WEIGHT:BOLD;font-family: sans-serif; padding:15px 9px 15px 9px; line-height:1em;">Shipping Information:</td>
+              </tr> 
+              <tr>
+               <td valign="top" style="text-align: left;color: #000;font-size: 1em;height: 100px !important;padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;">
+                                                {{var order.getShippingAddress().format('html')}}
+                              </td>
+              </tr>
+            
+            </table>
+               <table class="col380" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 25px;">  
+                 <tr>
+               <td align="left" width="25" bgcolor="#fff" style="font-size:13px; padding:5px 9px 6px 9px; line-height:1em;"></td>
+              </tr> 
+           
+            
+            </table>
+          
+              <table class="col380" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 357.5px; padding:0px 0px 25px 0px;">  
+                 <tr>
+                    <td align="left" width="325" bgcolor="#3cd3ad" style="color:#373737 ;font-size:20px;FONT-WEIGHT:BOLD;font-family: sans-serif; padding:15px 9px 15px 9px; line-height:1em;">Shipping Method:</td>
+              </tr> 
+              <tr>
+               <td valign="top" style="text-align: left;color: #000;font-size: 1em;height: 100px !important; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;">
+                                        {{var order.getShippingDescription()}}
+                              </td>
+              </tr>
+            
+            </table>
+
+          <table style="-webkit-margin-start: 0px!important;"><tr style="-webkit-margin-start: 0px!important;"><td style="-webkit-margin-start: 0px!important;">
+  {{layout handle="sales_email_order_items" order=$order}}
+           </table></tr></td>
+
+
+
+
+            <!--[if (gte mso 9)|(IE)]>
+                  </td>
+                </tr>
+            </table>
+            <![endif]-->
+          </td>
+              </tr>
+
+      <tr>
+          <td class="footer" bgcolor="#4cb8c4">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center" class="footercopy">
+                   Foldway, Miami 2015.<br/>
+          
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding: 20px 0 0 0;">
+                  <table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="50" style="text-align: center; padding: 0 10px 0 10px;">
+                        <a href="http://www.facebook.com/foldway">
+                          <img src="http://foldway.com/facebook.png" width="50" height="50" alt="Facebook" border="0" />
+                        </a>
+                      </td>
+                      <td width="50" style="text-align: center; padding: 0 10px 0 10px;">
+                        <a href="http://www.instagram.com/foldway">
+                          <img src="http://foldway.com/instagram.png" width="50" height="50" alt="Twitter" border="0" />
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!--[if (gte mso 9)|(IE)]>
+            </td>
+          </tr>
+      </table>
+      <![endif]-->
+      </td>
+    </tr>
+
+
+
+     
+       
+   
+      
+      </table>
+      <!--[if (gte mso 9)|(IE)]>
+            </td>
+          </tr>
+      </table>
+      <![endif]-->
+      </td>
+    </tr>
+  </table>
+  </body>

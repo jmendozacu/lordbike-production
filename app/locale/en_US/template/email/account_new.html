@@ -1,0 +1,311 @@
+<!--@subject Welcome, {{var customer.name}}! @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"htmlescape var=$customer.name":"Customer Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var customer.email":"Customer Email",
+"htmlescape var=$customer.password":"Customer Password"}
+@-->
+
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<body style="margin:0; padding:0;">
+
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<style>
+/* html5reset.css - 01/11/2011 */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    line-height: 1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color: #ff9;
+    color: #000;
+    text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color: #ff9;
+    color: #000; 
+    font-style: italic;
+    font-weight: bold;
+}
+
+del {
+    text-decoration:  line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display: block;
+    height: 1px;
+    border: 0;   
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input, select {
+    vertical-align: middle;
+}
+/*  GRID OF THREE   ============================================================================= */
+
+    
+.span_3_of_3 {
+    width: 100%; 
+}
+
+.span_2_of_3 {
+    width: 66.13%; 
+}
+
+.span_1_of_3 {
+    width: 32.26%; 
+}
+
+
+/*  SECTIONS  ============================================================================= */
+
+.section {
+    clear: both;
+    padding: 0px;
+    margin: 0px;
+}
+
+/*  GROUPING  ============================================================================= */
+
+
+.group:before,
+.group:after {
+    content:"";
+    display:table;
+}
+.group:after {
+    clear:both;
+}
+.group {
+    zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+/*  GRID COLUMN SETUP   ==================================================================== */
+
+.col {
+    display: block;
+    float:left;
+    margin: 1% 0 1% 1.6%;
+}
+
+.col:first-child { margin-left: 0; } /* all browsers except IE6 and lower */
+
+
+/*  REMOVE MARGINS AS ALL GO FULL WIDTH AT 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+    .col { 
+        margin: 1% 0 1% 0%;
+    }
+}
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+    .span_3_of_3 {
+        width: 100%; 
+        margin:0;
+    }
+    .span_2_of_3 {
+        width: 100%; 
+        margin:0;
+    }
+    .span_1_of_3 {
+        width: 100%;
+        margin:0;
+    }
+}
+.body{
+
+   
+  background: -webkit-linear-gradient(0deg, #ECE9E6 10%, #fff 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(0deg, #ECE9E6 10%, #fff 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(0deg, #ECE9E6 10%, #fff 90%); /* IE10 */
+  background:      -o-linear-gradient(0deg, #ECE9E6 10%, #fff 90%); /* Opera 11.10+ */
+  background:         linear-gradient(0deg, #ECE9E6 10%, #fff 90%); /* W3C */
+  height: 1000px;
+}
+.container{
+        width: 60%;
+    margin-left: 20%;
+}
+.header{
+
+        
+    height: auto;
+
+}
+.thankyou{
+    text-align: center;
+
+        border-bottom: 1px solid #1abc9c;
+            border-top: 1px solid #1abc9c;
+            padding-top:5%;
+              padding-bottom:5%;
+            width: 70%;
+            margin-left: 15%;
+}
+.thankyou h1{
+font-family: 'Lato', sans-serif;
+color: #373737;
+font-size: 3em;
+}
+.thankyou p{
+font-family: 'Lato', sans-serif;
+color: #373737;
+font-size: 1.8em;
+margin-top: 5%;
+}
+.social svg{
+ fill:#373737;
+ webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+padding: 0.5%;
+}
+.social svg:hover{
+ fill:#1abc9c;
+}
+</style>
+
+  <div class="container">
+
+
+
+                    <div  class="section group header">
+
+                        <img style="width:40%;height:auto;margin-left:30%;margin-top:5%;" src="http://foldway.com/demo/skin/frontend/base/default/images/emailtemplates/foldway.png" />
+
+
+                    </div> 
+                    <div  class="section group thankyou">
+                        <h1>Thank you, {{htmlescape var=$customer.name}} !</h1>
+                        <p>Your account has been created successfully and is ready to use</p>
+
+                    </div>     
+
+
+                    <div   class="section group ">
+                        <div class="col span_2_of_3"> </div>
+                        <div class="col span_1_of_3 social">
+                            <a href="">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     width="15%" height="15%" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+<path d="M8,0C3.582,0,0,3.582,0,8s3.582,8,8,8s8-3.582,8-8C16,3.581,12.418,0,8,0z M10.068,7.999L8.757,8l-0.001,4.8H6.957V8h-1.2
+    V6.346l1.2-0.001L6.955,5.371c0-1.35,0.366-2.171,1.955-2.171h1.324v1.655H9.406c-0.619,0-0.649,0.231-0.649,0.662L8.755,6.345
+    h1.488L10.068,7.999z"/>
+</svg></a>
+<a href="">
+<svg version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     width="15%" height="15%" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<g>
+    <ellipse fill-rule="evenodd" clip-rule="evenodd" cx="50.069" cy="49.844" rx="14.465" ry="14.017"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M72.458,50.626c0,11.981-10.024,21.693-22.389,21.693
+        c-12.365,0-22.389-9.712-22.389-21.693c0-2.147,0.324-4.221,0.924-6.18h-6.616v30.427c0,1.576,1.288,2.864,2.863,2.864H75.01
+        c1.576,0,2.865-1.288,2.865-2.864V44.446h-6.341C72.133,46.405,72.458,48.479,72.458,50.626z"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M66.457,36.235h8.141c1.784,0,3.242-1.458,3.242-3.242v-7.762
+        c0-1.785-1.458-3.243-3.242-3.243h-8.141c-1.785,0-3.243,1.458-3.243,3.243v7.762C63.213,34.776,64.672,36.235,66.457,36.235z"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M50,1.125C23.007,1.125,1.125,23.007,1.125,50S23.007,98.875,50,98.875
+        S98.875,76.993,98.875,50S76.993,1.125,50,1.125z M76.769,86.015H23.231c-5.087,0-9.246-3.764-9.246-9.244V23.23
+        c0-5.481,4.159-9.245,9.246-9.245h53.538c5.086,0,9.246,3.764,9.246,9.245v53.541C86.015,82.251,81.855,86.015,76.769,86.015z"/>
+</g>
+</svg>
+</a>
+
+
+                        </div> 
+
+                    </div>        
+
+
+
+
+
+
+
+
+
+
+
+
+ </div>
+         
+
+
+
+
+
+
+</body>

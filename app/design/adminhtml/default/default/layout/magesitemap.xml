@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="head">
+			<action method="addJs"><script>magestore/magesitemap.js</script></action>
+		</reference>
+	</default>
+    <adminmagesitemap_adminhtml_magesitemap_index>
+        <reference name="content">
+            <block type="magesitemap/adminhtml_magesitemap" name="magesitemap" />
+        </reference>
+    </adminmagesitemap_adminhtml_magesitemap_index>
+</layout>

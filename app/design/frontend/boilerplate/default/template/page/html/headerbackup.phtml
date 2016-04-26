@@ -1,0 +1,378 @@
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+   <script src="<?php echo Mage::getBaseUrl('js'); ?>algoliasearch/Function.prototype.bind.js"></script>
+
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
+<script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+
+<script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+      
+
+
+<?php require(Mage::getBaseDir().DS.'lib'.DS.'Mobile_Detect.php');?>
+
+<style>
+.navbar{
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s  ease-in-out;
+  -o-transition: all 0.5s  ease-in-out;
+  transition: all 0.5s  ease-in-out;
+  border-bottom: none;
+}
+.affix{
+background-image: url(<?php echo $this->getSkinUrl('images/tile.jpg'); ?>);
+background-color: rgba(33,33,33,0.8);
+background-repeat: repeat;
+border-bottom: #373737 !important;
+position:fixed !important ;
+z-index: 1000 !important;
+width: 100% !important;
+margin-left: 0 !important;
+}
+
+
+
+.loginsub{
+width: 80%;
+border-bottom: 1px solid #ddd;
+    font-size: 2em;
+    font-family: Lato,sans-serif;
+    font-weight: 700;
+    color: #373737;
+    text-decoration: none !important;
+    margin-top: 8%;
+}
+ .bs-prototype-override{
+
+  display:block !important;
+ }   
+ .singlelinecenter{position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);}
+  .menuproductgrid{
+        background-color: transparent;
+        font-size: 1em;
+        text-transform: uppercase;
+        font-family: Lato,sans-serif;
+        font-weight: 700;
+        text-decoration:none;
+        color:#222;
+        line-height: 10em;
+
+  }                
+  .std{
+    display: none !important;
+  }
+  .aa-dataset-1{
+    display: none;
+  }
+dropdown-menu megamenu row{margin-left:0;}
+  .overwritedropp{
+    background-color: transparent !important;
+        font-size: 1em !important;
+        text-transform: uppercase !important;
+        font-family: Lato,sans-serif !important;
+        font-weight: 700 !important;
+        text-decoration:none !important;
+        color:#222 !important;
+        line-height: 10em !important;
+
+
+  }
+@media (max-width:1200px){.searchinput{ border:2px solid #fff !important; color:#fff !important;}}
+
+
+</style>
+<?php echo $this->getBlockHtml('formkey'); ?>
+<div class="navbar navbar-default mobilehide">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                     <a class="navbar-brand" href="<?php  echo Mage::getBaseUrl(); ?>">Lordbike</a>
+        </div>
+        <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+      <li class="dropdown  menu-large">
+                  <a id="nav2" href="#" class="dropdown-toggle" data-toggle="dropdown">Productos</a>
+                  <ul style="margin-left:0;" class="dropdown-menu megamenu row">
+                       <div class="col span_1_of_8 ">
+                        <a href="<?php  echo Mage::getBaseUrl(); ?>plegables" class="homelink">
+                      <img src="<?php echo $this->getSkinUrl('images/navicons/bicicletas.png'); ?>"  alt="">
+                     <p class="linkchange"> plegables  </p>
+                          </a>
+                     </div> 
+                       <div class="col span_1_of_8">
+                         <a href="<?php  echo Mage::getBaseUrl(); ?>custom" class="homelink">
+                      <img src="<?php echo $this->getSkinUrl('images/navicons/ss.png'); ?>"  alt="">
+                      <p class="linkchange">fixed - singlespeed  </p>
+                          </a>
+                     </div>
+                     <div class="col span_1_of_8">
+                         <a href="<?php  echo Mage::getBaseUrl(); ?>cascos" class="homelink">
+                      <img src="<?php echo $this->getSkinUrl('images/navicons/cascos.png'); ?>"  alt="">
+                      <p class="linkchange">cascos  </p>
+                          </a>
+                     </div>
+                    
+                     <div class="col span_1_of_8">
+                        <a href="<?php  echo Mage::getBaseUrl(); ?>candados" class="homelink">
+                      <img src="<?php echo $this->getSkinUrl('images/navicons/candados.png'); ?>"  alt="">
+                         <p class="linkchange">candados  </p>
+                          </a>
+                     </div>
+                     <div class="col span_1_of_8">
+                        <a href="<?php  echo Mage::getBaseUrl(); ?>equipaje" class="homelink">
+                      <img src="<?php echo $this->getSkinUrl('images/navicons/bolsos.png'); ?>"  alt="">
+                         <p class="linkchange">bolsos - equipaje  </p>
+                          </a>
+                     </div>
+                     <div class="col span_1_of_8">
+                         <a href="<?php  echo Mage::getBaseUrl(); ?>luces" class="homelink">
+                      <img src="<?php echo $this->getSkinUrl('images/navicons/luces.png'); ?>"  alt="">
+                         <p class="linkchange">luces  </p>
+                          </a>
+                     </div>
+                     <div class="col span_1_of_8">
+                        <a href="<?php  echo Mage::getBaseUrl(); ?>infladores" class="homelink">
+                      <img src="<?php echo $this->getSkinUrl('images/navicons/infladores.png'); ?>"  alt="">
+                        <p class="linkchange">infladores  </p>
+                          </a>
+                     </div>
+                     <div class="col span_1_of_8">
+                         <a href="<?php  echo Mage::getBaseUrl(); ?>otros" class="homelink">
+                      <img src="<?php echo $this->getSkinUrl('images/navicons/otros.png'); ?>"  alt="">
+                         <p class="linkchange">otros  </p>
+                          </a>
+                     </div>
+                   </ul>
+       </li>
+               <li class=""><a target="_blank" id="nav" href="http://blog.lordbike.com.ar/">Blog</a></li>
+
+                <li class=""><a id="nav" href="<?php  echo Mage::getBaseUrl(); ?>contacto">Contacto</a></li>
+                 <li  class="" ><a id="nav"  class="cartupdate" href="<?php  echo Mage::getBaseUrl(); ?>checkout/cart">Carrito</a></li>
+                       
+        
+      <?php $detect = new Mobile_Detect; if( $detect->isMobile() ):?>
+
+
+
+      <?php else: ?>
+ 
+                <li><span><?php echo $this->getChildHtml('topSearch') ?></span> </li>
+
+      <?php endif; ?>
+
+
+      
+            
+
+
+            
+    </ul>
+    </div>
+      </div>
+
+
+
+
+<div class="mobileshow">
+<div style="min-height:50px;position:relative;width:100%;text-align:center!important;"></div>
+
+
+
+
+<nav >
+
+    <ul style="text-align:center!important;margin:0 -15px 0 0 !important; " class="nav navbar-nav">
+     
+          <li id="botonproductos" style="font-wegiht:800;font-size:2em!important;height:25vh;position:relative;background-color:#fff;"><a  style="color:#333;height:100%;"  id="nav" href="<?php  echo Mage::getBaseUrl(); ?>productos"><span class="singlelinecenter">Productos</span></a></li>
+  
+               <li id="blog" style="font-wegiht:800;font-size:2em!important;height:25vh;position:relative;background-color:#fff;"><a  style="color:#333;height:100%;" target="_blank" id="nav" href="http://blog.lordbike.com.ar/"><span class="singlelinecenter">Blog</span></a></li>
+                <li id="contact" style="font-wegiht:800;font-size:2em!important;height:25vh;position:relative;background-color:#fff;" ><a style="color:#333;height:100%;"  id="nav" href="<?php  echo Mage::getBaseUrl(); ?>contacto"><span class="singlelinecenter">Contacto</span></a></li>
+                 <li id="cart" style="font-wegiht:800;font-size:2em!important;height:25vh;position:relative;background-color:#fff;"  ><a style="color:#333;height:100%;"  id="nav"  class="cartupdate" href="<?php  echo Mage::getBaseUrl(); ?>checkout/cart"><span class="singlelinecenter">Carrito (<?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); ?>)
+
+                  </span></li>
+          
+                
+           
+
+      </li>
+    </ul>
+</nav>
+
+
+
+
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">      
+ 
+    <!--Include your brand here-->
+      <a style="    font-family: Montserrat;
+    font-size: 1.8em!important;"class="navbar-brand" href="<?php  echo Mage::getBaseUrl(); ?>">Lordbike</a>
+    <div id="replace" class="navbar-header pull-right">
+      <a style="min-width:30px;"id="nav-expander" class="nav-expander fixed">
+
+
+<svg version="1.1" id="menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      width="30px" height="30px" viewBox="0 0 459 459" style="
+                  enable-background:new 0 0 124 124;
+                  fill:#fff;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);" xml:space="preserve">
+<g>
+  <g id="menu">
+    <path d="M0,382.5h459v-51H0V382.5z M0,255h459v-51H0V255z M0,76.5v51h459v-51H0z"/>
+  </g>
+</g>
+</svg>
+
+          <svg  version="1.1" id="crus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                  width="30px" height="30px" viewBox="0 0 199.404 199.404" style="
+                                                                enable-background:new 0 0 199.404 199.404;
+                                                                fill:#fff;
+                                                                position: absolute;
+                                                                top: 50%;
+                                                                left: 50%;
+                                                                transform: translate(-50%, -50%);
+                                                                display:none;
+                                                               " >
+                        <g>
+                          <polygon points="135.412,0 35.709,99.702 135.412,199.404 163.695,171.119 92.277,99.702 163.695,28.285   "/>
+                        </g>
+
+                        </svg>
+
+
+
+      </a>
+    </div>
+</div>
+
+
+
+ 
+
+  <?php if( $detect->isMobile() && !$detect->isTablet() ):?>
+       <span><?php echo $this->getChildHtml('topSearch') ?></span> 
+
+      <?php endif; ?>
+</div>
+
+
+<script>
+
+var mql = window.matchMedia("screen and (min-width: 1200px)")
+if(mql.matches) {
+ jQuery( document ).ready(function( $ ) {
+
+$('ul.nav li.dropdown').hover(function() {
+    $("#nav2").css("background-color","rgb(17,17,17)").delay(50);
+    $("#nav2").css("color","rgb(235,232,229)").delay(50);
+  $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn(200);
+}, function() {
+  $(this).find('.dropdown-menu').stop(true, true).delay(0).fadeOut(200);
+    $("#nav2").delay(10000).css("background-color","transparent").delay(50);
+        $("#nav2").css("color","rgb(55,55,55)").delay(50);
+});
+});
+} 
+
+
+ </script> 
+<script>
+
+      
+ jQuery( document ).ready(function( $ ) {
+                  
+
+       //Navigation Menu Slider
+        $('#nav-expander').on('click',function(e){
+          e.preventDefault();
+          $('body').toggleClass('nav-expanded');
+        });
+        $('#nav-close').on('click',function(e){
+          e.preventDefault();
+          $('body').removeClass('nav-expanded');
+        });
+
+        // Initialize navgoco with default options
+    
+
+      });
+</script>
+<script>
+function hasClass(ele,cls) {
+     return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+
+document.getElementById("nav-expander").onclick = function checkclass(){
+
+
+var crus = document.getElementById("crus");
+var menu = document.getElementById("menu");
+var expander = document.getElementById("nav-expander");
+
+if(hasClass(document.getElementsByTagName("body")[0], "nav-expanded")){
+
+menu.style.display = "initial";
+crus.style.display = "none";
+expander.style.height = "auto";
+document.getElementById("productosinitial").style.display = "block";
+document.getElementById("productoshide").style.display = "none";
+
+document.getElementById("contact").style.display = "block";
+document.getElementById("blog").style.display = "block";
+document.getElementById("cart").style.display = "block";
+
+}else{
+menu.style.display = "none";
+crus.style.display = "initial";
+expander.style.height = "100vh";
+
+
+
+}
+}
+
+</script>
+<script>
+
+function productoshide(){
+
+
+
+if(hasClass(document.getElementById("botonproductos"), "open")){
+
+document.getElementById("contact").style.display = "block";
+document.getElementById("blog").style.display = "block";
+document.getElementById("cart").style.display = "block";
+document.getElementById("productosinitial").style.display = "block";
+document.getElementById("productoshide").style.display = "none";
+
+}else{
+
+
+
+document.getElementById("contact").style.display = "none";
+document.getElementById("blog").style.display = "none";
+document.getElementById("cart").style.display = "none";
+
+document.getElementById("productosinitial").style.display = "none";
+document.getElementById("productoshide").style.display = "initial";
+
+}
+
+
+
+
+}
+
+</script>
+

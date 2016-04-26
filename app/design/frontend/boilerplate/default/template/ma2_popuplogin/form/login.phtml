@@ -1,0 +1,49 @@
+<?php
+/**
+ * MagenMarket.com
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Edit or modify this file with yourown risk.
+ *
+ * @category    Extensions
+ * @package     Ma2_PopupLogin free
+ * @copyright   Copyright (c) 2013 MagenMarket. (http://www.magenmarket.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+**/
+/* $Id: login.phtml 4 2013-11-05 07:30:56Z linhnt $ */
+?>
+
+<div class="ma2-block block-login">
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post">
+        <div class="ma2-popup-fieldset">
+            <ul class="form-list">
+                <li class="fields">
+                    <div class="field">
+                        <label for="mini-login" class="required"><em>*</em><?php echo $this->__('Email') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="login[username]" id="mini-login" class="input-text required-entry" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="mini-password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                        <div class="input-box">
+                            <input type="password" name="login[password]" id="mini-password" class="input-text required-entry" />
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="ma2-popup-buttons-set">
+          <p class="ma2-popup-required"><?php echo $this->__('* Required Fields') ?></p>            
+          <button type="submit" class="button"><span><span><?php echo $this->__('Login') ?></span></span></button>
+        </div>
+    </form>
+</div>

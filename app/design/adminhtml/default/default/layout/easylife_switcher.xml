@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Easylife_Switcher extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE_EASYLIFE_SWITCHER.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   	Easylife
+ * @package	    Easylife_Switcher
+ * @copyright   Copyright (c) 2013
+ * @license	    http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Admin layout update file
+ *
+ * @category    Easylife
+ * @package	    Easylife_Switcher
+ * @author 	    Marius Strajeru <marius.strajeru@gmail.com>
+ */
+ -->
+<layout>
+    <easylife_switcher_handle>
+        <reference name="head">
+            <action method="addJs" ifconfig="easylife_switcher/settings/enabled">
+                <js>easylife_switcher/adminhtml/configurable.js</js>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="adminhtml/template" template="easylife_switcher/configurable.phtml" name="configurable_default" as="configurable_default"/>
+        </reference>
+    </easylife_switcher_handle>
+    <adminhtml_catalog_product_edit>
+        <update handle="easylife_switcher_handle" />
+    </adminhtml_catalog_product_edit>
+    <adminhtml_catalog_product_new>
+        <update handle="easylife_switcher_handle" />
+    </adminhtml_catalog_product_new>
+    <adminhtml_catalog_product_attribute_edit>
+        <reference name="attribute_edit_tabs">
+            <block type="easylife_switcher/adminhtml_catalog_product_attribute_edit_tab_optimage" name="tab_optimage" template="easylife_switcher/optimage.phtml" />
+            <action method="addTabAfter"><name>opt_images</name><block>tab_optimage</block><after>labels</after></action>
+        </reference>
+    </adminhtml_catalog_product_attribute_edit>
+</layout>

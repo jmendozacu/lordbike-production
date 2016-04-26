@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="footer_links">
+            <action method="addLink" translate="label title" module="contacts">
+				<label>Store Sitemap</label>
+				<url>magesitemap</url>
+				<title>Store Sitemap</title>
+				<prepare>true</prepare>
+			</action>
+        </reference>
+    </default>	
+	<magesitemap_index_index>
+		<remove name="right"/>
+        <remove name="left"/>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+		<reference name="content">
+            <block type="magesitemap/sitemap" name="sitemap" template="magesitemap/sitemap.phtml" />
+        </reference>
+    </magesitemap_index_index>
+</layout> 

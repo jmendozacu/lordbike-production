@@ -1,0 +1,433 @@
+<?php
+/**
+* The MIT License (MIT)
+*
+* Copyright (c) 2011-2014 Webcomm Pty Ltd
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+* THE SOFTWARE.
+*/
+?>
+<?php
+/**
+* Template for Mage_Page_Block_Html
+*/
+?>
+<!DOCTYPE html>
+
+
+<html>
+  
+  <head>
+  <?php echo $this->
+getChildHtml('head') ?>
+
+
+<style type="text/css">
+/* ============================================================
+  SECTIONS
+============================================================ */
+.navbar-default{
+  background-color: rgba(0,0,0,0.3) !important;
+}
+section.module.parallax {
+ 
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+section.module.parallax-1 {
+  background-image: url("<?php echo $this->getSkinUrl('images/helmets.jpg'); ?>");
+  background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 0;
+    padding-top: 15.625%; /* (img-height / img-width * width) */
+                /* (853 / 1280 * 100) */
+  background-position: 0 0 ;
+
+}
+
+</style>
+<script type="text/javascript">
+    
+             jQuery(document).ready (function ( $ ) {
+    $.fn.stickyTabs = function() {
+        context = this
+
+        // Show the tab corresponding with the hash in the URL, or the first tab.
+        var showTabFromHash = function() {
+          var hash = window.location.hash;
+          var selector = hash ? 'a[href="' + hash + '"]' : 'li.active > a';
+          $(selector, context).tab('show');
+        }
+
+        // Set the correct tab when the page loads
+        showTabFromHash(context)
+
+        // Set the correct tab when a user uses their back/forward button
+        window.addEventListener('hashchange', showTabFromHash, false);
+
+        // Change the URL when tabs are clicked
+        $('a', context).on('click', function(e) {
+          history.pushState(null, null, this.href);
+        });
+
+        return this;
+    };
+});
+      
+        </script>
+
+
+<style>
+
+
+#nav{
+color:#fff;
+fill:#fff;
+
+}
+.navbar-brand{
+color:#fff !important;
+
+}
+.searchinput{
+  border:2px solid #fff;
+  color:#fff !important;
+}
+.searchbtt{
+  color: #fff;
+}
+.navbar-default{
+border-bottom: 3px solid #fff !important;
+}
+</style>
+
+      
+  </head>
+  <body
+  <?php echo $this->
+    getBodyClass()?' class="'.$this->
+    getBodyClass().'"':'' ?>
+    >
+    
+    <?php echo $this->
+getChildHtml('after_body_start') ?>
+  
+    
+    <?php echo $this->
+getChildHtml('header') ?>
+  
+  <div class="catalog">
+
+      <section class="module parallax parallax-1 mobilehide">
+          <h1 style="float: left;
+/* font-family: Lato,sans-serif; */
+font-size: 3em;
+background-color: transparent;
+margin-top: -1.5em;
+margin-left: 5%;
+color: #85D8CE;">Helmets</h1>
+        <div class="container">
+          
+        </div>
+      </section>
+      
+
+          <?php 
+          $children = Mage::getModel('catalog/category')->getCategories(32);
+          ?>
+
+<style>
+
+.colu{
+
+display: block;
+float: left;
+margin: 1% 0 1% 1.6%;
+
+}
+
+
+.catblock{
+width: 43vw;
+    height: 10vw;
+background-color: #bdc3c7;
+border:1px solid #ddd;
+padding: 0;
+    text-align: center !important;
+
+}
+.activeblock{
+background-color: #3cd3ad !important;
+
+
+
+}
+.accordion-inner{
+  border-bottom: 2px solid #373737;
+  width: 90%;
+margin-left: 5%;
+}
+.catblock div{
+ position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+
+}
+
+.catblock p{
+  margin:0 !important;
+  font-size: 1em;
+  font-weight: 700; 
+}
+.accordion-heading{
+background-color: transparent !important;
+height: 50px;
+text-align: center;
+margin-top: 5%;
+border-bottom: 2px solid #373737;
+width:90%;
+margin-left: 5%;
+
+}
+.accordion-heading a{
+color: #373737;
+font-size: 1.5em;
+font-family: Lato,sans-serif;
+font-weight: 400;
+}
+.glyphicon{
+  margin-right: 5%;
+}
+
+
+</style>
+ <div class="accordion mobileshow" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+          Accessories<span style="float:right;" class="glyphicon glyphicon-chevron-down" ></span>
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <div class="center section group">
+          <a href="http://foldway.com/accessories/bags" >
+          <div class="catblock item colu span_1_of_3bis">
+            <div><p>Bags  </p>  </div>
+         </div>
+       </a>
+          <a href="http://foldway.com/accessories/brompton-bags" >
+           <div class="catblock item colu div_1_of_3bis">
+              <div><p>Brompton Bags  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/lights" >
+          <div class="catblock item colu span_1_of_3bis">
+              <div><p>Lights  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/locks" >
+          <div class="catblock item colu span_1_of_3bis">
+             <div> <p>Locks  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/helmets" >
+          <div class="catblock activeblock item colu span_1_of_3bis">
+            <div>  <p>Helmets  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/wireless-audio" >
+          <div class="catblock item colu span_1_of_3bis">
+             <div> <p>Wireless Audio  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/racks" >
+          <div class="catblock item colu span_1_of_3bis">
+              <div><p>Racks  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/pumps" >
+          <div class="catblock item colu span_1_of_3bis">
+             <div> <p>Pumps  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/cases" >
+          <div class="catblock item colu span_1_of_3bis">
+             <div> <p>Cases  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/trailers" >
+          <div class="catblock item colu span_1_of_3bis">
+             <div> <p>Trailer  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/other" >
+          <div class="catblock item colu span_1_of_3bis">
+             <div> <p>Other  </p></div>
+         </div>
+       </a>
+
+</div>
+</div>
+    </div>
+  </div>
+</div>
+
+          <ul id="myTab" class="mobilehide nav nav-tabs mobilehide">  
+           
+          
+       
+              <li>
+              <a href="http://foldway.com/accessories/bags" >
+                                Bags<span style="float:right;" class="mobileshow glyphicon glyphicon-chevron-down" ></span>
+              </a>
+            </li>
+            <li >
+              <a href="http://foldway.com/accessories/brompton-bags" >
+                                Brompton-Bags<span style="float:right;" class="mobileshow glyphicon glyphicon-chevron-down" ></span>
+              </a>
+            </li>
+            <li >
+              <a href="http://foldway.com/accessories/lights" >
+                               Lights<span style="float:right;" class="mobileshow glyphicon glyphicon-chevron-down" ></span>
+              </a>
+            </li>
+            <li >
+              <a href="http://foldway.com/accessories/locks" >
+                               Locks<span style="float:right;" class="mobileshow glyphicon glyphicon-chevron-down" ></span>
+              </a>
+            </li>
+               <li class="active">
+              <a href="http://foldway.com/accessories/helmets" >
+                                Helmets<span style="float:right;" class="mobileshow glyphicon glyphicon-chevron-down" ></span>
+              </a>
+            </li>
+            <li>
+              <a href="http://foldway.com/accessories/wireless-audio" >
+                                Wireless-audio<span style="float:right;" class="mobileshow glyphicon glyphicon-chevron-down" ></span>
+              </a>
+            </li>
+            <li>
+              <a href="http://foldway.com/accessories/racks" >
+                                Racks<span style="float:right;" class="mobileshow glyphicon glyphicon-chevron-down" ></span>
+              </a>
+            </li>
+            <li>
+              <a href="http://foldway.com/accessories/pumps" >
+                               Pumps<span style="float:right;" class="mobileshow glyphicon glyphicon-chevron-down" ></span>
+              </a>
+            </li>
+               <li>
+              <a href="http://foldway.com/accessories/cases" >
+                               Cases<span style="float:right;" class="mobileshow glyphicon glyphicon-chevron-down" ></span>
+              </a>
+            </li>
+            <li>
+              <a href="http://foldway.com/accessories/trailers" >
+                                Trailers<span style="float:right;" class="mobileshow glyphicon glyphicon-chevron-down" ></span>
+              </a>
+            </li>
+            <li>
+              <a href="http://foldway.com/accessories/other" >
+                                Other-accessories<span style="float:right;" class="mobileshow glyphicon glyphicon-chevron-down" ></span>
+              </a>
+            </li>
+         
+
+       
+            
+          </ul>
+            <div id="myTabContent" class="tab-content container">
+
+           
+              <div class="tab-pane fade spanlist active">
+                <div class="section group">
+                <?php     
+                    $category_id=41;
+                    $products = Mage::getModel('catalog/category')->load($category_id);
+                    $productslist = $products->getProductCollection()->addAttributeToSelect('*')->addAttributeToFilter('type_id', 'configurable')->setOrder('price', 'ASC');;
+
+                  ?>        
+                   <?php foreach ($productslist   as $product){?>
+                      <?php if($product->isSaleable()): ?>
+                                                <a  href="<?php echo $product->getProductUrl(); ?>   ">
+                                                  <div id="ver" class="item col span_1_of_3bis">
+                                                       <img src=" <?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(400); ?>" />
+                                                       <div class="section group">
+                                                            <div  class="col span_1_of_8">
+                                                            </div>
+                                                            <div  class="col span_6_of_8">
+                                                               <p class="listname"> <?php echo $product->getName(); ?></p>
+                                                               <p><?php echo  "$" . round($product->getPrice(), 2) ?></p>
+
+                                                            </div>
+                                                            
+                                                             <div  class="col span_1_of_8">
+                                                            </div>
+                                                      </div>
+                                                  </div>
+                                                </a>
+                                  <?php else: ?>
+                                               <a  >
+                                                  <div  style="opacity:0.6;" id="ver" class="item col span_1_of_3bis">
+                                                       <img src=" <?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(400); ?>" />
+                                                       <div class="section group">
+                                                            <div  class="col span_1_of_8">
+                                                            </div>
+                                                            <div  class="col span_6_of_8">
+                                                               <p class="listname"> <?php echo $product->getName(); ?></p>
+                                                               <p class="soldout">Sold out</p>
+
+                                                            </div>
+                                                            
+                                                             <div  class="col span_1_of_8">
+                                                            </div>
+                                                      </div>
+                                                  </div>
+                                                </a>
+                                  <?php endif; ?>
+                
+                    <?php
+                    }
+                    ?>
+
+                </div> 
+              </div>
+
+
+
+
+
+           </div>
+      
+  </div>
+
+  <?php echo $this->getChildHtml('footer') ?>
+   
+  
+
+
+  </body>
+</html>

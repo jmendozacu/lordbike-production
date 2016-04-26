@@ -1,0 +1,95 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<style>
+.accsub{
+width: 80%;
+border-bottom: 1px solid #ddd;
+    font-size: 1.5em;
+    font-family: Lato,sans-serif;
+    font-weight: 400;
+    color: #373737;
+    text-decoration: none !important;
+}
+.fila{
+width: 80%;
+border: 1px solid #ddd;
+  font-size: 1.1em;
+    font-family: Lato,sans-serif;
+    font-weight: 400;
+    color: #373737;
+    text-decoration: none !important;
+    background-color: #f9f9f9;
+    padding: 2% 0% 2% 2%;
+}
+.filab{
+width: 80%;
+border: 1px solid #ddd;
+  font-size: 1.1em;
+    font-family: Lato,sans-serif;
+    font-weight: 400;
+    color: #373737;
+    text-decoration: none !important;
+    background-color: #fff;
+    padding: 2% 0% 2% 2%;
+}
+
+
+</style>
+
+
+ <div class="accsub">Profile
+    <span style="float:right;"> 
+          <a style="font-size:0.64em;color:#4CB8C4;" href="<?php echo $this->getUrl('customer/account/edit') ?>">
+        <svg height="15px"  width="15px" fill="#4CB8C4" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<path d="M617.8,203.4l175.8,175.8l-445,445L172.9,648.4L617.8,203.4z M927,161l-78.4-78.4c-30.3-30.3-79.5-30.3-109.9,0l-75.1,75.1
+    l175.8,175.8l87.6-87.6C950.5,222.4,950.5,184.5,927,161z M80.9,895.5c-3.2,14.4,9.8,27.3,24.2,23.8L301,871.8L125.3,696L80.9,895.5
+    z"/>
+</svg>
+
+ <?php echo $this->__('Edit') ?></a></span>
+
+</div>               
+ <div class="fila"><strong>First Name:</strong> <?php echo $this->escapeHtml($this->getCustomer()->getFirstname()) ?>   </div>
+<div class="filab"><strong>Last Name:</strong> <?php echo $this->escapeHtml($this->getCustomer()->getLastname()) ?>   </div>
+<div class="fila"><strong>Email:</strong> <?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>   </div>
+
+<div style="margin-top:3%;" class="filab"><a style="color:#4CB8C4;" href="<?php echo $this->getChangePasswordUrl() ?>"><?php echo $this->__('Change Password') ?></a> </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

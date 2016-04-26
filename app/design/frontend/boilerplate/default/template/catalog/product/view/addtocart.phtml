@@ -1,0 +1,66 @@
+
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Agregar al carrito'); ?>
+<?php
+
+
+
+ ?>
+
+
+
+<style>
+.adddisable{
+
+	display:none;
+}
+</style>
+
+
+
+    <div id="addupdate" class="add-to-cart">
+   		<div class="section group add">
+        <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="btn btn-1 btn-1a btncart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+        <?php echo $this->getChildHtml('', true, true) ?>
+    	</div>
+    </div>
+    <div style="margin-bottom:20%;" id="outofstock" class="adddisable">
+    	
+    	 <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="btn btn-1 btn-1a btncart" >
+    	 	<span><span><p style="color:#c0392b;">Sin stock</p></span></span>
+
+    	 </button>
+      
+    	</div>
+    </div>	
+
+
+
+
+<script>
+
+
+var t = document.getElementById("attribute134");
+var s = document.getElementById("ul-attribute134");
+var o = document.getElementById("outofstock");
+
+s.addEventListener("click", function addreload() {
+
+var selectedText = t.options[t.selectedIndex].text;
+if ("out of stock"==selectedText){
+
+var d = document.getElementById("addupdate");
+d.className = d.className + " adddisable";
+o.className = "";
+
+
+}else{
+var d = document.getElementById("addupdate");
+d.className = "add-to-cart";
+o.className = "adddisable";
+
+}
+});
+
+
+</script>

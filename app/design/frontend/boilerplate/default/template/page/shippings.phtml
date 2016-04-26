@@ -1,0 +1,105 @@
+<?php
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2011-2014 Webcomm Pty Ltd
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html>
+
+
+<html>
+
+
+<head>
+<?php echo $this->getChildHtml('head') ?>
+
+</head>
+
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+
+    <?php echo $this->getChildHtml('after_body_start') ?>
+    <?php echo $this->getChildHtml('header') ?>
+
+
+
+
+    <div class="shippings">
+        <h1>Free shipping on all orders!</h1>
+
+             <div style="margin-top:5%;">
+        <p  style="text-align:center !important;">
+            We offer Free Shipping to our 
+            customers in the contiguous United States 
+            (not including Alaska & Hawaii).
+        </p>
+        <p style="text-align:center !important;">
+            Orders are shipped within 1-2 business days if placed before 3pm PST.
+        </p>
+        <p style="text-align:center !important;">
+
+            Business days are Monday-Friday, excluding federal holidays within the United States. If your order is placed on Saturday or Sunday, it will be processed on the following business day.
+
+            Once you place your order, we will send you a confirmation email with your tracking number so you can monitor the status of your order.
+         </p>
+
+         <p style="text-align:center !important;">
+         Risk of Loss: The risk of loss and title for all products you order passes to you upon our delivery to the carrier (such as FedEx, UPS, or USPS).
+          </p>
+           <p style="text-align:center !important;">
+         Free shipping valid until March 31 2015
+          </p>
+
+
+                </div>
+         </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <?php echo $this->getChildHtml('footer') ?>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+div.uni-wrapperIn{font:11px/1.55em arial,helvetica,sans-serif;}
+input.input-text, select, textarea { border:1px solid #b6b6b6; font:12px arial, helvetica, sans-serif; }
+input.input-text, textarea { padding:2px; margin-right: 5px;}
+.payment-methods dd {padding:2px 10px;}
+.payment-methods dt {margin-bottom:2px;}
+.uni-wrapperIn{position: relative; background-color:#FFFFFF; border:1px solid #d1d1d1; margin:5px 0; padding:20px 10px; min-height:500px;}
+.uni-wrapperIn td{font-weight:bold;}
+.uni-borderDiv{border-top:1px solid #d1d1d1; border-bottom:1px solid #d1d1d1; padding-top:5px; padding-bottom:5px;}
+.uni-wrapperIn h1{margin:0; padding:0px; font-weight:lighter;}
+/***************************************************************************/
+.com-box{width: 230px;}
+.normal-box{width: 110px}
+
+#authorizenet_cc_type{width: 180px !important;}
+#authorizenet_expiration{width: 85px !important;}
+#authorizenet_expiration_yr{width: 85px !important;}
+
+#ccsave_cc_owner{width: 180px !important;}
+#ccsave_cc_type{width: 216px !important;}
+#ccsave_cc_number{width: 180px !important;}
+#ccsave_expiration{width: 108px !important;}
+#ccsave_expiration_yr{width: 108px !important;}
+
+#verisign_cc_type{width: 180px !important;}
+#verisign_cc_number{width: 180px !important;}
+#verisign_expiration{width: 85px !important;}
+#verisign_expiration_yr{width: 85px !important;}
+
+div#uni-main-loader-checkout,#sub-loader{position: absolute; display: none; z-index: 1000;}
+div#uni-main-loader-checkout{margin: 0 auto; top:0px; left: 0px; width: 900px; height: 820px; background-color: #AAAAAA; filter:alpha(opacity=1); opacity: 0.2; -moz-opacity:0.2; -khtml-opacity: 0.2;}
+div#sub-loader{width: 31px; height: 31px; top: 49%; left: 49%; background: url(../images/ajax-loader-tr.gif) no-repeat;}
+/***************************************************************************/
+#one-step-checkout-review{border:1px solid #CCCCCC;}
+#one-step-checkout-review .data-table td{ padding:1px 8px;}
+#one-step-checkout-review .data-table tfoot tr.last td{padding-bottom:5px;}
+.uni-wrapperIn span.price{font-size:12px;}
+#co-payment-form .form-list{margin-bottom:2px; margin-left:20px; width:216px;}
+#co-payment-form .payment-methods dd{padding:0;}
+#checkout-shipping-method-load dt{font-size: 1.05em; margin-bottom:0.1em;}
+#checkout-shipping-method-load .shipment-methods dd { margin-bottom:5px;}
+form#checkout-agreements ol.checkout-agreements-ol{float:left; width:310px;}
+form#checkout-agreements ol.checkout-agreements-ol li {margin:20px 0;}
+form#checkout-agreements ol.checkout-agreements-ol .agreement-content {background-color:#FBFAF6; border:1px solid #BBB6A5; height:5em; overflow:auto; padding:10px;}
+#co-shipping-method-form .giftmessages{width: 240px;}
+#co-shipping-method-form .giftmessages .gift-box { background-color:#F4F4F4; border:1px solid #E9E4DE; padding:10px 6px 10px 10px;}
+#co-shipping-method-form .giftmessages .group-select li .input-box .input-text, .group-select li .input-box textarea {width:150px;}
+#co-shipping-method-form .giftmessages .group-select li .input-text, .group-select li select, .group-select li textarea {width:200px;}
+#co-shipping-method-form .giftmessages textarea { height:50px;}
+#co-shipping-method-form .giftmessages .numeration {color:#8A8987; font-weight:bold; font-size:12px;}
+#co-shipping-method-form .f-left {width:210px;}
+#co-shipping-method-form .giftmessages .giftmessage-product-info {padding-left:5px; font-size:12px;}
+#co-shipping-method-form .giftmessages .group-select li .input-box {float:left; width:200px;}
+#co-shipping-method-form .group-select li {margin:0 3px 5px 0; padding-left:8px;}
+#co-shipping-method-form .giftmessages .gift-box .scroll-box {height:260px; overflow:auto; width:222px;}
+
+div.uni-wrapperIn span.uni-steps{font-size:14px; font-weight:bold; position:relative; text-transform:uppercase; top:2px;}
+div.uni-wrapperIn label{font-weight: normal}
+div.uni-wrapperIn td.uni-main-td-first{vertical-align: top; padding:0 10px;}
+div.uni-wrapperIn td.uni-main-td{vertical-align: top; padding-right: 10px; display:block; width:250px;}
+div.uni-wrapperIn td.uni-main-td-last{vertical-align: top; padding-right: 10px;}
+div.uni-wrapperIn table.review-main{padding-left: 20px;}
+div.uni-wrapperIn .shipment-methods .error-msg { background-color:#FAEBE7; color:#FF0000; margin-bottom:0 !important; }
+div.uni-wrapperIn .payment-methods .input-box{width: 220px;}
+div.uni-wrapperIn .uni-login-link{cursor: pointer; text-decoration: underline; color:#DF280A;}
+
+/************************************Popup**********************************************/
+
+
+/*   fix gift message css   */
+select.com-box{width: 236px;}
+input#billing:postcode, input#shipping:postcode{width: 114px;}
+.uni-wrapperIn .allow-gift-messages-for-order-container{width: 215px;}
+.uni-wrapperIn .allow-gift-messages-for-order-container .gift-messages-form .form-list .field{width: 215px;}
+.uni-wrapperIn .allow-gift-messages-for-order-container p{width: 215px; margin-bottom: 3px;}
+.uni-wrapperIn .allow-gift-messages-for-order-container .form-list{width: 215px;}
+.uni-wrapperIn .allow-gift-messages-for-order-container .form-list li{width: 215px;}
+.uni-wrapperIn .allow-gift-messages-for-order-container .form-list .field{width: 215px;}
+.uni-wrapperIn .allow-gift-messages-for-order-container .form-list .input-box{width: 210px;}
+.uni-wrapperIn .allow-gift-messages-for-order-container .form-list input.input-text{width: 230px;}
+.uni-wrapperIn .allow-gift-messages-for-order-container .form-list li.wide .input-box textarea{width: 230px; height: 60px;}
+
+.gift-messages-form .item .details .form-list li.wide textarea{width:230px !important;}
+.gift-messages-form .item .details .form-list li.wide .input-box{width:230px !important;}
+.gift-messages-form .item .details{clear:both; margin-left:0 !important; float:left;}
+.gift-messages-form .item .details .form-list .field, 
+.gift-messages-form .item .details .form-list .input-box,
+.gift-messages-form .item .details .form-list input.input-text
+{width:230px !important;}
+
+.discount input#coupon_code{width: 195px !important; }
+div.uni-wrapperIn .discount{margin: 10px 0 0 20px; padding: 15px !important;}
+div.uni-wrapperIn .error-msg{margin: 5px 0 0 20px; padding: 8px 8px 0 32px !important; width: 200px;}

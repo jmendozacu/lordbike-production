@@ -1,0 +1,726 @@
+
+<?php
+/**
+* The MIT License (MIT)
+*
+* Copyright (c) 2011-2014 Webcomm Pty Ltd
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+* THE SOFTWARE.
+*/
+?>
+<?php
+/**
+* Template for Mage_Page_Block_Html
+*/
+?>
+<!DOCTYPE html>
+
+
+<html>
+  
+  <head>
+  <?php echo $this->
+getChildHtml('head') ?>
+
+<style type="text/css">
+/* ============================================================
+  SECTIONS
+============================================================ */
+
+
+.panel-group{
+    margin-top: 5%;
+      margin-bottom: 0 !important;
+}
+.panel{
+min-height: 100px;
+background-color: #fbfafa !important;
+border:none!important;
+width: 100%;
+    -webkit-box-shadow: 0 0px 0px rgba(0,0,0,.05);
+    box-shadow: 0 0px 0px rgba(0,0,0,.05);
+}
+.panel-heading{
+min-height: 100px;
+background-color: transparent !important;
+border-left: none!important;
+width: 100%;
+border-bottom: 2px solid rgba(0,0,0,0.2) !important;
+border-top: 2px solid rgba(0,0,0,0.2) !important;
+text-align: left;
+
+}
+.panel-title{
+    height: 5%;
+    line-height: 4;
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    color: #222;
+    text-align: right;
+    text-decoration: none;
+    font-weight: 400;   
+
+
+}
+.panel-title a{
+       text-decoration: none !important;  
+}
+
+.panel-title:hover{
+        text-decoration: none;
+}
+
+.panel-body{
+    padding:0 !important;
+
+    height: auto;
+    text-align: left;
+}
+
+.panel-heading:active, .panel-heading:hover, .panel-heading:target{
+
+    border-bottom: 2px solid #1abc9c !important;
+    border-top: 2px solid #1abc9c !important;
+     -webkit-transition: all 0.3s ease;                  
+    -moz-transition: all 0.3s ease;                 
+    -o-transition: all 0.3s ease;   
+    -ms-transition: all 0.3s ease;          
+    transition: all 0.3s ease;
+
+}
+.panel-collapse{
+   border-bottom: 2px solid #1abc9c !important;
+
+}
+.check{
+border:2em solid #333;
+
+
+}
+
+*,
+*:after,
+*::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.ac-custom {
+ min-height: 80px;
+ text-align: center;
+ line-height: 60px;
+}
+
+.ac-custom ul,
+.ac-custom ol {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.ac-custom li {
+  margin: 0 auto;
+  padding: 2em 0;
+  position: relative;
+}
+
+.ac-custom label {
+  display: inline-block;
+  position: relative;
+  font-size: 1.5em;
+  padding: 0 0 0 80px;
+  vertical-align: top;
+  color: #333;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.ac-custom input[type="checkbox"],
+.ac-custom input[type="radio"],
+.ac-custom label::before {
+  width: 50px;
+  height: 50px;
+  top: 58%;
+  left: 0;
+  margin-top: -25px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.ac-custom input[type="checkbox"],
+.ac-custom input[type="radio"] {
+  opacity: 0;
+  -webkit-appearance: none;
+  display: inline-block;
+  vertical-align: middle;
+  z-index: 100;
+}
+
+.ac-custom label::before {
+  content: '';
+  border: 4px solid #333;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.ac-radio label::before {
+  border-radius: 50%;
+}
+
+.ac-custom input[type="checkbox"]:checked + label,
+.ac-custom input[type="radio"]:checked + label {
+  color: #3498db;
+} 
+
+.ac-custom input[type="checkbox"]:checked + label::before,
+.ac-custom input[type="radio"]:checked + label::before {
+  opacity: 0.8;
+}
+
+/* General SVG and path styles */
+
+.ac-custom svg {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  margin-top: -12px;
+  left: 5px;
+  pointer-events: none;
+}
+
+.ac-custom svg path {
+  stroke: #333;
+  stroke-width: 13px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.tooltip {
+  display: inline !important;
+  position: relative !important;
+  z-index: 999 !important;
+  opacity:1 !important;
+
+}
+
+/* Trigger text */
+
+.tooltip-item {
+  cursor: pointer !important;
+  display: inline-block !important;
+
+}
+
+/* Gap filler */
+
+.tooltip-item::after {
+  content: '';
+  position: absolute !important;
+  width: 360px !important;
+  height: 20px !important;
+  bottom: 100% !important;
+  left: 50% !important;
+  pointer-events: none !important;
+  -webkit-transform: translateX(-50%) !important;
+  transform: translateX(-50%) !important;
+}
+
+.tooltip:hover .tooltip-item::after {
+  pointer-events: auto;
+}
+
+/* Tooltip */
+
+.tooltip-content {
+  position: absolute;
+  z-index: 9999;
+  width: 200%;
+  left: 50%;
+  margin: 0px 0px 20% -100%;
+  bottom: 100%;
+  text-align: left;
+  box-shadow: -5px -5px 15px rgba(48,54,61,0.1);
+  background: #2a3035;
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
+}
+.tooltip-text {
+  font-size: 1.5em !important;
+  display: block;
+  padding: 2em !important;
+  color: #fff;
+  font-family: montserrat;
+  font-style: italic;
+
+}
+
+.tooltip-effect-4 .tooltip-content {
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  -webkit-transform: scale3d(0.7,0.3,1);
+  transform: scale3d(0.7,0.3,1);
+  -webkit-transition: opacity 0.2s, -webkit-transform 0.2s;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+
+
+.tooltip:hover .tooltip-content {
+  pointer-events: auto;
+  opacity: 1;
+  -webkit-transform: translate3d(0,0,0) rotate3d(0,0,0,0);
+  transform: translate3d(0,0,0) rotate3d(0,0,0,0);
+}
+
+
+/* Arrow */
+
+.tooltip-content::after {
+  content: '';
+  top: 100%;
+  right: 50%;
+
+  position: absolute;
+  pointer-events: none;
+
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  
+  border-top: 20px solid #2a3035;
+
+}
+
+
+
+@media screen and (max-width: 27em) {
+  .codrops-icon {
+    font-size: 1.5em;
+  }
+  .codrops-icon span {
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+ .panel-group{display: none;}
+
+}
+@media screen and (min-width:501px) and (max-width: 769px) {
+   .panel-group{display: none;}
+
+
+}
+
+</style>
+ 
+
+
+  </head>
+  <body
+  <?php echo $this->
+    getBodyClass()?' class="'.$this->
+    getBodyClass().'"':'' ?>
+    >
+    
+    <?php echo $this->
+getChildHtml('after_body_start') ?>
+  
+      
+ 
+  <?php echo $this->getChildHtml('content') ?>
+    <?php echo $this->
+getChildHtml('header') ?>
+
+
+<div class="tabContent" id="tabContent1">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <a  data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                <div class="panel-heading">
+                  <div class="container">
+                    <h4 class="panel-title">
+                        <div class="col-md-11">
+                        <p><span >¿Cual es la indicada para vos? </span></p>
+                
+                        </div>
+                        <div class="col-md-1">
+                        <span style="line-height:4;" class="glyphicon glyphicon-chevron-down"></span> 
+                        </div>
+                    </h4>
+                     
+                </div>
+              </div>
+            </a>
+            
+                        <div id="collapseOne" class="panel-collapse collapse   ">
+                              <div  class="panel-body container">
+
+                                
+                                           <div class="row">
+                                             <form class="ac-custom ac-checkbox ac-cross" autocomplete="off">
+                                                     
+                                                   
+                                                          
+
+                                                            <div class="col-md-4">
+                                                              <span class="tooltip tooltip-effect-4 ">
+                                                                <span class="tooltip-item">  
+                                                                  <input class="check" id="cb1" name="uso" type="checkbox" value="paseo"><label for="cb1">Recreativo</label>
+                                                                </span>
+                                                                <span class="tooltip-content clearfix">
+                                                                  <span class="tooltip-text">
+
+                                                                      Paseos, gimnasia de baja a mediana intensidad y trayectos cortos.
+
+
+
+                                                                  </span>
+                                                                </span>
+                                                              </span>
+                                                            </div>
+                                                               <div class="col-md-4">
+                                                                <span class="tooltip tooltip-effect-4">
+                                                                <span class="tooltip-item">  
+                                                                  <input class="check" id="cb2" name="uso" type="checkbox" value="transporte"><label for="cb2">Transporte</label>
+                                                                </span>
+                                                                <span class="tooltip-content clearfix">
+                                                                  <span class="tooltip-text">
+
+                                                                      Orientadas a quienes hagan de la bicicleta, su medio de transporte principal. Para un uso diario e intensivo.
+
+
+
+                                                                  </span>
+                                                                </span>
+                                                              </span>
+                                                               </div>
+                                                               <div class="col-md-4">
+                                                                <span class="tooltip tooltip-effect-4">
+                                                                <span class="tooltip-item">  
+                                                                  <input class="check" id="cb3" name="uso" type="checkbox" value="deportivo"><label for="cb3">Deportivo</label>
+                                                                </span>
+                                                                <span class="tooltip-content clearfix">
+                                                                  <span class="tooltip-text">
+
+                                                                      Para aquellos que prioricen la velocidad ante todo. Uso diario y deportivo. Diseñadas para un gran rendimiento.
+
+
+                                                                  </span>
+                                                                </span>
+                                                              </span>
+                                                              </div>
+                                                                 
+
+
+                                                    
+                                                   
+                                              </form>
+                                              </div>
+
+
+                               
+             
+                  
+                                 
+                                 </div>
+                          </div>
+                     
+                      </div>
+                  </div>    
+
+
+
+
+
+
+
+
+
+  <div class="catalog container">
+
+       
+
+
+
+        
+                     <div class="section group">
+                <?php     
+                    $category_id=4;
+                    $products = Mage::getModel('catalog/category')->load($category_id);
+                    $productslist = $products->getProductCollection()->addAttributeToSelect('*')->setOrder('price', 'ASC');;
+
+                  ?>        
+                   <?php foreach ($productslist   as $product){?>
+                      <?php if($product->isSaleable()): ?>
+                         
+                        
+
+                                                <a  href="<?php echo $product->getProductUrl(); ?>   ">
+                                                  <div 
+                                                    data-uso="<?php echo $product->getAttributeText('uso') ?>" 
+                                          
+                                                    id="ver" 
+                                                    class="item col span_1_of_3bis"
+                                                  >
+                                                       <img src=" <?php echo $this->helper('catalog/image')->init($product, 'small_image'); ?>" />
+                                                       <div class="section group">
+                                                            <div  class="col span_1_of_8">
+                                                            </div>
+                                                            <div  class="col span_6_of_8">
+                                                               <p class="listname"> <?php echo $product->getName(); ?></p>
+                                                               <p><?php echo  "$" . round($product->getPrice(), 2) ?></p>
+
+                                                            </div>
+                                                            
+                                                             <div  class="col span_1_of_8">
+                                                            </div>
+                                                      </div>
+                                                  </div>
+                                                </a>
+                                  <?php else: ?>
+                                                     <a  href="<?php echo $product->getProductUrl(); ?>   ">
+
+                                                  <div 
+                                                    data-uso="<?php echo $product->getAttributeText('uso') ?>" 
+                                  
+                                                    id="ver" 
+                                                    class="item col span_1_of_3bis"
+                                                  >
+                                                       <img src=" <?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(400)->setQuality(100); ?>" />
+                                                       <div class="section group">
+                                                            <div  class="col span_1_of_8">
+                                                            </div>
+                                                            <div  class="col span_6_of_8">
+                                                               <p class="listname"> <?php echo $product->getName(); ?></p>
+                                                               <p class="soldout">Sin stock</p>
+
+                                                            </div>
+                                                            
+                                                             <div  class="col span_1_of_8">
+                                                            </div>
+                                                      </div>
+                                                  </div>
+                                                </a>
+                                  <?php endif; ?>
+                
+                    <?php
+                    }
+                    ?>
+
+                </div> 
+              
+  </div>
+
+  <?php echo $this->getChildHtml('footer') ?>
+
+ 
+
+
+<?php echo $this->getChildHtml('before_body_end') ?>
+
+
+  </body>
+
+<script type="text/javascript">
+jQuery( document ).ready(function( $ ) {
+  // Variable declaration
+  var useCheckboxes = $('input[name="uso"]');
+  var priorityCheckboxes = $('input[name="prioridad"]');
+  var prioritiesArray = [];
+  var usesArray = [];
+
+  // Main Callback function
+  var showItems = function(ev) {
+    var uses = ev.data[0];
+    var priorities = ev.data[1];
+    var checked = $(this).is(':checked');
+    var checkboxType = $(this).attr('name');
+    var itemDivs = $('.item');
+    var items = [];
+    itemDivs.hide();
+
+    if( ! uses.length) {
+      itemDivs.fadeIn('fast');
+    }
+
+    uses.forEach(function(value) {
+      items.push('div[data-uso="' + value + '"]');
+    });
+
+    items.forEach(function(el) {
+      $(el).fadeIn('fast');
+    });
+  };
+
+  // Processes types array
+  var processTypes = function(ev) {
+    var arr = ev.data;
+    var type = $(this).val();
+    var checked = $(this).is(':checked');
+
+    if(checked) {
+      arr.push(type);
+    } else {
+      arr.forEach(function(value, index) {
+        if(value === type) {
+          arr.splice(index, 1);
+        }
+      });
+    }
+
+    usesArray = arr;
+  };
+
+  // Callback setters
+  useCheckboxes.change(usesArray, processTypes);
+  priorityCheckboxes.change(prioritiesArray, processTypes);
+  $('input[type=checkbox]').change([usesArray, prioritiesArray], showItems);
+
+});
+
+</script>
+
+
+
+
+<script type="text/javascript">
+
+if( document.createElement('svg').getAttributeNS ) {
+
+  var checkbxsCross = Array.prototype.slice.call( document.querySelectorAll( 'form.ac-cross input[type="checkbox"]' ) ),
+   
+    pathDefs = {
+      cross : ['M 10 10 L 90 90','M 90 10 L 10 90'],
+     
+    },
+    animDefs = {
+      cross : { speed : .2, easing : 'ease-in-out' },
+     
+    };
+
+  function createSVGEl( def ) {
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    if( def ) {
+      svg.setAttributeNS( null, 'viewBox', def.viewBox );
+      svg.setAttributeNS( null, 'preserveAspectRatio', def.preserveAspectRatio );
+    }
+    else {
+      svg.setAttributeNS( null, 'viewBox', '0 0 100 100' );
+    }
+    svg.setAttribute( 'xmlns', 'http://www.w3.org/2000/svg' );
+    return svg;
+  }
+
+  function controlCheckbox( el, type, svgDef ) {
+    var svg = createSVGEl( svgDef );
+    el.parentNode.appendChild( svg );
+    
+    el.addEventListener( 'change', function() {
+      if( el.checked ) {
+        draw( el, type );
+      }
+      else {
+        reset( el );
+      }
+    } );
+  }
+
+  function controlRadiobox( el, type ) {
+    var svg = createSVGEl();
+    el.parentNode.appendChild( svg );
+    el.addEventListener( 'change', function() {
+      resetRadio( el );
+      draw( el, type );
+    } );
+  }
+
+  checkbxsCross.forEach( function( el, i ) { controlCheckbox( el, 'cross' ); } );
+
+
+
+  function draw( el, type ) {
+    var paths = [], pathDef, 
+      animDef,
+      svg = el.parentNode.querySelector( 'svg' );
+
+    switch( type ) {
+      case 'cross': pathDef = pathDefs.cross; animDef = animDefs.cross; break;
+   
+     };
+    
+    paths.push( document.createElementNS('http://www.w3.org/2000/svg', 'path' ) );
+
+    if( type === 'cross' || type === 'list' ) {
+      paths.push( document.createElementNS('http://www.w3.org/2000/svg', 'path' ) );
+    }
+    
+    for( var i = 0, len = paths.length; i < len; ++i ) {
+      var path = paths[i];
+      svg.appendChild( path );
+
+      path.setAttributeNS( null, 'd', pathDef[i] );
+
+      var length = path.getTotalLength();
+      // Clear any previous transition
+      //path.style.transition = path.style.WebkitTransition = path.style.MozTransition = 'none';
+      // Set up the starting positions
+      path.style.strokeDasharray = length + ' ' + length;
+      if( i === 0 ) {
+        path.style.strokeDashoffset = Math.floor( length ) - 1;
+      }
+      else path.style.strokeDashoffset = length;
+      // Trigger a layout so styles are calculated & the browser
+      // picks up the starting position before animating
+      path.getBoundingClientRect();
+      // Define our transition
+      path.style.transition = path.style.WebkitTransition = path.style.MozTransition  = 'stroke-dashoffset ' + animDef.speed + 's ' + animDef.easing + ' ' + i * animDef.speed + 's';
+      // Go!
+      path.style.strokeDashoffset = '0';
+    }
+  }
+
+  function reset( el ) {
+    Array.prototype.slice.call( el.parentNode.querySelectorAll( 'svg > path' ) ).forEach( function( el ) { el.parentNode.removeChild( el ); } );
+  }
+
+  function resetRadio( el ) {
+    Array.prototype.slice.call( document.querySelectorAll( 'input[type="radio"][name="' + el.getAttribute( 'name' ) + '"]' ) ).forEach( function( el ) { 
+      var path = el.parentNode.querySelector( 'svg > path' );
+      if( path ) {
+        path.parentNode.removeChild( path );
+      }
+    } );
+  }
+
+}
+</script>
+
+
+</html>

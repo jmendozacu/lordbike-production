@@ -1,0 +1,172 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<style>
+.accsub{
+width: 80%;
+border-bottom: 1px solid #ddd;
+    font-size: 1.5em;
+    font-family: Lato,sans-serif;
+    font-weight: 400;
+    color: #373737;
+    text-decoration: none !important;
+}
+.fila{
+width: 80%;
+height: auto;
+border: 1px solid #ddd;
+  font-size: 1.1em;
+    font-family: Lato,sans-serif;
+    font-weight: 400;
+    color: #373737;
+    text-decoration: none !important;
+    background-color: #f9f9f9;
+    padding: 2% 0% 2% 2%;
+}
+.filab{
+width: 80%;
+border: 1px solid #ddd;
+  font-size: 1.1em;
+    font-family: Lato,sans-serif;
+    font-weight: 400;
+    color: #373737;
+    text-decoration: none !important;
+    background-color: #fff;
+    padding: 2% 0% 2% 2%;
+}
+.view{
+      -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-ou
+}
+.view:hover{
+fill:#4CB8C4;
+
+}
+</style>
+
+<?php $_orders = $this->getOrders(); ?>
+
+    
+        <div style="margin-top:0%;" class="accsub">Orders</div>
+
+
+
+
+<?php if( sizeof($_orders->getItems()) > 0 ): ?>
+        <div class="fila mobilehide">    
+        <div class="section group">
+            <div style="text-align:center;margin:0 !important;" class="col span_2_of_8">
+                Date
+            </div> 
+            <div style="text-align:center;margin:0 !important;" class="col span_3_of_8">
+                Order No.
+            </div>   
+            <div style="text-align:center;margin:0 !important;" class="col span_2_of_8">
+                Total
+            </div>   
+            <div style="text-align:center;margin:0 !important;" class="col span_1_of_8">
+                
+            </div>   
+                  
+
+         </div>   
+         </div>
+
+     
+         
+        
+           
+                <?php foreach ($_orders as $_order): ?>
+              <?php echo '<div '.(($c = !$c)?' class="filab"':' class="fila"').">"; ?>
+            <div class="section group">
+                <div style="text-align:center;margin:0 !important;" class="col span_2_of_8">
+                    <strong class="mobileshow">Date:  </strong><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?>
+                </div> 
+                <div style="text-align:center;margin:0 !important;" class="col span_3_of_8">
+                     <strong class="mobileshow">Id:  </strong><?php echo $_order->getRealOrderId() ?>
+                </div>   
+                <div style="text-align:center;margin:0 !important;" class="col span_2_of_8">
+                     <strong class="mobileshow">Total:  </strong><?php echo $_order->formatPrice($_order->getGrandTotal()) ?>
+                </div>   
+                <div style="text-align:center;margin:0 !important;" class="col span_1_of_8 mobilehide">
+                          <a href="<?php echo $this->getViewUrl($_order) ?>">    
+                     <svg class="view" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="24px" height="24px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+                    <path d="M521.5,208.7c-205.6,0-382.8,121.2-464.2,296.1c-2.5,5.3-2.5,11.5,0,16.9c81.4,174.9,258.6,296.1,464.2,296.1
+                        c205.6,0,382.8-121.2,464.2-296.1c2.5-5.3,2.5-11.5,0-16.9C904.3,329.9,727.1,208.7,521.5,208.7z M521.5,723.4
+                        c-116.1,0-210.1-94.1-210.1-210.1c0-116.1,94.1-210.1,210.1-210.1c116.1,0,210.1,94.1,210.1,210.1
+                        C731.6,629.3,637.5,723.4,521.5,723.4z"/>
+                    <circle cx="521.5" cy="513.2" r="134.5"/>
+                    </svg>
+                    </a>  
+                   
+                </div>     
+               <div style="text-align:center;margin:0 !important;" class="col span_1_of_8 mobileshow">
+                          <a href="<?php echo $this->getViewUrl($_order) ?>">    
+                     <svg class="view" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="48px" height="48px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+                    <path d="M521.5,208.7c-205.6,0-382.8,121.2-464.2,296.1c-2.5,5.3-2.5,11.5,0,16.9c81.4,174.9,258.6,296.1,464.2,296.1
+                        c205.6,0,382.8-121.2,464.2-296.1c2.5-5.3,2.5-11.5,0-16.9C904.3,329.9,727.1,208.7,521.5,208.7z M521.5,723.4
+                        c-116.1,0-210.1-94.1-210.1-210.1c0-116.1,94.1-210.1,210.1-210.1c116.1,0,210.1,94.1,210.1,210.1
+                        C731.6,629.3,637.5,723.4,521.5,723.4z"/>
+                    <circle cx="521.5" cy="513.2" r="134.5"/>
+                    </svg>
+                    </a>  
+                   
+                </div>   
+                
+                  
+
+
+
+                 
+
+             </div> 
+
+             </div>
+
+
+
+                     
+  
+               
+
+
+
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+
+
+
+   <?php else: ?>
+    <p><?php echo $this->__('You have placed no orders.'); ?></p>
+<?php endif; ?>
+

@@ -1,0 +1,183 @@
+<?php
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2011-2014 Webcomm Pty Ltd
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+<?php echo $this->getChildHtml('head') ?>
+
+
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+
+<style>
+
+.affix{
+background-image: url(<?php echo $this->getSkinUrl('images/tile.jpg'); ?>);
+background-repeat: repeat;
+
+position:fixed !important ;
+z-index: 1000 !important;
+width: 100% !important;
+margin-left: 0 !important;
+}
+.affix #nav{
+color:#fff;
+fill:#fff;
+
+}
+.affix .navbar-brand{
+color:#fff;
+
+}
+.affix input{
+  border:2px solid #fff;
+  color:#fff !important;
+}
+.affix .searchbtt{
+  color: #fff;
+}
+.navbar{
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s  ease-in-out;
+  -o-transition: all 0.5s  ease-in-out;
+  transition: all 0.5s  ease-in-out;
+}
+
+.loginsub{
+width: 80%;
+border-bottom: 1px solid #ddd;
+    font-size: 2em;
+    font-family: Lato,sans-serif;
+    font-weight: 700;
+    color: #373737;
+    text-decoration: none !important;
+    margin-top: 8%;
+}
+
+@media (max-width:1200px){.searchinput{ border:2px solid #fff !important; color:#fff !important;}}
+
+
+</style>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+
+
+
+
+        <div data-spy="affix" data-offset-top="60"  class="navbar navbar-default navbar2 " role="navigation" >
+        <!-- Header -->
+          <div class="">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="<?php  echo Mage::getBaseUrl(); ?>">foldway</a>
+            </div>
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="cl-effect-1"><a id="nav" href="<?php  echo Mage::getBaseUrl(); ?>bikes/tern">bikes</a></li>
+                <li class="cl-effect-1"><a id="nav" href="<?php  echo Mage::getBaseUrl(); ?>accessories/bags">accesories</a></li>
+                <li class="cl-effect-1"><a id="nav" href="<?php  echo Mage::getBaseUrl(); ?>contact">contact</a></li>
+                <li class="cl-effect-1"><a id="nav" href="<?php  echo Mage::getBaseUrl(); ?>findus">find us!</a></li>
+                 <li  class="cl-effect-1" ><a id="nav"  href="<?php  echo Mage::getBaseUrl(); ?>checkout/cart">my cart (<?php echo Mage::helper('checkout/cart')->getCart()->getItemsCount(); ?>) </a></li>
+                
+                
+              <?php if (! Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+                 <li class="cl-effect-1" ><a id="nav" href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>"><?php echo $this->__('Login') ?></a></li>
+              <?php else: ?>
+              <li><a  style="padding:15px 0px 15px 0px !important;" id="nav" href="<?php echo Mage::getUrl('customer/account');?>"><?php echo $this->__('My Account') ?></a>  </li>  <li><a style="padding:16px 0px 15px 10px !important;font-size:0.9em !important;" id="nav" href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><?php echo $this->__('(Logout)') ?></a></li>
+            <?php endif; ?>
+                 <li >  <?php echo $this->getChildHtml('topSearch') ?></li>
+              </ul>
+
+              
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>  
+
+
+      
+    
+
+
+
+<div class="findus">
+  
+  
+  
+  
+  <div id='map'></div>
+  
+  
+  <div class="info">
+
+   <p> 188 NW 27 street, Miami FL 33127 / Coming soon. </p>
+
+  
+  </div>
+  
+  
+  
+  
+</div>  
+
+
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoidGF2aWFsbWFkYSIsImEiOiI0VTIyXzNZIn0.5bar32wddjxONSUC7gVsAQ';
+var map = L.mapbox.map('map', 'tavialmada.je3k68e0')
+ // Build a marker from a simple GeoJSON object:
+
+
+// Iterate over the featureLayer we've called "marker"
+// and open its popup instead of clicking to trigger it.
+marker.eachLayer(function(m) {
+  m.openPopup();
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

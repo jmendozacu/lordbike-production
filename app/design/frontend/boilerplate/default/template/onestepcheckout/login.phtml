@@ -1,0 +1,48 @@
+<?php if (!Mage::getSingleton('customer/session')->isLoggedIn()){?>
+
+<div id="onestepcheckout_loginbox"  class='op_login_area'>
+	
+
+<?php
+$login_url	= $this->getUrl('*/*/login', array('_secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on')));
+$http_mode	= (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on');
+if($http_mode)
+	$login_url	= str_replace('http:', 'https:', $login_url);  
+?>
+    <form method="post" id="login-form" action="<?php echo $login_url ?>">
+        <div class=" form_fields">
+			
+				
+				<div class="data_area" id ="popup">
+					<input placeholder="Email Address" type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email fixwidth" title="<?php echo $this->__('Email Address') ?>" size="30" />
+				</div>
+			
+		
+				<div class="input-box" id ="popup">
+					<input placeholder="Password" type="password" name="login[password]" class="input-text required-entry validate-password fixwidth" id="pass" title="<?php echo $this->__('Password') ?>" size="30" />
+				</div>
+			
+        </div>
+        <div class="buttons-set">
+            <div class="row">
+            <a href="javascript:void(0);" class="f-left onestepcheckout_forgotlink" onclick='open_forgot();'><?php echo $this->__('Forgot Your Password?') ?></a>
+        </div>
+              <div class="row">
+            <button type="submit" class="button btnmodallogin" title="<?php echo $this->__('Login') ?>" name="send" id="send2"> <?php echo $this->__('Login') ?></button>
+               </div>
+            <span class="please-wait" id="login-please-wait" style="display:none;">
+                <img src="<?php echo $this->getSkinUrl('images/onestepcheckout/opc-ajax-loader_onestepcheckout.gif') ?>" class="v-middle" alt=""/>
+            </span>
+
+        </div>
+    </form>
+
+
+    <script type="text/javascript">
+    //<![CDATA[
+        var loginForm = new VarienForm('login-form', true);
+    //]]>
+    </script>
+</div>
+
+<?php }?>

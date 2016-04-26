@@ -1,0 +1,229 @@
+
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Edit customer address template
+ *
+ * @see Mage_Customer_Block_Address_Edit
+ */
+?>
+<style>
+.loginsub{
+width: 100%;
+border-bottom: 1px solid #ddd;
+text-transform: uppercase;
+    font-size: 1.5em;
+    font-family: Lato,sans-serif;
+    font-weight: 400;
+    color: #373737;
+    text-decoration: none !important;
+    margin-top: 0 !important;
+    padding: 2%;
+    text-align: center;
+
+}
+.loginsubsub{
+width: 100%;
+border-bottom: 1px solid #ddd;
+text-transform: uppercase;
+    font-size: 1.1em;
+    font-family: Lato,sans-serif;
+    font-weight: 700;
+    color: #373737;
+    text-decoration: none !important;
+    margin-top: 0 !important;
+    padding: 2%;
+    text-align: left;
+
+}
+.contenedor{
+border: 1px solid #ddd;
+    margin-top: 8%;
+        margin-bottom: 8%;
+    width: 30%;
+    margin-left: 35%;
+    max-width: 1170px;
+}
+.loginform{
+text-align: center;
+padding: 5%;
+
+}
+.botonlogin{
+
+    font-family: Lato,sans-serif;
+    background-color: transparent;
+font-weight: 700;
+font-size: 1em;
+text-transform: uppercase;
+border: 3px solid #373737;
+border-radius: 0;
+color: #373737;
+margin-top: 2%;
+padding: 1% 4% 1% 4%;
+-webkit-transition: all .3s;
+-moz-transition: all .3s;
+transition: all .3s;
+}
+
+.botonlogin:hover{
+
+    font-family: Lato,sans-serif;
+font-weight: 700;
+  background-color: transparent;
+font-size: 1em;
+text-transform: uppercase;
+border: 3px solid #3cd3ad;
+border-radius: 0;
+color: #3cd3ad;
+margin-top: 2%;
+padding: 1% 4% 1% 4%;
+-webkit-transition: all .3s;
+-moz-transition: all .3s;
+transition: all .3s;
+}
+.fixwidth{
+    width: 100% !important;
+}
+</style>
+
+
+
+
+<div class="container" style="margin-top:5%;margin-bottom:10%;border: 1px solid #ddd;">
+
+  <div  class="loginsub">Edit Address</div>
+
+
+<form class="loginform" action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate">
+    <div class="fieldset col span_4_of_8">
+    <?php echo $this->getBlockHtml('formkey')?>
+    <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+    <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+
+
+          <div  class="loginsubsub">Contact Info </div>
+        <ul class="form-list">
+            <li class="fields">
+                <?php echo $this->getNameBlockHtml() ?>
+            </li>
+               <li class="wide" style="display:none;">
+       
+                <div class="input-box">
+                    <input type="text" name="company" id="company" title="<?php echo $this->__('Company') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getCompany()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('company') ?>" />
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <div class="input-box">
+                        <input type="text" name="telephone" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text  <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?> fixwidth" id="telephone" />
+                    </div>
+                </div>
+                 <div class="field" style="display:none;">
+                   
+                    <div class="input-box">
+                        <input type="text" name="fax" id="fax" title="<?php echo $this->__('Fax') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" />
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="fieldset col span_4_of_8">
+           <div  class="loginsubsub">Address</div>
+        <ul class="form-list">
+        <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+            <li class="wide">
+                <div class="input-box">
+                    <input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="input-text <?php echo $_streetValidationClass ?> fixwidth" />
+                </div>
+            </li>
+        <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+        <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+            <li class="wide">
+                <div class="input-box">
+                    <input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" title="<?php echo $this->__('Street Address %s', $_i) ?>" id="street_<?php echo $_i ?>" class="input-text <?php echo $_streetValidationClass ?> fixwidth" />
+                </div>
+            </li>
+        <?php endfor; ?>
+       
+            <li class="fields">
+                <div class="field">
+                
+                    <div class="input-box">
+                        <input type="text" name="city" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>"  title="<?php echo $this->__('City') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?> fixwidth" id="city" />
+                    </div>
+                </div>
+                <div class="field">
+   
+                    <div class="input-box">
+                        <select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select stateselect fixwidth " style="display:none;">
+                           <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                        </select>
+                        <script type="text/javascript">
+                        //<![CDATA[
+                            $('region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+                        //]]>
+                        </script>
+                        <input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?> fixwidth" />
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+           
+                    <div class="input-box">
+                        <input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?> fixwidth" />
+                    </div>
+                </div>
+                <div class="field" style="display:none;">
+                    <div class="input-box">
+                        <?php echo $this->getCountryHtmlSelect() ?>
+                    </div>
+                </div>
+            </li>
+       
+
+      
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <button class="botonlogin"  data-action="save-customer-address" type="submit" title="<?php echo $this->__('Save Address') ?>" class="button"><span><span><?php echo $this->__('Save') ?></span></span></button>
+
+    </div>
+</form>
+
+</div>
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+//]]>
+</script>

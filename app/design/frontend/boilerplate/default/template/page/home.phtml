@@ -1,0 +1,352 @@
+<?php
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2011-2014 Webcomm Pty Ltd
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html>
+<html>
+
+
+
+
+
+
+
+
+
+<head>
+
+<?php echo $this->getChildHtml('head') ?>
+
+<style>
+
+.item p {
+    font-family: Montserrat;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 4em;
+    color: #ecf0f1;
+    text-transform: uppercase;
+}
+.disena:hover  .disenatext{
+  color:#1abc9c;
+        -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all  0.3s  ease-in-out;
+  -o-transition: all  0.3s  ease-in-out;
+  transition: all  0.3s  ease-in-out;
+}
+
+</style>
+
+
+
+
+</head>
+<body style="background-color:#fff !important;">
+ <?php echo $this->getChildHtml('header') ?>
+      
+
+<?php echo $this->getChildHtml('content') ?>
+
+     <div class="hometop mobileshow">
+      
+      <div id="carousel" class="carousel slide carousel-fade"><!-- class of slide for animation -->
+         <a  class="left carousel-control" href="#carousel"  data-slide="prev"> <img src="<?php echo $this->getSkinUrl('images/blkleft.png'); ?>" /></a>
+          <a  class="right carousel-control" href="#carousel"  data-slide="next"><img src="<?php echo $this->getSkinUrl('images/blkright.png'); ?>" /></a>
+
+          <div class="carousel-inner">
+              <div class="item active "><!-- class of active since it's the first item --> 
+
+
+           
+
+             <a href="http://lordbike.com.ar/custom" ><img src="<?php echo $this->getSkinUrl('images/visor/ssmobile.jpg'); ?>"  alt=""></a>
+                
+             </div>
+            <div class="item"><!-- class of active since it's the first item --> 
+
+
+           
+
+              <img src="<?php echo $this->getSkinUrl('images/visor/1mobile.jpg'); ?>"  alt="">
+                
+             </div>
+             <div class="item"><!-- class of active since it's the first item -->
+                 <img src="<?php echo $this->getSkinUrl('images/visor/2mobile.jpg'); ?>"  alt="">
+             </div>
+              <div class="item"><!-- class of active since it's the first item -->
+                 <img src="<?php echo $this->getSkinUrl('images/visor/3mobile.jpg'); ?>"  alt="">
+             </div>
+          </div>
+ 
+      </div>
+
+     </div>
+      <div class="hometop mobilehide">
+      
+      <div id="carousel2" class="carousel slide carousel-fade"><!-- class of slide for animation -->
+          <a class="left carousel-control" href="#carousel2"  data-slide="prev"> <img  class="flecha" style=" border-radius: 15px;box-shadow: 0 0 0 2px rgba(255,255,255,0.5);background-color:rgba(255,255,255,0.5);"
+           src="<?php echo $this->getSkinUrl('images/blkleft.png'); ?>" /></a>
+          <a  class="right carousel-control" href="#carousel2"  data-slide="next"><img  class="flecha" style=" border-radius: 15px;box-shadow: 0 0 0 2px rgba(255,255,255,0.5);background-color:rgba(255,255,255,0.5);"
+           src="<?php echo $this->getSkinUrl('images/blkright.png'); ?>" /></a>
+
+              <div class="carousel-inner">
+               <div class="item active"><!-- class of active since it's the first item -->
+                  <a href="http://lordbike.com.ar/custom" ><img src="<?php echo $this->getSkinUrl('images/visor/ss.jpg'); ?>"  alt=""></a>
+             </div>
+              <div class="item "><!-- class of active since it's the first item -->
+                 <img src="<?php echo $this->getSkinUrl('images/visor/3.jpg'); ?>"  alt="">
+             </div>
+             <div class="item "><!-- class of active since it's the first item -->
+                 <img src="<?php echo $this->getSkinUrl('images/visor/1.jpg'); ?>"  alt="">
+             </div>
+              <div class="item "><!-- class of active since it's the first item -->
+                 <img src="<?php echo $this->getSkinUrl('images/visor/2.jpg'); ?>"  alt="">
+             </div>
+          </div>
+ 
+ 
+      </div>
+
+     </div>
+   
+
+ <div class="section group">
+
+        <div style="text-align:center;background:rgba(52, 152, 219,0.5); position: relative;" class="destacadosgrid col span_2_of_8">
+    
+          <a  class="destacadoslink" href="http://lordbike.com.ar/bicicletas"> 
+
+           <h2   id="hover-content" style="
+
+             
+                position: absolute;
+                  top: 42%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                font-family: Lato,sans-serif;
+                 font-weight: bold;
+                  font-size:2em; 
+                  text-transform:uppercase;
+                  color:#111;
+                  font-style:italic;
+
+              ">PLEGABLES</h2>
+        <img style="display:initial !important;"class="img-responsive" src="<?php echo $this->getSkinUrl('images/destacados/n8.png'); ?>"  alt="">
+        <div class="overlay"> </div>
+         </a>
+
+      </div>  
+      
+
+
+      <div style="text-align:center;background:rgba(52, 73, 94,0.8);" class="destacadosgrid col span_2_of_8">
+    <a class="destacadoslink" href="http://lordbike.com.ar/cascos"> 
+        <h2   id="hover-content" style="
+
+                  position: absolute;
+                  top: 42%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                font-family: Lato,sans-serif;
+                 font-weight: bold;
+                  font-size:2em; 
+                  text-transform:uppercase;
+                  color:#111;
+                  font-style:italic;
+
+              ">CASCOS</h2>
+         <img style="display:initial !important;" class="img-responsive" src="<?php echo $this->getSkinUrl('images/destacados/morrison.png'); ?>"  alt=""> 
+        <div class="overlay"> </div>
+         </a>
+
+
+      </div>   
+      <div  style="text-align:center;" class="destacadosgrid col span_2_of_8">
+            
+         
+                  <a class="destacadoslink" href="http://lordbike.com.ar/equipaje"> 
+                      <h2   id="hover-content" style="
+
+                  position: absolute;
+                  top: 42%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                font-family: Lato,sans-serif;
+                 font-weight: bold;
+                  font-size:2em; 
+                  text-transform:uppercase;
+                  color:#111;
+                  font-style:italic;
+
+              ">EQUIPAJE</h2>
+        <img style="display:initial !important;" class="img-responsive" src="<?php echo $this->getSkinUrl('images/destacados/marruecos.png'); ?>"  alt="">
+         <div class="overlay"> </div>
+          </a>
+
+
+
+      </div>    
+            <div style="text-align:center;background:#ff876c; position: relative;" class="destacadosgrid col span_2_of_8">
+    
+          <a  class="destacadoslink" href="http://lordbike.com.ar/otros"> 
+
+           <h2   id="hover-content" style="
+
+                  position: absolute;
+                  top: 42%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                font-family: Lato,sans-serif;
+                 font-weight: bold;
+                  font-size:2em; 
+                  text-transform:uppercase;
+                  color:#111;
+                    font-style:italic;
+
+              ">OTROS</h2>
+        <img style="display:initial !important;" class="img-responsive" src="<?php echo $this->getSkinUrl('images/destacados/perch.png'); ?>"  alt="">
+        <div class="overlay"> </div>
+         </a>
+
+      </div>  
+  
+
+
+         
+
+    </div>  
+
+
+    <div style="border-top:2px solid #222;max" class="social">
+      <div style="text-align:center; background-color: rgba(189, 195, 199,0.4) !important;height:auto;"class="socialspan col span_5_of_8">
+
+        <h2   style="    color:#222;font-family: Lato,sans-serif; font-weight: bold; font-size:1em; text-transform:uppercase;" >BLOG</h2>
+  
+  <?php 
+$content = '';
+$url = "http://blog.lordbike.com.ar/magentocontent-3/";
+$ch = curl_init();
+curl_setopt ($ch, CURLOPT_URL, $url);
+curl_setopt ($ch, CURLOPT_HEADER, 0);
+ob_start();
+curl_exec ($ch);
+curl_close ($ch);
+$content = ob_get_contents();
+ob_end_clean();
+echo $content; 
+?>
+
+
+
+
+
+
+
+
+      </div> 
+
+       <div style="text-align:center;    background-color: #ffffff !important;height:auto !important;"class="socialspan col span_3_of_8">
+
+      <h2   style="  font-family: Lato,sans-serif; font-weight: bold; font-size:1em; text-transform:uppercase;" >instagram</h2>
+
+        <div id="instafeed"  style="text-align:center; margin-top:10%";></div> 
+
+      </div> 
+     </div> 
+
+
+
+   
+    <?php echo $this->getChildHtml('footer') ?>
+  </div>
+
+  
+
+<?php echo $this->getChildHtml('before_body_end') ?>
+
+
+
+
+<script>
+
+ jQuery( document ).ready(function( $ ) {
+  console.log('asd');
+    $('#carousel').carousel({
+      interval: 3000
+    });
+     $('#carousel2').carousel({
+      interval: 3000
+    });
+});
+
+
+
+
+
+ </script> 
+
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/instafeed.min.js'); ?>"></script>
+<script type="text/javascript">
+
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    var userFeed = new Instafeed({
+        get: 'user',
+        userId: 520962122,
+        limit:4,
+        resolution: 'thumbnail',
+        accessToken: '520962122.467ede5.b3eb430a1f5d4a6b917bd05e9350c765',
+        template: '<a style="padding:2%;"class="instahover"href="{{link}}"><img  class="" src="{{image}}" /></a>'
+
+    });
+    userFeed.run();
+} 
+ else{
+     var userFeed = new Instafeed({
+        get: 'user',
+        userId: 520962122,
+        limit:6,
+        resolution: 'low_resolution',
+        accessToken: '520962122.467ede5.b3eb430a1f5d4a6b917bd05e9350c765',
+        template: '<a style="padding:2%;"class="instahover"href="{{link}}"><img  class="" src="{{image}}" /></a>'
+
+    });
+    userFeed.run();
+ 
+ 
+ 
+}
+
+
+
+</script>
+
+
+
+</body>
+</html>

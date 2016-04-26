@@ -1,0 +1,305 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category   design_default
+ * @package    Mage
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+
+
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+    $_gallery = $this->getGalleryImages();
+    $currentid= Mage::registry('current_product')->getId();
+
+  
+?>
+
+
+<style>
+/*Eliminates padding, centers the thumbnail */
+
+body {
+padding-right: 0 !important;
+margin: 0;
+text-align: center;
+}
+body.modal-open {
+overflow-y: scroll;
+padding-right: 0 !important;
+}
+
+
+.fullimage{
+
+   width:auto;
+   height:100vh;
+}
+
+
+@media (max-width: 1048px) {
+ .fullimage{
+
+   width:100vw;
+   height:auto;
+}
+}
+
+
+
+
+
+</style>
+
+
+
+
+                                 
+                <?php  $catIds = $_product->getCategoryIds();   
+                  $Id = $catIds[0];
+          ?>
+<?php 
+  
+
+ if($Id==3):?>
+
+
+
+
+<div id="this-carousel-id" class="carousel slide carousel-fade"><!-- class of slide for animation -->
+
+
+     <a  class="left carousel-control" href="#this-carousel-id"  data-slide="prev"> <img src="<?php echo $this->getSkinUrl('images/blkleft.png'); ?>" /></a>
+  <a  class="right carousel-control" href="#this-carousel-id"  data-slide="next"><img src="<?php echo $this->getSkinUrl('images/blkright.png'); ?>" /></a>
+
+
+
+
+  <div class="carousel-inner">
+    <div class="item active"><!-- class of active since it's the first item -->
+    
+         <a style="cursor:url(<?php echo $this->getSkinUrl('images/fullscreen.png'); ?>), default;" data-toggle="modal" data-target="#imagemodal">
+             <p class="product-image-zoom">
+               <?php
+                $_img = '<img   id="image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($_resize).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                      echo $_helper->productAttribute($_product, $_img, 'image')
+                  ?>
+              </p>
+       
+     
+            </a>
+
+
+
+
+
+    </div>
+
+    <div class="item">
+            
+             <a  style="cursor:url(<?php echo $this->getSkinUrl('images/fullscreen.png'); ?>), default;"data-toggle="modal" data-target="#smallimagemodal">
+             <p class="product-image-zoom">
+                  <?php
+                  $_img = '<img   id="image" src="'.$this->helper('catalog/image')->init($_product, 'small_image')->resize($_resize).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                      echo $_helper->productAttribute($_product, $_img, 'image')
+                  ?>
+              </p>
+       
+     
+            </a>
+
+
+
+    </div>
+
+  
+
+
+ 
+  </div><!-- /.carousel-inner -->
+  <!--  Next and Previous controls below
+        href values must reference the id for this carousel -->
+
+ 
+</div><!-- /.carousel -->
+
+
+
+
+
+                  
+
+              <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div style="z-index:999;width:auto!important;margin:0!important;" class="modal-dialog" role="document">
+                  <div style="border:0 !important;border-radius:0 !important;" class="modal-content">
+                    <div style="border-bottom:none !Important;"class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+                      </button>
+                    </div>
+                    <div style="padding:0 !important;" class="modal-body">
+                          <?php
+                                $_img = '<img class="fullimage" id="image" src="'.$this->helper('catalog/image')->init($_product, 'fullimage')->resize($_resize).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                                    echo $_helper->productAttribute($_product, $_img, 'image')
+                                ?>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="smallimagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div style="z-index:999;width:auto!important;margin:0!important;" class="modal-dialog" role="document">
+                  <div style="border:0 !important;border-radius:0 !important;" class="modal-content">
+                    <div style="border-bottom:none !Important;"class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+                      </button>
+                    </div>
+                    <div style="padding:0 !important;" class="modal-body">
+                          <?php
+                                $_img = '<img  class="fullimage" id="image" src="'.$this->helper('catalog/image')->init($_product, 'fullsmallimage')->resize($_resize).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                                    echo $_helper->productAttribute($_product, $_img, 'image')
+                                ?>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
+
+
+
+  <?php else: ?>
+
+
+
+
+
+
+<div id="this-carousel-id" class="carousel slide carousel-fade"><!-- class of slide for animation -->
+
+
+     <a  class="left carousel-control" href="#this-carousel-id"  data-slide="prev"> <img src="<?php echo $this->getSkinUrl('images/blkleft.png'); ?>" /></a>
+  <a  class="right carousel-control" href="#this-carousel-id"  data-slide="next"><img src="<?php echo $this->getSkinUrl('images/blkright.png'); ?>" /></a>
+
+
+
+
+  <div class="carousel-inner">
+    <div class="item active"><!-- class of active since it's the first item -->
+
+             <p class="product-image-zoom">
+               <?php
+                $_img = '<img   id="image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($_resize).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                      echo $_helper->productAttribute($_product, $_img, 'image')
+                  ?>
+              </p>
+       
+     
+      
+
+
+
+
+    </div>
+
+    <div class="item">
+            
+          
+             <p class="product-image-zoom">
+                  <?php
+                  $_img = '<img   id="image" src="'.$this->helper('catalog/image')->init($_product, 'small_image')->resize($_resize).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                      echo $_helper->productAttribute($_product, $_img, 'image')
+                  ?>
+              </p>
+       
+     
+            
+
+
+
+    </div>
+
+
+    <?php if($_product->getExtraimg()): ?>
+  
+     <div class="item">
+            
+          
+             <p class="product-image-zoom">
+                  <?php
+                  $_img = '<img   id="image" src="'.$this->helper('catalog/image')->init($_product, 'extraimg')->resize($_resize).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                      echo $_helper->productAttribute($_product, $_img, 'image')
+                  ?>
+              </p>
+       
+     
+            
+
+
+
+    </div>
+<?php endif; ?>
+
+  
+
+
+ 
+  </div><!-- /.carousel-inner -->
+  <!--  Next and Previous controls below
+        href values must reference the id for this carousel -->
+
+ 
+</div><!-- /.carousel -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php endif;?>
+
+
+    
+
+
+
+
+
+
+

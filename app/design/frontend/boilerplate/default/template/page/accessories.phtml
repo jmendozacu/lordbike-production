@@ -1,0 +1,217 @@
+<?php
+/**
+* The MIT License (MIT)
+*
+* Copyright (c) 2011-2014 Webcomm Pty Ltd
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+* THE SOFTWARE.
+*/
+?>
+<?php
+/**
+* Template for Mage_Page_Block_Html
+*/
+?>
+<!DOCTYPE html>
+
+
+<html>
+  
+  <head>
+  <?php echo $this->
+getChildHtml('head') ?>
+
+
+
+
+<style>
+
+
+#nav{
+color:#fff;
+fill:#fff;
+
+}
+.navbar-brand{
+color:#fff !important;
+
+}
+.searchinput{
+  border:2px solid #fff;
+  color:#fff !important;
+}
+.searchbtt{
+  color: #fff;
+}
+.navbar-default{
+border-bottom: 3px solid #fff !important;
+}
+
+
+
+</style>
+
+      
+  </head>
+  <body
+  <?php echo $this->
+    getBodyClass()?' class="'.$this->
+    getBodyClass().'"':'' ?>
+    >
+    
+    <?php echo $this->
+getChildHtml('after_body_start') ?>
+  
+    
+    <?php echo $this->
+getChildHtml('header') ?>
+  
+ 
+
+<style>
+
+.colu{
+
+display: block;
+float: left;
+margin: 1% 0 1% 1.6%;
+
+}
+
+.catblock{
+width: 30vw;
+    height: 10vw;
+background-color: #bdc3c7;
+border:1px solid #ddd;
+padding: 0;
+    text-align: center !important;
+
+}
+.catblock div{
+ position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+
+}
+
+.catblock p{
+  margin:0 !important;
+  font-size: 1em;
+  font-weight: 700; 
+}
+.accordion-heading{
+background-color: transparent !important;
+height: 50px;
+text-align: center;
+margin-top: 5%;
+border-bottom: 2px solid #373737;
+width:90%;
+margin-left: 5%;
+
+}
+.accordion-heading a{
+color: #373737;
+font-size: 1.5em;
+font-family: Lato,sans-serif;
+font-weight: 400;
+}
+.glyphicon{
+  margin-right: 5%;
+}
+
+
+</style>
+ <div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+          Accessories<span style="float:right;" class="mobileshow glyphicon glyphicon-chevron-down" ></span>
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <div class="center section group">
+          <a href="http://foldway.com/accessories/bags" >
+          <div class="catblock item colu span_1_of_3bis">
+            <div><p>Bags  </p>  </div>
+         </div>
+       </a>
+          <a href="http://foldway.com/accessories/brompton-bags" >
+           <div class="catblock item colu div_1_of_3bis">
+              <div><p>Brompton Bags  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/lights" >
+          <div class="catblock item colu span_1_of_3bis">
+              <div><p>Lights  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/locks" >
+          <div class="catblock item colu span_1_of_3bis">
+             <div> <p>Locks  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/helmets" >
+          <div class="catblock item colu span_1_of_3bis">
+            <div>  <p>Helmets  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/wireless-audio" >
+          <div class="catblock item colu span_1_of_3bis">
+             <div> <p>Wireless Audio  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/racks" >
+          <div class="catblock item colu span_1_of_3bis">
+              <div><p>Racks  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/pumps" >
+          <div class="catblock item colu span_1_of_3bis">
+             <div> <p>Pumps  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/cases" >
+          <div class="catblock item colu span_1_of_3bis">
+             <div> <p>Cases  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/trailer" >
+          <div class="catblock item colu span_1_of_3bis">
+             <div> <p>Trailer  </p></div>
+         </div>
+            </a>
+            <a href="http://foldway.com/accessories/other" >
+          <div class="catblock item colu span_1_of_3bis">
+             <div> <p>Other  </p></div>
+         </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+  <?php echo $this->getChildHtml('footer') ?>
+   
+  
+
+
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<?php
+	$storeId = Mage::app()->getStore()->getId();
+	$direction 	= Mage::getStoreConfig('magesitemap/general/direction',$storeId);
+	if($direction ==2) {
+		$align 	= 'right';
+		$dir = 'rtl';
+	} else {
+		$align 	= 'left';
+		$dir = 'ltr';
+	}	
+?>
+<div class="page-sitemap" align="<?php echo $align;?>">
+<div class="page-title">
+	<h1><?php echo Mage::helper('magesitemap')->__('Site Map List')?></h1>
+</div>
+<div dir="<?php echo $dir;?>">
+	<form style="margin-bottom: 10px" method="get" action="<?php echo(Mage::getBaseUrl() . "magesitemap/index/index/"); ?>" name="magesitemapsearch">
+		<label for="sitemap_name"><b><?php echo $this->__('Search by Sitemap Name')?></b></label>
+		<input id="sitemap_name" class="input-text" name="sitemap_name" type="text" value="<?php echo $this->getRequest()->getParam('sitemap_name') ?>" dir="ltr" style="width:290px"/>
+	</form>
+	<button onclick="setLocation('<?php echo $this->getUrl('magesitemap/index/index') ?>');" class="button" title="reset" ><span><?php echo $this->__('Reset')?></span></button>
+	<button onclick="document.magesitemapsearch.submit();" class="button" title="search"><span><?php echo $this->__('Search')?></span></button>
+</div>
+<div>&nbsp;</div>
+<?php
+	$sitemaps = $this->getSitemap();
+	if (count($sitemaps)) { 
+		echo $this->getPagerHtml(); ?>
+		<ul class="sitemap">
+		<?php foreach ($sitemaps as $sitemap) { ?>
+			<li>
+				<a title="<?php echo $sitemap->getDescription();?>" href="<?php echo $this->getUrl('magesitemap/index/showsitemap',array('sitemapId'=>$sitemap->getSitemapId()));?>"><?php echo $sitemap->getName();?></a>	
+			</li>
+		<?php } ?>
+		</ul>
+		<?php echo $this->getPagerHtml(); 
+	} else echo Mage::helper('magesitemap')->__('There is no site map.');
+?>
+</div>
