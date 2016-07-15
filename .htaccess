@@ -118,14 +118,14 @@ AddHandler application/x-httpd-phpbetas .php
 # For security reasons, Option followsymlinks cannot be overridden.
 #    Options +FollowSymLinks
   #  Options +SymLinksIfOwnerMatch
-   # RewriteEngine on
+   RewriteEngine on
 
 
 ############################################
 ## you can put here your magento root folder
 ## path relative to web root
 
-   # RewriteBase /
+   RewriteBase /
 
 ############################################
 ## uncomment next line to enable light API calls processing

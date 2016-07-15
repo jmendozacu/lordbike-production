@@ -212,6 +212,8 @@ section.module.parallax-1 {
 
 getChildHtml('after_body_start') ?>
 
+   
+  
     
  
   <?php echo $this->getChildHtml('content') ?>
@@ -250,7 +252,7 @@ getChildHtml('header') ?>
 
                 <?php     
 
-                    $category_id=34;
+                    $category_id=43;
 
                     $products = Mage::getModel('catalog/category')->load($category_id);
 
@@ -352,9 +354,9 @@ getChildHtml('header') ?>
 
                                   <?php else: ?>
 
-                                                 <a  href="<?php echo $product->getProductUrl(); ?>   ">
+                                               <a  href="<?php echo $product->getProductUrl(); ?>   ">
 
-                                                  <div  id="ver" class="item col span_1_of_3bis">
+                                                  <div   id="ver" class="item col span_1_of_3bis">
 
                                                        <img src=" <?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(400); ?>" />
 

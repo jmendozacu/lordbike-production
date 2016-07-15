@@ -79,28 +79,519 @@
 ?>
 
 
-<body>
-<div style="    position: absolute; top: 0;"class="container-fluid">
-        <div  style="padding:0 !important;" class="col-md-6">
-              <img class="img-responsive" src="<?php  echo Mage::getModel('catalog/product_media_config')
-                      ->getMediaUrl( $_product->getThumbnail() ); //getSmallImage(), getThumbnail() ?> "/>
+<script type="text/javascript">
+
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+
+</script>
+<style>
+body{
+  background-color: #ffffff !important;
+}
+.fxdimages img{
+  width: 100% !important;
+}
+
+
+.contenedorfoot{
+  display: none;
+}
+.col-md-3{
+  padding-left: 0 !important;
+  padding-right:0 !important;
+}
+.col-md-9{
+  padding-left: 0 !important;
+  padding-right:0 !important;
+}
+.namevalue{
+
+  font-family: Lato,sans-serif!important; 
+  font-weight: 700!important;
+  font-style: normal!important;
+  font-size: 1.5em!important;
+}
+
+.specstitle{
+
+  font-family: montserrat;
+  font-weight: 400;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.navarrow{
+
+  position:fixed !important;
+  font-size: 3em;
+  bottom:0;
+  top : auto !important;
+  color: #16a085;
+  cursor:pointer;
+}
+.navarrowup{
+
+  position:fixed !important;
+  font-size: 3em;
+  top:50px!important;
+  bottom : auto !important;
+  color: #16a085;
+  cursor:pointer;
+}
+.navarrowup:hover{
+color: #1abc9c;
+  -webkit-transition: all 0.3s ease;                  
+    -moz-transition: all 0.3s ease;                 
+    -o-transition: all 0.3s ease;   
+    -ms-transition: all 0.3s ease;          
+    transition: all 0.3s ease;
+        -ms-transform: scale(1.5,1.5); /* IE 9 */
+    -webkit-transform: scale(1.5,1.5); /* Safari */
+    transform: scale(1.5,1.5);
+}
+.navarrow:hover{
+color: #1abc9c;
+  -webkit-transition: all 0.3s ease;                  
+    -moz-transition: all 0.3s ease;                 
+    -o-transition: all 0.3s ease;   
+    -ms-transition: all 0.3s ease;          
+    transition: all 0.3s ease;
+    -ms-transform: scale(1.5,1.5); /* IE 9 */
+    -webkit-transform: scale(1.5,1.5); /* Safari */
+    transform: scale(1.5,1.5);
+}
+
+
+.btnmedios{
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  padding-left: 0!important;
+  font-family:montserrat!important; 
+  font-weight:400;   
+  font-style: italic!important; 
+  cursor: pointer;
+  font-size:1em;
+  text-decoration: none;
+   line-height:100%;
+   outline:0;
+   color:#111;
+   background-color: #bdc3c7 !important;
+   text-align:center; 
+}
+.btnmedioshover .btnmedios:hover{
+  background-color: #1abc9c!important;
+  -webkit-transition: all 0.3s ease;                  
+    -moz-transition: all 0.3s ease;                 
+    -o-transition: all 0.3s ease;   
+    -ms-transition: all 0.3s ease;          
+    transition: all 0.3s ease;
+
+}
+
+.btnmedios h3{
+  line-height: 4;
+}
+
+.col-md-4{
+  padding-left: 0!important;
+}
+.row{
+  margin-left: 0!important;
+}
+#color{
+  margin-top: 0!important;
+  }
+.product-options{
+  padding: 2.5%;
+
+}
+.specscont{
+  padding: 2.5%;
+  background-color: #fff!important;
+  height: 50vh;
+  color:#333;
+  border-top: 2px solid rgba(1,1,1,0.2);
+  margin-top: 10%;
+}
+.container-fluid{
+  padding-left: 0!important;
+}
+</style>
+
+
+
+    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+
+
+                         <?php echo $this->getBlockHtml('formkey') ?>
+
+                            <div class="no-display">
+
+                                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+
+                                <input type="hidden" name="related_product" id="related-products-field" value="" />
+
+                            </div>
+  <div class="container visible-xs visible-md">
+                <div id="foto" class="col span_8_of_8">
+
+
+                 <div class="product-img-box">
+                         
+      
+                    <?php   echo $this->getChildHtml('media') ?>
+            
+
+   
+                </div>  
+                <div id="currentname" class="section group product-name mobileshow" >
+
+                            <h1 style="float:initial!important;">Trabajo personalizado</h1>   
+
+                    </div>  
+
+
+
+                   
+
+             
+                
+
+         
+                
+
+                           <div  class="specscont row" >
+                              
+
+                                <h2 class="specstitle">Componentes / Caracteristicas</h2>
+
+                             <?php
+                              $setId = $_product->getAttributeSetId(); // Attribute set Id
+
+                              $groups = Mage::getModel('eav/entity_attribute_group')
+
+                                  ->getResourceCollection()
+
+                                  ->setAttributeSetFilter($setId)
+
+                                  ->setSortOrder()
+
+                                  ->load();
+
+
+
+                                    $attributeCodes = array();
+
+                                    foreach ($groups as $group) {
+
+                                        if($group->getAttributeGroupName() == 'specsbase'){ // set name
+
+                                        //$groupName          = $group->getAttributeGroupName();
+
+                                        //$groupId            = $group->getAttributeGroupId();
+
+
+
+                                        $attributes = Mage::getResourceModel('catalog/product_attribute_collection')
+
+                                            ->setAttributeGroupFilter($group->getId())
+
+                                            ->addVisibleFilter()
+
+                                            ->checkConfigurableProducts()
+
+                                            ->load();
+
+                                            if ($attributes->getSize() > 0) {
+
+                                                foreach ($attributes->getItems() as $attribute) { ?>
+
+
+
+                                                        <p class="specstext">  <strong> <?php  echo $attribute->getFrontendLabel(); ?> :</strong> <?php  echo $attribute->getFrontend()->getValue($_product); ?></p>   
+
+
+
+                                                  <?php
+
+                                                             }
+
+                                                         } 
+
+                                                     }
+
+                                                  }
+
+                                
+
+                                          ?>
+
+                                       
+                                        
+                                  </div>   
+
+
+
+            </div>
+
+          </div>   
+                  
+<div class="container-fluid hidden-xs hidden-sm">
+    <div  class="row">
+         <div style="text-align:center;"class="fxdimages col-md-9">
+              <div class="imgcontainer" data-current="1">
+              <?php
+
+
+                $_img = '<img   id="image1" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($_resize).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                      echo $_helper->productAttribute($_product, $_img, 'image')
+                  ?>
+            
+                  <?php
+                  $_img = '<img   id="image2" src="'.$this->helper('catalog/image')->init($_product, 'small_image')->resize($_resize).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                      echo $_helper->productAttribute($_product, $_img, 'image')
+                  ?>
+                  <?php
+                  $_img = '<img   id="image3" src="'.$this->helper('catalog/image')->init($_product, 'extraimg')->resize($_resize).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+                      echo $_helper->productAttribute($_product, $_img, 'image')
+                  ?>
+                </div>  
+            <a class="navarrowup"> <span class="glyphicon glyphicon-chevron-up"></span> </a>    
+            <a class="navarrow"> <span class="glyphicon glyphicon-chevron-down"></span> </a>
+          </div>
+      <div class="col-md-3">
+          <ul id="sidebar" style="position:fixed;width:25%;background-color:#ffffff !important">
+            
+
+
+                                  <li style="margin-top:10%;"class="row">
+                                    <div class="col-md-6">
+                                       <h2 class="namevalue">Trabajo Pesonalizado</h2>
+                                    </div> 
+                                    <div class="col-md-6">
+                 
+                                    </div>   
+                                  </li>  
+                    
+
+                                     
+                                   
+                                       
+                          
+
+                    
+
+                     
+
+                                    
+
+                        
+
+                           <li  class="specscont row" >
+                              
+
+                                <h2 class="specstitle">Componentes / Caracteristicas</h2>
+
+                             <?php
+                              $setId = $_product->getAttributeSetId(); // Attribute set Id
+
+                              $groups = Mage::getModel('eav/entity_attribute_group')
+
+                                  ->getResourceCollection()
+
+                                  ->setAttributeSetFilter($setId)
+
+                                  ->setSortOrder()
+
+                                  ->load();
+
+
+
+                                    $attributeCodes = array();
+
+                                    foreach ($groups as $group) {
+
+                                        if($group->getAttributeGroupName() == 'specsbase'){ // set name
+
+                                        //$groupName          = $group->getAttributeGroupName();
+
+                                        //$groupId            = $group->getAttributeGroupId();
+
+
+
+                                        $attributes = Mage::getResourceModel('catalog/product_attribute_collection')
+
+                                            ->setAttributeGroupFilter($group->getId())
+
+                                            ->addVisibleFilter()
+
+                                            ->checkConfigurableProducts()
+
+                                            ->load();
+
+                                            if ($attributes->getSize() > 0) {
+
+                                                foreach ($attributes->getItems() as $attribute) { ?>
+
+
+
+                                                        <p class="specstext">  <strong> <?php  echo $attribute->getFrontendLabel(); ?> :</strong> <?php  echo $attribute->getFrontend()->getValue($_product); ?></p>   
+
+
+
+                                                  <?php
+
+                                                             }
+
+                                                         } 
+
+                                                     }
+
+                                                  }
+
+                                
+
+                                          ?>
+
+                                       
+                                        
+                                  </li>    
+
+                                  <li style="border-top:solid 2px rgba(1,1,1,0.2);margin-top:5%;padding:3%;" >
+                                                 <p style="font-family:montserrat;font-style:italic;font-weight:700;font-size:1.2em;margin-top:2.5%;">¿Querés armar un trabajo personalizado?</p>
+                                                  <p style="font-family:montserrat;font-style:italic;font-weight:700;font-size:1.2em;margin-top:2.5%;" >Escribinos a <strong style="color:#1abc9c;">info@lordbike.com.ar</strong> para obtener más información!</p>   
+                                 </li>
+
+
+
+                   </form>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+         
+
+          
+
+
+
+<script>
+
+jQuery( document ).ready(function( $ ) {
+
+  var scrolling = false;
+
+  var checkArrows = function () {
+    var current = $('.imgcontainer').data('current');
+
+    if (current == 2){
+      $('.navarrow').show();
+      $('.navarrowup').show();
+      $('.navarrow').css('display', 'inline-block');
+      $('.navarrowup').css('display', 'inline-block');
+    }
+
+    if (current == 3){
+      $('.navarrow').hide();
+    }
+
+    if (current == 1){
+      $('.navarrowup').hide();
+    }
+
+  };
+
+  var checkScroll = function() {
+    var windowScroll = (pageYOffset + ($(window).height() / 2));
+    var elementScroll1 = $('#image1').offset().top;
+    var elementHeight1 = $('#image1').offset().top + $('#image1').height();
+    var elementScroll2 = $('#image2').offset().top;
+    var elementHeight2 = $('#image2').offset().top + $('#image2').height();
+    var elementScroll3 = $('#image3').offset().top;
+    var elementHeight3 = $('#image3').offset().top + $('#image3').height();
+
+    if(!scrolling && windowScroll > elementScroll1 && 
+                     windowScroll <= elementHeight1) {
+      $('.imgcontainer').data('current', 1);
+    }
+
+    if(!scrolling && windowScroll > elementScroll2 && 
+                     windowScroll <= elementHeight2) {
+      $('.imgcontainer').data('current', 2);
+    }
+
+    if(!scrolling && windowScroll > elementScroll3 && 
+                     windowScroll <= elementHeight3) {
+      $('.imgcontainer').data('current', 3);
+    }
+
+    checkArrows();
+  };
+  $(window).on('scroll', checkScroll);
+  checkScroll();
+   
+  $( ".navarrow" ).click(function() {
+    
+    var current = $('.imgcontainer').data('current');
+    if (current >= 3){
+      return;
+    } 
+
+    current += 1;
+    scrolling = true;
+
+    var nextImage = $('#image' + current);
+    $('html, body').animate({
+      scrollTop: nextImage.offset().top
+    }, 500, 'swing', function() {
+      scrolling = false;
+    });
+    $('.imgcontainer').data('current', current);
+
+    checkArrows();
+  });
+
+   
+  $( ".navarrowup" ).click(function() {
+   
+    var current = $('.imgcontainer').data('current');
+    if (current === 1){
+      return;
+    } 
+
+    current -= 1;
+    scrolling = true;
+
+    var prevImage = $('#image' + current);
+    $('html, body').animate({
+      scrollTop: prevImage.offset().top
+    }, 500, 'swing', function() {
+      scrolling = false;
+    });
+    $('.imgcontainer').data('current', current);
+
+    checkArrows();
+  });
+});
+
+
+</script>
 
 
 
 
-        </div>
-        <div style="padding:0 !important;"class="col-md-6">
-              <img class="img-responsive" src="<?php  echo Mage::getModel('catalog/product_media_config')
-                      ->getMediaUrl( $_product->getImage() ); //getSmallImage(), getThumbnail() ?> "/>
-              <img class="img-responsive" src="<?php  echo Mage::getModel('catalog/product_media_config')
-                      ->getMediaUrl( $_product->getSmallImage() ); //getSmallImage(), getThumbnail() ?> "/>
 
 
 
 
-        </div>    
 
-</div>
+
+
+
+
 </body>
 
 </html>

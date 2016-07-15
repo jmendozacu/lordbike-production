@@ -27,12 +27,6 @@
 				</bicicletas>
 			</layouts>
 			<layouts>
-				<bolsos>
-					<label>bolsos</label>
-					<template>page/bolsos.phtml</template>
-				</bolsos>
-			</layouts>
-			<layouts>
 				<candados>
 					<label>candados</label>
 					<template>page/candados.phtml</template>
@@ -49,12 +43,6 @@
 					<label>Error</label>
 					<template>page/error.phtml</template>
 				</error>
-			</layouts>
-			<layouts>
-				<equipaje>
-					<label>equipaje</label>
-					<template>page/equipaje.phtml</template>
-				</equipaje>
 			</layouts>
 				<layouts>
 				<terms>
@@ -81,60 +69,6 @@
 				</otros>
 			</layouts>
 			<layouts>
-				<lights>
-					<label>Lights</label>
-					<template>page/accessories/lights.phtml</template>
-				</lights>
-			</layouts>
-			<layouts>
-				<locks>
-					<label>Locks</label>
-					<template>page/accessories/locks.phtml</template>
-				</locks>
-			</layouts>
-			<layouts>
-				<helmets>
-					<label>Helmets</label>
-					<template>page/accessories/helmets.phtml</template>
-				</helmets>
-			</layouts>
-			<layouts>
-				<audio>
-					<label>Audio</label>
-					<template>page/accessories/wireless-audio.phtml</template>
-				</audio>
-			</layouts>
-			<layouts>
-				<racks>
-					<label>Racks</label>
-					<template>page/accessories/racks.phtml</template>
-				</racks>
-			</layouts>
-			<layouts>
-				<pumps>
-					<label>Pumps</label>
-					<template>page/accessories/pumps.phtml</template>
-				</pumps>
-			</layouts>
-			<layouts>
-				<cases>
-					<label>Cases</label>
-					<template>page/accessories/cases.phtml</template>
-				</cases>
-			</layouts>
-			<layouts>
-				<trailers>
-					<label>Trailers</label>
-					<template>page/accessories/trailers.phtml</template>
-				</trailers>
-			</layouts>
-			<layouts>
-				<other>
-					<label>Other</label>
-					<template>page/accessories/other-accessories.phtml</template>
-				</other>
-			</layouts>
-			<layouts>
 				<cascos>
 					<label>cascos</label>
 					<template>page/cascos.phtml</template>
@@ -158,6 +92,31 @@
 					<template>page/productos.phtml</template>
 				</productos>
 			</layouts>
+			<layouts>
+				<bolsos>
+					<label>Bolsos</label>
+					<template>page/bolsos.phtml</template>
+				</bolsos>
+			</layouts>
+			<layouts>
+				<racks>
+					<label>Racks</label>
+					<template>page/racks.phtml</template>
+				</racks>
+			</layouts>
+			<layouts>
+				<ninos>
+					<label>Ninos</label>
+					<template>page/ninos.phtml</template>
+				</ninos>
+			</layouts>
+			<layouts>
+				<componentes>
+					<label>componentes</label>
+					<template>page/componentes.phtml</template>
+				</componentes>
+			</layouts>
+
 
 
 		</page>
