@@ -1,5 +1,5 @@
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-   <script src="<?php echo Mage::getBaseUrl('js'); ?>algoliasearch/Function.prototype.bind.js"></script>
+<script src="<?php echo Mage::getBaseUrl('js'); ?>algoliasearch/Function.prototype.bind.js"></script>
 
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
 <script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
@@ -94,23 +94,47 @@ dropdown-menu megamenu row{margin-left:0;}
           </button>
                      <a class="navbar-brand" href="<?php  echo Mage::getBaseUrl(); ?>">Lordbike</a>
         </div>
+
         <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-      <li class="dropdown  menu-large">
-                  <a id="nav2" href="#" class="dropdown-toggle" data-toggle="dropdown">Productos</a>
+        <li class="dropdown menu-large bicicletas ">
+                  <a style="border-bottom:0 !important; " id="nav" href="#" class="dropdown-toggle" data-toggle="dropdown">Bicicletas</a>
                   <ul style="margin-left:0;" class="dropdown-menu megamenu row">
-                       <div class="col span_1_of_8 ">
-                        <a href="<?php  echo Mage::getBaseUrl(); ?>plegables" class="homelink">
-                      <img src="<?php echo $this->getSkinUrl('images/navicons/bicicletas.png'); ?>"  alt="">
-                     <p class="linkchange"> plegables  </p>
-                          </a>
-                     </div> 
-                       <div class="col span_1_of_8">
-                         <a href="<?php  echo Mage::getBaseUrl(); ?>custom" class="homelink">
-                      <img src="<?php echo $this->getSkinUrl('images/navicons/ss.png'); ?>"  alt="">
-                      <p class="linkchange">fixed - singlespeed  </p>
-                          </a>
+                    
+                   
+                    <div class="col-md-3">
                      </div>
+                      <div class="col-md-2">
+                            <a href="<?php  echo Mage::getBaseUrl(); ?>plegables" class="homelink">
+                          <img style="width:50% !important;" src="<?php echo $this->getSkinUrl('images/navicons/bicicletas.png'); ?>"  alt="">
+                         <p class="linkchange"> plegables  </p>
+                              </a>
+                     </div> 
+                      <div class="col-md-2">
+                             <a href="<?php  echo Mage::getBaseUrl(); ?>custom" class="homelink">
+                          <img style="width:50% !important;"  src="<?php echo $this->getSkinUrl('images/navicons/ss.png'); ?>"  alt="">
+                          <p class="linkchange">fixed - singlespeed  </p>
+                              </a>
+                     </div>
+                       <div class="col-md-2">
+                             <a href="<?php  echo Mage::getBaseUrl(); ?>componentes" class="homelink">
+                          <img style="width:50% !important;"  src="<?php echo $this->getSkinUrl('images/navicons/componentes.png'); ?>"  alt="">
+                          <p class="linkchange">componentes</p>
+                              </a>
+                     </div>
+                     <div class="col-md-3">
+                     </div>
+                  
+
+                   
+                    
+                    
+                     
+                   </ul>
+       </li>
+      <li class="dropdown  menu-large accesorios">
+                  <a id="nav2" href="#" class="dropdown-toggle" data-toggle="dropdown">Accesorios</a>
+                  <ul style="margin-left:0;" class="dropdown-menu megamenu row">
                      <div class="col span_1_of_8">
                          <a href="<?php  echo Mage::getBaseUrl(); ?>cascos" class="homelink">
                       <img src="<?php echo $this->getSkinUrl('images/navicons/cascos.png'); ?>"  alt="">
@@ -125,9 +149,15 @@ dropdown-menu megamenu row{margin-left:0;}
                           </a>
                      </div>
                      <div class="col span_1_of_8">
-                        <a href="<?php  echo Mage::getBaseUrl(); ?>equipaje" class="homelink">
+                        <a href="<?php  echo Mage::getBaseUrl(); ?>racks" class="homelink">
+                      <img src="<?php echo $this->getSkinUrl('images/navicons/equipaje.png'); ?>"  alt="">
+                         <p class="linkchange">equipaje</p>
+                          </a>
+                     </div>
+                       <div class="col span_1_of_8">
+                         <a href="<?php  echo Mage::getBaseUrl(); ?>equipaje" class="homelink">
                       <img src="<?php echo $this->getSkinUrl('images/navicons/bolsos.png'); ?>"  alt="">
-                         <p class="linkchange">bolsos - equipaje  </p>
+                      <p class="linkchange">bolsos - alforjas</p>
                           </a>
                      </div>
                      <div class="col span_1_of_8">
@@ -140,6 +170,12 @@ dropdown-menu megamenu row{margin-left:0;}
                         <a href="<?php  echo Mage::getBaseUrl(); ?>infladores" class="homelink">
                       <img src="<?php echo $this->getSkinUrl('images/navicons/infladores.png'); ?>"  alt="">
                         <p class="linkchange">infladores  </p>
+                          </a>
+                     </div>
+                       <div class="col span_1_of_8">
+                         <a href="<?php  echo Mage::getBaseUrl(); ?>ninos" class="homelink">
+                      <img src="<?php echo $this->getSkinUrl('images/navicons/ninos.png'); ?>"  alt="">
+                      <p class="linkchange">niños</p>
                           </a>
                      </div>
                      <div class="col span_1_of_8">
@@ -265,14 +301,33 @@ dropdown-menu megamenu row{margin-left:0;}
       <?php endif; ?>
 </div>
 
-
 <script>
 
 var mql = window.matchMedia("screen and (min-width: 1200px)")
 if(mql.matches) {
  jQuery( document ).ready(function( $ ) {
 
-$('ul.nav li.dropdown').hover(function() {
+$('ul.nav li.dropdown.bicicletas').hover(function() {
+    $("#nav").css("background-color","rgb(17,17,17)").delay(50);
+    $("#nav").css("color","rgb(235,232,229)").delay(50);
+  $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn(200);
+}, function() {
+  $(this).find('.dropdown-menu').stop(true, true).delay(0).fadeOut(200);
+    $("#nav").delay(10000).css("background-color","transparent").delay(50);
+        $("#nav").css("color","rgb(55,55,55)").delay(50);
+});
+});
+} 
+
+
+ </script> 
+ <script>
+
+var mql = window.matchMedia("screen and (min-width: 1200px)")
+if(mql.matches) {
+ jQuery( document ).ready(function( $ ) {
+
+$('ul.nav li.dropdown.accesorios').hover(function() {
     $("#nav2").css("background-color","rgb(17,17,17)").delay(50);
     $("#nav2").css("color","rgb(235,232,229)").delay(50);
   $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn(200);
@@ -286,6 +341,10 @@ $('ul.nav li.dropdown').hover(function() {
 
 
  </script> 
+
+
+
+ 
 <script>
 
       
