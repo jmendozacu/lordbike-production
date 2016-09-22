@@ -1,0 +1,131 @@
+<?php
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2011-2014 Webcomm Pty Ltd
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+<?php echo $this->getChildHtml('head') ?>
+<style>
+.promostitle{
+  min-height: 300px;
+  height: auto;
+  padding: 2%;
+  z-index: 20;
+  font-family: montserrat;
+  font-weight: 600;
+  font-size: 10em !important;
+}
+.promoscontainer{
+  min-height: 400px;
+  height: auto;
+  background-color: #fff; 
+  padding: 2%;
+}
+.promo{
+  min-height: 400px;
+  height: auto;
+  z-index: 20;
+}
+.promohead{
+  min-height: 100px;
+  height: auto; 
+  background-color: #212121;
+}
+.promobody{
+  min-height: 300px;
+  height: auto;
+  background-color: #F5F5F5;
+}
+.imgback{
+    display:initial !important;
+    width: 100%;
+    height: auto;
+    position: relative !important ;
+    margin-top: -10%;
+    z-index: 10;
+
+}
+body{
+  max-height: 100vh;
+  overflow: hidden; 
+}
+</style>
+
+</head>
+
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+
+<!--    <?php echo $this->getChildHtml('after_body_start') ?> -->
+      
+ 
+  <?php echo $this->getChildHtml('content') ?>
+  <?php echo $this->getChildHtml('header') ?>
+
+<div style="margin-top:1%;position:relative;">
+    <div class="col-md-3 promostitle">
+      <h1>No te quedés sin rodar</h1>
+    </div> 
+
+    <div class="col-md-9 promoscontainer">
+        <div class="col-md-4 promo">
+          <div class="promohead"></div>
+          <div class="promobody"></div>
+        </div>
+        <div class="col-md-4 promo">
+        <div class="promohead"></div>
+          <div class="promobody"></div>
+        </div> 
+        <div class="col-md-4 promo">
+          <div class="promohead"></div>
+          <div class="promobody"></div>
+        </div>       
+    </div> 
+</div>    
+
+ <img class="imgback" src="<?php echo $this->getSkinUrl('images/promoback.jpg'); ?>"  alt="">
+
+
+
+
+
+    
+
+
+
+  <?php echo $this->getChildHtml('before_body_end') ?>
+
+
+</body>
+
+
+</html>

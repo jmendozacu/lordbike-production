@@ -317,29 +317,59 @@ border:2em solid #333;
 }
 
 
-
-@media screen and (max-width: 27em) {
-  .codrops-icon {
-    font-size: 1.5em;
-  }
-  .codrops-icon span {
-    display: none;
-  }
+.headerpromos{
+    z-index: 10;
+    width: 100%;
+    height: auto;
+    min-height: 50px;
+    padding: 0.8%;
+    top: 58px;
+    transition: top 0.5s ease-in-out;
+    position: fixed;
+    text-align: center;
+    background-color: #eeeeee;
+    color: #34495e;
+    font-family: montserrat;
+    font-weight: 800;
+    /* font-style: italic; */
+    font-size: 1.1em;
+    text-transform: uppercase;
 }
-
-
-@media screen and (max-width: 500px) {
- .panel-group{display: none;}
-
+.nav-up {
+    top: -100px;
 }
-@media screen and (min-width:501px) and (max-width: 769px) {
-   .panel-group{display: none;}
-
-
-}
-
 </style>
  
+
+
+  </head>
+  <body
+  <?php echo $this->
+    getBodyClass()?' class="'.$this->
+    getBodyClass().'"':'' ?>
+    >
+    
+    <?php echo $this->
+getChildHtml('after_body_start') ?>
+  
+      
+ 
+  <?php echo $this->getChildHtml('content') ?>
+    <?php echo $this->
+getChildHtml('header') ?>
+
+
+<div class="headerpromos">
+  <div class="col-md-4">
+      50 cuotas sin interés - Banco Ciudad
+  </div>
+  <div class="col-md-4">
+      12 cuotas sin interés - Visa y Master
+  </div>
+  <div class="col-md-4">
+      Envios gratis a todo el país!
+  </div>
+</div>
 
 
   </head>
@@ -722,5 +752,48 @@ if( document.createElement('svg').getAttributeNS ) {
 }
 </script>
 
+<script>
+jQuery( document ).ready(function( $ ) {
+// Hide Header on on scroll down
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = $(".headerpromos").height();
+
+$(window).scroll(function(event){
+    didScroll = true;
+});
+
+setInterval(function() {
+    if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+    }
+}, 250);
+
+function hasScrolled() {
+    var st = $(this).scrollTop();
+    
+    // Make sure they scroll more than delta
+    if(Math.abs(lastScrollTop - st) <= delta)
+        return;
+    
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+    if (st > lastScrollTop && st > navbarHeight){
+        // Scroll Down
+        $('.headerpromos').removeClass('nav-down').addClass('nav-up');
+    } else {
+        // Scroll Up
+        if(st + $(window).height() < $(document).height()) {
+            $('.headerpromos').removeClass('nav-up').addClass('nav-down');
+        }
+    }
+    
+    lastScrollTop = st;
+}
+});
+
+</script>
 
 </html>

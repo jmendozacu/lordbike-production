@@ -129,6 +129,12 @@
 					<template>page/componentes.phtml</template>
 				</componentes>
 			</layouts>
+			<layouts>
+				<pagos>
+					<label>pagos</label>
+					<template>page/pagos.phtml</template>
+				</pagos>
+			</layouts>
 
 
 		</page>

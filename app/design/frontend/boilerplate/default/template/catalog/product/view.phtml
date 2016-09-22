@@ -1,1021 +1,698 @@
 <?php
-
 /**
-
- * Magento
-
- *
-
- * NOTICE OF LICENSE
-
- *
-
- * This source file is subject to the Academic Free License (AFL 3.0)
-
- * that is bundled with this package in the file LICENSE_AFL.txt.
-
- * It is also available through the world-wide-web at this URL:
-
- * http://opensource.org/licenses/afl-3.0.php
-
- * If you did not receive a copy of the license and are unable to
-
- * obtain it through the world-wide-web, please send an email
-
- * to license@magentocommerce.com so we can send you a copy immediately.
-
- *
-
- * DISCLAIMER
-
- *
-
- * Do not edit or add to this file if you wish to upgrade Magento to newer
-
- * versions in the future. If you wish to customize Magento for your
-
- * needs please refer to http://www.magentocommerce.com for more information.
-
- *
-
- * @category    design
-
- * @package     base_default
-
- * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
-
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
-
- */
-
-
-
+* Magento
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE_AFL.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@magentocommerce.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade Magento to newer
+* versions in the future. If you wish to customize Magento for your
+* needs please refer to http://www.magentocommerce.com for more information.
+*
+* @category    design
+* @package     base_default
+* @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+* @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+*/
 /**
-
- * Product view template
-
- *
-
- * @see Mage_Catalog_Block_Product_View
-
- * @see Mage_Review_Block_Product_View
-
- */
-
+* Product view template
+*
+* @see Mage_Catalog_Block_Product_View
+* @see Mage_Review_Block_Product_View
+*/
 ?>
-
 <?php $_helper = $this->helper('catalog/output'); ?>
-
 <?php $_product = $this->getProduct(); ?>
-
-
 <?php
-   
-    $_helper = $this->helper('catalog/output');
-    $_gallery = $this->getGalleryImages();
-    $currentid= Mage::registry('current_product')->getId();
-
-  
+$_helper = $this->helper('catalog/output');
+$_gallery = $this->getGalleryImages();
+$currentid= Mage::registry('current_product')->getId();
 ?>
-
-
 <script type="text/javascript">
-
-    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
-
+  var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <style>
-body{
-  background-color: #ffffff !important;
-}
-</style>
+                  body{
+                    background-color: #ffffff !important;
+                  }
+                  @media (max-width: 768px) {
+                     .promo{
+                    min-height: 350px !important;
+                    height: auto;
+                    z-index: 20;
+                    padding: 0 !important;
+                    text-align: center;
 
-<div id="fullhide" >
-    <div class="product-essential">
+                    }
+                    .promohead{
+                      min-height: 50px !important;
+                      height: auto; 
+                    
+                    }
+                    .promobody{
+                      min-height: 300px !important;
+                      height: auto;
+                          position: relative;
+                      
+                    }
+                    .modal-dialog{
+                      margin:0!important;
+                      width: 100% !important;
+                    }
+                    .close{
+                      font-size: 3em;
+                    }
+                  }
+                  .promo{
+                    min-height: 400px;
+                    height: auto;
+                    z-index: 20;
+                    padding: 0 !important;
+                    text-align: center;
 
-    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+                  }
+                  .promohead{
+                    min-height: 100px;
+                    height: auto; 
+                  
+                  }
+                  .promobody{
+                    min-height: 300px;
+                    height: auto;
+                        position: relative;
+                    
+                  }
+                  .modal-header{
+                    border: none !important;
+                  }
+                  .modal-body{
+                    padding: 0 !important;
+                  }
+                  .modal-content{
+                    border: none !important;
+                    box-shadow: none !important;
+                    border-radius: 0 !important;
+                  }
+                  .promo p{
+                    font-family: montserrat;
+                    font-weight: 800;
+                    font-size: 1em;
+                    text-transform: uppercase;
+                    line-height: 7em;
+                  }
+                  .promo a{
+                    font-family: montserrat;
+                    font-weight: 800;
+                    font-size: 1em;
+                    text-decoration:none !important;
+                    
+                  }
+                  .promo .presenciales{
+                    font-family: montserrat;
+                    font-weight: 400;
+                    font-size: 1em;
+                    font-style: italic;
 
-        <?php echo $this->getBlockHtml('formkey') ?>
 
-        <div class="no-display">
+                  }
+                  .arrow-down {
+                    width: 0; 
+                    height: 0; 
+                    border-left: 20px solid transparent;
+                    border-right: 20px solid transparent;
+                    position: absolute;
+                    left: 50%;
+                    margin-left: -20px;
+                   z-index: 999;
 
-            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
-
-            <input type="hidden" name="related_product" id="related-products-field" value="" />
-
-        </div>
-
-
-
-    <div class="contenidoview"> 
-
-            
-
-
-
-              
-
-        <div class="container">
-
-            
-
-            <div id="foto" class="col span_6_of_8">
-
-                <div id="currentname" class="section group product-name mobileshow" >
-
-                            <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>   
-
-                    </div>  
-
-
-
-                <a class="mobilehide"id="fold" ></a>       
-
-               <span tyle="margin-top:2%;" id="precio" class="mobileshow">
-
-
-
-
-
-                <a id="fold" ></a>
-
-                 <p style="float:right;">  Precio: $ <?php echo number_format($_product->getPrice(), '0', '.', ',')?> </p>    
-
-                </span>
-
-             
+                  }
                 
 
-             <div class="product-img-box">
-                         
-      
-                    <?php   echo $this->getChildHtml('media') ?>
-            
-
-   
-             </div>
-
-            </div>
-
-
-
-
-
-            <div id="primario" class="col span_2_of_8">
-
-                <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
-
-                        <?php echo $this->getBlockHtml('formkey') ?>
-
-                        <div class="no-display">
-
-                            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
-
-                            <input type="hidden" name="related_product" id="related-products-field" value="" />
-
-                        </div> 
-
-                       <div id="currentname"class="section group product-name mobilehide">
-
-                            <h2
-                                    style="
-
-                                     font-family: Lato,sans-serif!important;
-                                      font-weight: 400!important;
-                                      font-style: italic!important;
-                                      font-size: 1.2em!important;
-                               
-                           
-                                     "
-                            ><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h2>   
-
-                        </div>  
-
-                        <div id="precio"class="section group mobilehide">
-
-                          <p
-                          style="
-
-                                     font-family: Lato,sans-serif!important; 
-                                      font-weight: 700!important;
-                                      font-style: normal!important;
-                                      font-size: 1.5em!important;
-                               
-                           
-                                     "
-
-                          >$<?php echo number_format($_product->getPrice(), '0', '.', ',')?> </p>    
-
-                        </div>
-                <div style="margin-bottom:0%;margin-top:5%;">
-                                <?php
-                                       $ids = $_product->getCategoryIds();
-                         $categoryId = (isset($ids[0]) ? $ids[0] : null);
-                                 if($categoryId==4):?>
-
-
-                                  <?php if($_product->getData('guardabarros')==1):?>
-                                                      
-                                     <p style="
-
-                                      font-family: Lato,sans-serif;
-                                      font-weight: 700;
-                                      font-size: 0.8em;
-                                      text-transform:uppercase;
-                           
-                                     "><span class="glyphicon glyphicon-ok"  style="color:#1abc9c" aria-hidden="false"></span>  Guardabarros incluidos</P>
-                            
-                                  <?php endif; ?>
-                                 <?php if($_product->getData('portaequipaje')==1):?>
-                            
-                                                  <p style="
-
-                                      font-family: Lato,sans-serif;
-                                      font-weight: 700;
-                                      font-size: 0.8em;
-                                      text-transform:uppercase;
-                                  
-
-                                     "><span class="glyphicon glyphicon-ok"  style="color:#1abc9c" aria-hidden="false"></span>  Portaequipaje incluido</P>
-                            
-                                       <?php endif; ?>
-                                      <?php endif; ?>
-
-                              </div>       
-
-
-                         <?php if ($this->hasOptions()):?>
-
-                        <div style="border-bottom:1px solid #bdc3c7;border-top:1px solid #bdc3c7;" id="colorbox" class="section group">
-
-                        <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-
-                        </div>
-
-                         <?php endif;?>                      
-
-                        <div  id="add"  class="section group">
-
-                            <div class="add-to-box">
-               
-                            <?php
-        $ids = $_product->getCategoryIds();
-        $categoryId = (isset($ids[0]) ? $ids[0] : null);
-         if($categoryId==4):?>
-              <div style="border-bottom:1px solid #bdc3c7;margin-top:5%;    margin-bottom: 5%;">        
-                              <button style="width:auto; border:none; background:transparent; font-family:Lato,sans-serif!important; font-weight:700;   font-style: italic!important; margin-top:0%; margin-bottom:10%; font-size:1em;text-decoration: underline; line-height:100%;outline:0;" type="button" class="btn btn-1 btn-1a" data-toggle="modal" data-target="#myModal">
-                            Medios de pago
-                          </button>
-
-                              <!-- Modal -->
-                              <div style="text-align:center;"  class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div  style="z-index:100; margin-left:10%; width:80% !important;" class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div style="text-align:center" class="modal-header">
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                      <h4 style="  font-size: 1em;
-  text-transform: uppercase;
-  font-family: Lato,sans-serif;
-  font-weight: 700;
-  color: #373737;"  class="modal-title" id="myModalLabel">Medios de pago</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                           <div   style="margin-left:0 !important; margin-top:5%;"   class="section group">  
-
-                                            <div  style="height:150px;" class="col span_1_of_3">
-
-
-                                          
-                                              <img src="https://lordbike.com.ar/skin/frontend/boilerplate/default/images/Logo_Banco_Ciudad.svg.png" width="80%" height="auto" />
-                                              <p style="margin-top:10% !important;font-family:Lato,sans-serif!important; font-weight:400;   font-style: italic!important; margin-top:0%;font-size:1.4em;" >50 cuotas sin interés</p>
-                                                 <p style="margin-top:2% !important;font-family:Lato,sans-serif!important; font-weight:700;   font-style: italic!important; margin-top:0%;font-size:0.8em;" >Compras presenciales</p>
-
-
-                                            </div>
-                                             <div  style="height:150px;" class="col span_1_of_3">
-
-
-
-                                                      <p style="!important;font-family:Lato,sans-serif!important; font-weight:700;   font-style: italic!important; margin-top:0%;font-size:1.8em;" >10% OFF</p>
-                                                             <p style="margin-top:2% !important;font-family:Lato,sans-serif!important; font-weight:400;   font-style: italic!important; margin-top:0%;font-size:1.4em;" >Compras presenciales de contado</p>
-                                             
-                                             
-                                                                          
-
-
-                                            </div>
-                                             <div  style="height:150px;" class="col span_1_of_3">
-
-
-                                             
-
-                                                    <img src="https://lordbike.com.ar/skin/frontend/boilerplate/default/images/logo-mercadopago.png" width="50%" height="auto" />
-
-                                                       <p style="margin-top:10% !important;font-family:Lato,sans-serif!important; font-weight:400;   font-style: italic!important; margin-top:0%;font-size:1.4em;" ><a target="_blank" href="https://www.mercadopago.com/mla/credit_card_promos.htm" style="color:#222222;text-decoration:underline;">Ver promociones</a></p>
-                   <p style="margin-top:2% !important;font-family:Lato,sans-serif!important; font-weight:700;   font-style: italic!important; margin-top:0%;font-size:0.8em;" >Compras online</p>
-
-                                            </div>
-
-                                            </div>
-
-                                            <div   style="margin-left:0 !important;"   class="section group">  
-
-                                            <div  style="height:200px;" class="col span_3_of_3">
-
-                                    
-                                               <img src="https://lordbike.com.ar/skin/frontend/boilerplate/default/images/640px-MasterCard_logo.png" width="25%" height="auto" />
-                                                  <p style="margin-top:2% !important;font-family:Lato,sans-serif!important; font-weight:400;   font-style: italic!important; margin-top:0%;font-size:1.4em;" >3 cuotas sin interés</p>
-                                                                            <p style="margin-top:2% !important;font-family:Lato,sans-serif!important; font-weight:700;   font-style: italic!important; margin-top:0%;font-size:0.8em;" >Compras presenciales</p>
-
-
-                                            </div>
-                                         
-                                            </div>
-                                      
-
-                                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    
-                                  
+                  .verticalalign{
+                      position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                  }
+                  .beneficiostext {
+
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 70%;
+                        margin-left: 15%;
+
+                  }
+                  .beneficiostext p {
+
+                    font-family: montserrat;
+                    font-weight: 700;
+                    font-size: 1.5em !important;
+                    line-height: 7em;
+                    text-align: center;
+                    line-height: initial !important;
+
+                  }
+           
+                  
+</style>
+<div id="fullhide" >
+  <div class="product-essential">
+    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"
+          <?php if($_product->getOptions()): ?> enctype="multipart/form-data"
+    <?php endif; ?>>
+    <?php echo $this->getBlockHtml('formkey') ?>
+    <div class="no-display">
+      <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+      <input type="hidden" name="related_product" id="related-products-field" value="" />
+    </div>
+    <div class="contenidoview"> 
+      <div class="container">
+        <div id="foto" class="col span_6_of_8">
+          <div id="currentname" class="section group product-name mobileshow" >
+            <h1>
+              <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+            </h1>   
+          </div>  
+          <a class="mobilehide"id="fold" >
+          </a>       
+          <span tyle="margin-top:2%;" id="precio" class="mobileshow">
+            <a id="fold" >
+            </a>
+            <p style="float:right;">  Precio: $ 
+              <?php echo number_format($_product->getPrice(), '0', '.', ',')?> 
+            </p>    
+          </span>
+          <div class="product-img-box">
+            <?php   echo $this->getChildHtml('media') ?>
+          </div>
+        </div>
+        <div id="primario" class="col span_2_of_8">
+          <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"
+                <?php if($_product->getOptions()): ?> enctype="multipart/form-data"
+          <?php endif; ?>>
+          <?php echo $this->getBlockHtml('formkey') ?>
+          <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+          </div> 
+          <div id="currentname"class="section group product-name mobilehide">
+            <h2
+                style="
+                       font-family: Lato,sans-serif!important;
+                       font-weight: 400!important;
+                       font-style: italic!important;
+                       font-size: 1.2em!important;
+                       "
+                >
+              <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+            </h2>   
+          </div>  
+          <div id="precio"class="section group mobilehide">
+            <p
+               style="
+                      font-family: Lato,sans-serif!important; 
+                      font-weight: 700!important;
+                      font-style: normal!important;
+                      font-size: 1.5em!important;
+                      "
+               >$
+              <?php echo number_format($_product->getPrice(), '0', '.', ',')?> 
+            </p>    
+          </div>
+          <div style="margin-bottom:0%;margin-top:5%;">
+            <?php
+$ids = $_product->getCategoryIds();
+$categoryId = (isset($ids[0]) ? $ids[0] : null);
+if($categoryId==4):?>
+            <?php if($_product->getData('guardabarros')==1):?>
+            <p style="
+                      font-family: Lato,sans-serif;
+                      font-weight: 700;
+                      font-size: 0.8em;
+                      text-transform:uppercase;
+                      ">
+              <span class="glyphicon glyphicon-ok"  style="color:#1abc9c" aria-hidden="false">
+              </span>  Guardabarros incluidos
+            </P>
+          <?php endif; ?>
+          <?php if($_product->getData('portaequipaje')==1):?>
+          <p style="
+                    font-family: Lato,sans-serif;
+                    font-weight: 700;
+                    font-size: 0.8em;
+                    text-transform:uppercase;
+                    ">
+            <span class="glyphicon glyphicon-ok"  style="color:#1abc9c" aria-hidden="false">
+            </span>  Portaequipaje incluido
+          </P>
+        <?php endif; ?>
+        <?php endif; ?>
+      </div>       
+      <?php if ($this->hasOptions()):?>
+      <div style="border-bottom:1px solid #bdc3c7;border-top:1px solid #bdc3c7;" id="colorbox" class="section group">
+        <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+      </div>
+      <?php endif;?>                      
+      <div  id="add"  class="section group">
+        <div class="add-to-box">
+          <?php
+$ids = $_product->getCategoryIds();
+$categoryId = (isset($ids[0]) ? $ids[0] : null);
+if($categoryId==4):?>
+          <div style="border-bottom:1px solid #bdc3c7;margin-top:5%;    margin-bottom: 5%;">        
+            <button style="width:auto; border:none; background:transparent; font-family:Lato,sans-serif!important; font-weight:700;   font-style: italic!important; margin-top:0%; margin-bottom:10%; font-size:1em;text-decoration: underline; line-height:100%;outline:0;" type="button" class="btn btn-1 btn-1a" data-toggle="modal" data-target="#myModal">
+              Medios de pago
+            </button>
+            <!-- Modal -->
+            <div style="text-align:center;"  class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div  style="z-index:100; margin-left:10%; width:80%;" class="modal-dialog">
+                <div class="modal-content">
+                      
+
+                  <div class="modal-body">
+                   <button style="padding:1%;" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                   
+                 
+                 
+                    <div   style="margin-left:0 !important;"   class="section group">  
+                      
+                            <div class="col-md-4 promo">
+                               <div style="background-color:#FAFAFA;" class="promohead">
+                                 <p>50 cuotas sin interés</p>
+                               </div>
+                               <div style="border-top: 20px solid #FAFAFA;" class="arrow-down"></div>
+                              <div  style="background-color:#F5F5F5;" class="promobody">                       
+                                   <div class="verticalalign">
+                                         <img src="https://lordbike.com.ar/skin/frontend/boilerplate/default/images/Logo_Banco_Ciudad.svg.png" width="50%" height="auto" />
+                                      <p class="presenciales">Compras presenciales</p>
                                   </div>
-                                </div>
+
                               </div>
-                               <button style="width:auto; border:none; background:transparent; font-family:Lato,sans-serif!important; font-weight:700;   font-style: italic!important; margin-top:0%; margin-bottom:10%; font-size:1em;text-decoration: underline; line-height:100%;outline:0;" type="button" class="btn btn-1 btn-1a" data-toggle="modal" data-target="#myModal2">
-                            Garantía y beneficios
-                          </button>
-
-                              <!-- Modal -->
-                              <div style="text-align:center;"  class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div  style="z-index:100; margin-left:10%; width:80% !important;" class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div style="text-align:center" class="modal-header">
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                      <h4 style="  font-size: 1em;
-  text-transform: uppercase;
-  font-family: Lato,sans-serif;
-  font-weight: 700;
-  color: #373737;"  class="modal-title" id="myModalLabel">   Garantía y beneficios</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                           <div   style="margin-left:0 !important; margin-top:5%;"   class="section group">  
-
-                                            <div  style="height:100px;" class="col span_4_of_8">
-
-
-                                          
-                                             
-                                              <p style="font-family:Lato,sans-serif!important; font-weight:700;   font-style: italic!important; margin-top:0%;font-size:1.4em;" >5 años</p>
-                                                 <p style="margin-top:2% !important;font-family:Lato,sans-serif!important; font-weight:400;   font-style: italic!important; margin-top:0%;font-size:1.2em;" >En cuadro y bisagras</p>
-
-
-                                            </div>
-                                      
-                                            <div  style="height:100px;" class="col span_4_of_8">
-
-
-
-                                          
-                                             
-                                              <p style="font-family:Lato,sans-serif!important; font-weight:700;   font-style: italic!important; margin-top:0%;font-size:1.4em;" >1 año</p>
-                                                 <p style="margin-top:2% !important;font-family:Lato,sans-serif!important; font-weight:400;   font-style: italic!important; margin-top:0%;font-size:1.2em;" >En componentes (por defectos de fabricación)</p>
-
-
-                                            </div>
-                                              </div>
-                                                    <div   style="margin-left:0 !important;"   class="section group">  
-                                      
-                                            <div  style="height:100px;" class="col span_4_of_8">
-
-
-
-                                          
-                                             
-                                              <p style="font-family:Lato,sans-serif!important; font-weight:700;   font-style: italic!important; margin-top:0%;font-size:1.4em;" >1° service gratuito</p>
-                                               
-
-
-                                            </div>
-                                           
-                                            <div  style="height:100px;" class="col span_4_of_8">
-
-
-                                          
-                                             
-                                              <p style="font-family:Lato,sans-serif!important; font-weight:700;   font-style: italic!important; margin-top:0%;font-size:1.4em;" >Clínica de mecánica básica Tern gratuita</p>
-                                               
-
-
-                                            </div>
-                                      
-                                          
-                                            </div>
-
-                                        
-
-                                    </div>
-
-
-
-
-
-                                    
-                                  
+                            </div> 
+                            <div class="col-md-4 promo">
+                               <div style="background-color:#EEEEEE;" class="promohead">
+                                 <p>12 cuotas sin interés</p>
+                               </div>
+                                <div style="border-top: 20px solid #EEEEEE;" class="arrow-down"></div>
+                              <div  style="background-color:#E0E0E0;" class="promobody">
+                                   <div class="verticalalign">
+                                      <img src="https://lordbike.com.ar/skin/frontend/boilerplate/default/images/640px-MasterCard_logo.png" width="50%" height="auto" />
+                                      <p class="presenciales">Compras presenciales</p>
                                   </div>
-                                </div>
+
                               </div>
-<?php endif;?>
+                            </div>
+                            <div class="col-md-4 promo">
+                               <div style="background-color:#FAFAFA;" class="promohead">
+                                 <p>12 cuotas sin interés</p>
+                               </div>
+                                <div style="border-top: 20px solid #FAFAFA;" class="arrow-down"></div>
+                              <div  style="background-color:#F5F5F5;" class="promobody">
+                                   <div class="verticalalign">
+                                       <img src="https://lordbike.com.ar/skin/frontend/boilerplate/default/images/logo-mercadopago.png" width="50%" height="auto" />
+                                      <p class="presenciales">Compras Online</p>
+                                      <a target="_blank" href="https://www.mercadopago.com/mla/credit_card_promos.htm" style="color:#222222;text-decoration:underline;">Ver promociones
+                                      </a>
+                                  </div>
 
-
-								<?php if($_product->getData('efectivooff')==1):?>
-                            
-                                                  <p style="
-
-                                      font-family: Lato,sans-serif;
-                                      font-weight: 700;
-                                      font-size: 1em;
-                                      text-transform:uppercase;
-                                      margin-top:15%;
-                                  
-
-                                     ">20% OFF por pagos en efectivo!</P>
-                            
-                                       <?php endif; ?>
-
-
-
-                                <?php if($_product->getData('ahora12')==1):?>
-                            
-                                                  <p style="
-
-                                      font-family: Lato,sans-serif;
-                                      font-weight: 700;
-                                      font-size: 1em;
-                                      text-transform:uppercase;
-                                      margin-top:15%;
-                                  
-
-                                     ">12 cuotas sin interés, de jueves a sabados, con Visa o MasterCard.</P>
-                            
-                                       <?php endif; ?>
-
-
-
-
-
-
-                        </div>
-                        <div style="margin-top:5%;">
-                                  <?php if($_product->isSaleable()): ?>
-
-                                         <?php echo $this->getChildHtml('addtocart') ?>
-
-                                  <?php else: ?>
-
-                                        <p class="availability out-of-stock"><span><?php echo $this->__('Sin stock') ?></span></p>
-
-                                  <?php endif; ?>
-
-                           </div>
-     
-
-
-
+                              </div>
                             </div>
 
-                       </div>
-
-              </form>
-
-            </div>  
-
+                        
                     
 
-                
 
-               
 
-     </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button style="width:auto; border:none; background:transparent; font-family:Lato,sans-serif!important; font-weight:700;   font-style: italic!important; margin-top:0%; margin-bottom:10%; font-size:1em;text-decoration: underline; line-height:100%;outline:0;" type="button" class="btn btn-1 btn-1a" data-toggle="modal" data-target="#myModal2">
+              Garantía y beneficios
+            </button>
+            <!-- Modal -->
+              <div style="text-align:center;"  class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div  style="z-index:100; margin-left:10%; width:80%;" class="modal-dialog">
+                <div class="modal-content">
+                      
 
+                  <div class="modal-body">
+                   <button style="padding:1%;" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                   
+                 
+                 
+                    <div   style="margin-left:0 !important;"   class="section group">  
+                      
+                            <div class="col-md-4 promo">
+                               <div style="background-color:#FAFAFA;" class="promohead">
+                                 <p>10 años</p>
+                               </div>
+                               <div style="border-top: 20px solid #FAFAFA;" class="arrow-down"></div>
+                              <div  style="background-color:#F5F5F5;" class="promobody">                       
+                                   <div class="beneficiostext">
+                                       
+                                      <p class="presenciales">En cuadro y bisagras, por defectos de fabricación.</p>
+                                  </div>
+
+                              </div>
+                            </div> 
+                            <div class="col-md-4 promo">
+                               <div style="background-color:#EEEEEE;" class="promohead">
+                                 <p>1 año</p>
+                               </div>
+                                <div style="border-top: 20px solid #EEEEEE;" class="arrow-down"></div>
+                              <div  style="background-color:#E0E0E0;" class="promobody">
+                                   <div class="beneficiostext">
+                  
+                                      <p class="presenciales">En todos los componentes marca Tern y Biologic, por defectos de fabricación</p>
+                                  </div>
+
+                              </div>
+                            </div>
+                            <div class="col-md-4 promo">
+                               <div style="background-color:#FAFAFA;" class="promohead">
+                                 <p>1° Service Gratuito</p>
+                               </div>
+                                <div style="border-top: 20px solid #FAFAFA;" class="arrow-down"></div>
+                              <div  style="background-color:#F5F5F5;" class="promobody">
+                                   <div class="beneficiostext">
+                                     
+                                      <p class="presenciales">Con la compra de tu bicicelta, accedes a un primer service gratuito.</p>
+                                  
+                                  </div>
+
+                              </div>
+                            </div>
+
+                        
+                    
+
+
+
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php endif;?>
+            <?php if($_product->getData('efectivooff')==1):?>
+            <p style="
+                      font-family: Lato,sans-serif;
+                      font-weight: 700;
+                      font-size: 1em;
+                      text-transform:uppercase;
+                      margin-top:15%;
+                      ">20% OFF por pagos en efectivo!
+            </P>
+          <?php endif; ?>
+          <?php if($_product->getData('ahora12')==1):?>
+          <p style="
+                    font-family: Lato,sans-serif;
+                    font-weight: 700;
+                    font-size: 1em;
+                    text-transform:uppercase;
+                    margin-top:15%;
+                    ">12 cuotas sin interés, de jueves a sabados, con Visa o MasterCard.
+          </P>
+        <?php endif; ?>
+      </div>
+      <div style="margin-top:5%;">
+        <?php if($_product->isSaleable()): ?>
+        <?php echo $this->getChildHtml('addtocart') ?>
+        <?php else: ?>
+        <p class="availability out-of-stock">
+          <span>
+            <?php echo $this->__('Sin stock') ?>
+          </span>
+        </p>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
   </form>
-             
-
+</div>  
+</div>
+</form>
 <?php
 $ids = $_product->getCategoryIds();
 $categoryId = (isset($ids[0]) ? $ids[0] : null);
- if($categoryId==4):?>
-
-   <div class="speccontainer">
-       <div   id="overview" >
-              <p> <?php echo $_product->getDescription(); ?> </p>
-      </div>   
-
-        <div  id="specs" ><div class="specscenter">
-
-       <?php
-        $setId = $_product->getAttributeSetId(); // Attribute set Id
-
-        $groups = Mage::getModel('eav/entity_attribute_group')
-
-            ->getResourceCollection()
-
-            ->setAttributeSetFilter($setId)
-
-            ->setSortOrder()
-
-            ->load();
-
-
-
-        $attributeCodes = array();
-
-        foreach ($groups as $group) {
-
-            if($group->getAttributeGroupName() == 'specs'){ // set name
-
-            //$groupName          = $group->getAttributeGroupName();
-
-            //$groupId            = $group->getAttributeGroupId();
-
-
-
-            $attributes = Mage::getResourceModel('catalog/product_attribute_collection')
-
-                ->setAttributeGroupFilter($group->getId())
-
-                ->addVisibleFilter()
-
-                ->checkConfigurableProducts()
-
-                ->load();
-
-                if ($attributes->getSize() > 0) {
-
-                    foreach ($attributes->getItems() as $attribute) { ?>
-
-
-
-                            <p class="specstext">  <strong> <?php  echo $attribute->getFrontendLabel(); ?> :</strong> <?php  echo $attribute->getFrontend()->getValue($_product); ?></p>   
-
-
-
-                      <?php
-
-                                 }
-
-                             } 
-
-                         }
-
-                      }
-
-    
-
-                    ?>
-
-
-
-            
-
-
-
-
-
-                      
-
-               </div>        
-
-                       
-
-        </div>               
-
-                   </div>
-
-  <?php elseif ($categoryId==34 ): ?>
-
-            <div class="speccontainer">
-       <div   id="overviewbolsos" style="width:100% !Important" >
-              <?php echo $_product->getDescription(); ?>
-      </div>  
-
-       </div>
-
-  <?php elseif ($categoryId==40 ): ?>
-         <div class="speccontainer">
-       <div  id="specs" style="width:100% !Important"  ><div class="specscenter" style="text-align:center !important; " >
-
-       <?php
-        $setId = $_product->getAttributeSetId(); // Attribute set Id
-
-        $groups = Mage::getModel('eav/entity_attribute_group')
-
-            ->getResourceCollection()
-
-            ->setAttributeSetFilter($setId)
-
-            ->setSortOrder()
-
-            ->load();
-
-
-
-        $attributeCodes = array();
-
-        foreach ($groups as $group) {
-
-            if($group->getAttributeGroupName() == 'specs'){ // set name
-
-            //$groupName          = $group->getAttributeGroupName();
-
-            //$groupId            = $group->getAttributeGroupId();
-
-
-
-            $attributes = Mage::getResourceModel('catalog/product_attribute_collection')
-
-                ->setAttributeGroupFilter($group->getId())
-
-                ->addVisibleFilter()
-
-                ->checkConfigurableProducts()
-
-                ->load();
-
-                if ($attributes->getSize() > 0) {
-
-                    foreach ($attributes->getItems() as $attribute) { ?>
-
-
-
-                            <p class="specstext">  <strong> <?php  echo $attribute->getFrontendLabel(); ?> :</strong> <?php  echo $attribute->getFrontend()->getValue($_product); ?></p>   
-
-
-
-                      <?php
-
-                                 }
-
-                             } 
-
-                         }
-
-                      }
-
-    
-
-                    ?>
-
-
-
-            
-
-
-
-
-
-                      
-
-               </div>        
-
-                       
-
-        </div>  
-
-      </div>
-      <?php else: ?>
-
-        <div class="speccontainer">
-       <div   id="overview" style="width:100% !Important" >
-              <p> <?php echo $_product->getDescription(); ?> </p>
-      </div>   
-                       
-
-                       
-
-    </div>
-
-            
+if($categoryId==4):?>
+<div class="speccontainer">
+  <div   id="overview" >
+    <p> 
+      <?php echo $_product->getDescription(); ?> 
+    </p>
+  </div>   
+  <div  id="specs" >
+    <div class="specscenter">
+      <?php
+$setId = $_product->getAttributeSetId(); // Attribute set Id
+$groups = Mage::getModel('eav/entity_attribute_group')
+->getResourceCollection()
+->setAttributeSetFilter($setId)
+->setSortOrder()
+->load();
+$attributeCodes = array();
+foreach ($groups as $group) {
+if($group->getAttributeGroupName() == 'specs'){ // set name
+//$groupName          = $group->getAttributeGroupName();
+//$groupId            = $group->getAttributeGroupId();
+$attributes = Mage::getResourceModel('catalog/product_attribute_collection')
+->setAttributeGroupFilter($group->getId())
+->addVisibleFilter()
+->checkConfigurableProducts()
+->load();
+if ($attributes->getSize() > 0) {
+foreach ($attributes->getItems() as $attribute) { ?>
+      <p class="specstext">  
+        <strong> 
+          <?php  echo $attribute->getFrontendLabel(); ?> :
+        </strong> 
+        <?php  echo $attribute->getFrontend()->getValue($_product); ?>
+      </p>   
+      <?php
+}
+} 
+}
+}
+?>
+    </div>        
+  </div>               
+</div>
+<?php elseif ($categoryId==34 ): ?>
+<div class="speccontainer">
+  <div   id="overviewbolsos" style="width:100% !Important" >
+    <?php echo $_product->getDescription(); ?>
+  </div>  
+</div>
+<?php elseif ($categoryId==40 ): ?>
+<div class="speccontainer">
+  <div  id="specs" style="width:100% !Important"  >
+    <div class="specscenter" style="text-align:center !important; " >
+      <?php
+$setId = $_product->getAttributeSetId(); // Attribute set Id
+$groups = Mage::getModel('eav/entity_attribute_group')
+->getResourceCollection()
+->setAttributeSetFilter($setId)
+->setSortOrder()
+->load();
+$attributeCodes = array();
+foreach ($groups as $group) {
+if($group->getAttributeGroupName() == 'specs'){ // set name
+//$groupName          = $group->getAttributeGroupName();
+//$groupId            = $group->getAttributeGroupId();
+$attributes = Mage::getResourceModel('catalog/product_attribute_collection')
+->setAttributeGroupFilter($group->getId())
+->addVisibleFilter()
+->checkConfigurableProducts()
+->load();
+if ($attributes->getSize() > 0) {
+foreach ($attributes->getItems() as $attribute) { ?>
+      <p class="specstext">  
+        <strong> 
+          <?php  echo $attribute->getFrontendLabel(); ?> :
+        </strong> 
+        <?php  echo $attribute->getFrontend()->getValue($_product); ?>
+      </p>   
+      <?php
+}
+} 
+}
+}
+?>
+    </div>        
+  </div>  
+</div>
+<?php else: ?>
+<div class="speccontainer">
+  <div   id="overview" style="width:100% !Important" >
+    <p> 
+      <?php echo $_product->getDescription(); ?> 
+    </p>
+  </div>   
+</div>
 <?php endif;?>
-
-
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-                                <?php if($_product->getData('plegado')):?>
-                            
-                                    <div style="background-color:#f2f2f2;"  class="speccontainer">
-                                                <div style="background-color:#f2f2f2;padding:0 !important;" id="overview">
-                                                    <div class="destacados">
-                                                            <h2 style="    font-style: initial !important;">-</h2>
-                                                           </div> 
-                                                  <div class="media-flex" style="padding-bottom: 58%;">
-                                                      <img class="gfyitem" data-id="<?php echo ($_product->getData('plegado'));?>" data-controls="false" data-dot="false" data-perimeter="false" />
-                                                  </div>
-                                          
-                                                </div>
-
-
-                                              <div id="specs" style="padding:0 !important;background-color:#f2f2f2; " >
-                                                                 <div class="destacados">
-                                                          <h2>-Accesorios Recomendados-</h2>
-                                                         </div> 
-
-                                                        <div class="section group">
-
-                                                          <?php 
-                                                          $Acc1 = $_product->getData('acc1');
-                                                          $Acc2 = $_product->getData('acc2'); 
-                                                          $Acc3 = $_product->getData('acc3'); 
-                                                          $Acc4 = $_product->getData('acc4');  
-                                                          $Acc1Product = Mage::getModel('catalog/product')->load($Acc1);
-                                                          $Acc2Product = Mage::getModel('catalog/product')->load($Acc2);
-                                                          $Acc3Product = Mage::getModel('catalog/product')->load($Acc3);
-                                                          $Acc4Product = Mage::getModel('catalog/product')->load($Acc4);
-
-                                                          ?>
-
-                                                          <div style="text-align:center;background:#a9becf;    width: 50%!important;" class="destacadosgrid col span_4_of_8">
-                                                                <a class="destacadoslink"  target="_blank" href="<?php echo $Acc1Product->getProductUrl(); ?>"> 
-                                                               <img style="display:initial !Important;    max-width: 87%;" class="img-responsive" src="<?php echo Mage::helper('catalog/image')->init($Acc1Product, 'image')->resize(400,400);  ?>"  alt="">
-                                                               <div class="overlay"> </div>
-                                                               </a>
-
-                                                          </div> 
-
-                                                         
-                                                               <div style="text-align:center;background:#fdf4d5;    width: 50%!important;" class="destacadosgrid col span_4_of_8">
-                                                         
-                                                                            <a class="destacadoslink"  target="_blank" href="<?php echo $Acc2Product->getProductUrl(); ?>"> 
-                                                               <img style="display:initial !Important;    max-width: 87%;" class="img-responsive" src="<?php echo Mage::helper('catalog/image')->init($Acc2Product, 'image')->resize(400,400);  ?>"  alt="">
-                                                               <div class="overlay"> </div>
-                                                               </a>
-
-                                                          </div> 
-                                                          
-                                                         
-                                                          </div>
-                                                        <div class="section group">
-                                                             <div style="text-align:center;background:#8fcbcc;    width: 50%!important;" class="destacadosgrid col span_4_of_8">
-                                                                
-                                                           
-                                                                          <a class="destacadoslink"  target="_blank" href="<?php echo $Acc3Product->getProductUrl(); ?>"> 
-                                                                           <img style="display:initial !Important;    max-width: 87%;" class="img-responsive" src="<?php echo Mage::helper('catalog/image')->init($Acc3Product, 'image')->resize(400,400);  ?>"  alt="">
-                                                                           <div class="overlay"> </div>
-                                                                          </a>
-
-
-
-                                                             </div>   
-                                                          
-                                                       
-                                                               <div style="text-align:center;background:#ff876c;    width: 50%!important;" class="destacadosgrid col span_4_of_8">
-                                                                         <a class="destacadoslink"  target="_blank" href="<?php echo $Acc4Product->getProductUrl(); ?>"> 
-                                                               <img style="display:initial !Important;    max-width: 87%;" class="img-responsive" src="<?php echo Mage::helper('catalog/image')->init($Acc4Product, 'image')->resize(400,400);  ?>"  alt="">
-                                                               <div class="overlay"> </div>
-                                                               </a>
-
-
-                                                          </div>   
-                                                     
-
-                                                     
-
-                                                             
-
-                                                        </div>  
-                                              </div>
-                                            
-
-
-                                      </div>
-
-
-
-
-                            
-                                 <?php endif; ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
- 
-
-
-
-
+<?php if($_product->getData('plegado')):?>
+<div style="background-color:#f2f2f2;"  class="speccontainer">
+  <div style="background-color:#f2f2f2;padding:0 !important;" id="overview">
+    <div class="destacados">
+      <h2 style="    font-style: initial !important;">-
+      </h2>
+    </div> 
+    <div class="media-flex" style="padding-bottom: 58%;">
+      <img class="gfyitem" data-id="<?php echo ($_product->getData('plegado'));?>" data-controls="false" data-dot="false" data-perimeter="false" />
+    </div>
+  </div>
+  <div id="specs" style="padding:0 !important;background-color:#f2f2f2; " >
+    <div class="destacados">
+      <h2>-Accesorios Recomendados-
+      </h2>
+    </div> 
+    <div class="section group">
+      <?php 
+$Acc1 = $_product->getData('acc1');
+$Acc2 = $_product->getData('acc2'); 
+$Acc3 = $_product->getData('acc3'); 
+$Acc4 = $_product->getData('acc4');  
+$Acc1Product = Mage::getModel('catalog/product')->load($Acc1);
+$Acc2Product = Mage::getModel('catalog/product')->load($Acc2);
+$Acc3Product = Mage::getModel('catalog/product')->load($Acc3);
+$Acc4Product = Mage::getModel('catalog/product')->load($Acc4);
+?>
+      <div style="text-align:center;background:#a9becf;    width: 50%!important;" class="destacadosgrid col span_4_of_8">
+        <a class="destacadoslink"  target="_blank" href="<?php echo $Acc1Product->getProductUrl(); ?>"> 
+          <img style="display:initial !Important;    max-width: 87%;" class="img-responsive" src="<?php echo Mage::helper('catalog/image')->init($Acc1Product, 'image')->resize(400,400);  ?>"  alt="">
+          <div class="overlay"> 
+          </div>
+        </a>
+      </div> 
+      <div style="text-align:center;background:#fdf4d5;    width: 50%!important;" class="destacadosgrid col span_4_of_8">
+        <a class="destacadoslink"  target="_blank" href="<?php echo $Acc2Product->getProductUrl(); ?>"> 
+          <img style="display:initial !Important;    max-width: 87%;" class="img-responsive" src="<?php echo Mage::helper('catalog/image')->init($Acc2Product, 'image')->resize(400,400);  ?>"  alt="">
+          <div class="overlay"> 
+          </div>
+        </a>
+      </div> 
+    </div>
+    <div class="section group">
+      <div style="text-align:center;background:#8fcbcc;    width: 50%!important;" class="destacadosgrid col span_4_of_8">
+        <a class="destacadoslink"  target="_blank" href="<?php echo $Acc3Product->getProductUrl(); ?>"> 
+          <img style="display:initial !Important;    max-width: 87%;" class="img-responsive" src="<?php echo Mage::helper('catalog/image')->init($Acc3Product, 'image')->resize(400,400);  ?>"  alt="">
+          <div class="overlay"> 
+          </div>
+        </a>
+      </div>   
+      <div style="text-align:center;background:#ff876c;    width: 50%!important;" class="destacadosgrid col span_4_of_8">
+        <a class="destacadoslink"  target="_blank" href="<?php echo $Acc4Product->getProductUrl(); ?>"> 
+          <img style="display:initial !Important;    max-width: 87%;" class="img-responsive" src="<?php echo Mage::helper('catalog/image')->init($Acc4Product, 'image')->resize(400,400);  ?>"  alt="">
+          <div class="overlay"> 
+          </div>
+        </a>
+      </div>   
+    </div>  
+  </div>
 </div>
-
-
-
-
+<?php endif; ?>
+</div>
 <script type="text/javascript">
-
-//<![CDATA[
-
-    var productAddToCartForm = new VarienForm('product_addtocart_form');
-
-    productAddToCartForm.submit = function(button, url) {
-
-        if (this.validator.validate()) {
-
-            var form = this.form;
-
-            var oldUrl = form.action;
-
-
-
-            if (url) {
-
-               form.action = url;
-
-            }
-
-            var e = null;
-
-            try {
-
-                this.form.submit();
-
-            } catch (e) {
-
-            }
-
-            this.form.action = oldUrl;
-
-            if (e) {
-
-                throw e;
-
-            }
-
-
-
-            if (button && button != 'undefined') {
-
-                button.disabled = true;
-
-            }
-
+  //<![CDATA[
+  var productAddToCartForm = new VarienForm('product_addtocart_form');
+  productAddToCartForm.submit = function(button, url) {
+    if (this.validator.validate()) {
+      var form = this.form;
+      var oldUrl = form.action;
+      if (url) {
+        form.action = url;
+      }
+      var e = null;
+      try {
+        this.form.submit();
+      }
+      catch (e) {
+      }
+      this.form.action = oldUrl;
+      if (e) {
+        throw e;
+      }
+      if (button && button != 'undefined') {
+        button.disabled = true;
+      }
+    }
+  }
+    .bind(productAddToCartForm);
+  productAddToCartForm.submitLight = function(button, url){
+    if(this.validator) {
+      var nv = Validation.methods;
+      delete Validation.methods['required-entry'];
+      delete Validation.methods['validate-one-required'];
+      delete Validation.methods['validate-one-required-by-name'];
+      // Remove custom datetime validators
+      for (var methodName in Validation.methods) {
+        if (methodName.match(/^validate-datetime-.*/i)) {
+          delete Validation.methods[methodName];
         }
-
-    }.bind(productAddToCartForm);
-
-
-
-    productAddToCartForm.submitLight = function(button, url){
-
-        if(this.validator) {
-
-            var nv = Validation.methods;
-
-            delete Validation.methods['required-entry'];
-
-            delete Validation.methods['validate-one-required'];
-
-            delete Validation.methods['validate-one-required-by-name'];
-
-            // Remove custom datetime validators
-
-            for (var methodName in Validation.methods) {
-
-                if (methodName.match(/^validate-datetime-.*/i)) {
-
-                    delete Validation.methods[methodName];
-
-                }
-
-            }
-
-
-
-            if (this.validator.validate()) {
-
-                if (url) {
-
-                    this.form.action = url;
-
-                }
-
-                this.form.submit();
-
-            }
-
-            Object.extend(Validation.methods, nv);
-
+      }
+      if (this.validator.validate()) {
+        if (url) {
+          this.form.action = url;
         }
-
-    }.bind(productAddToCartForm);
-
-//]]>
-
+        this.form.submit();
+      }
+      Object.extend(Validation.methods, nv);
+    }
+  }
+    .bind(productAddToCartForm);
+  //]]>
 </script>
-
-
 <style>
-
-
-.media-flex {
+  .media-flex {
     position: relative;
     height: 0px;
-}
-
-.media-flex .gfyitem > div,
-.media-flex .gfyitem .gfyPreLoadCanvas,
-.media-flex .gfyitem .gfyVid,
-.media-flex .gfyitem  .gfyGif {
+  }
+  .media-flex .gfyitem > div,
+  .media-flex .gfyitem .gfyPreLoadCanvas,
+  .media-flex .gfyitem .gfyVid,
+  .media-flex .gfyitem  .gfyGif {
     position: absolute !important;
-    top: 0; right: 0; bottom: 0; left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: 100% !important;
     height: 100% !important;
-}
-.gfyDotCanvas{
-
-  display:none!important;
-}
- .gfyPreLoadCanvas{
-            display: none;
-        }
+  }
+  .gfyDotCanvas{
+    display:none!important;
+  }
+  .gfyPreLoadCanvas{
+    display: none;
+  }
 </style>
-
-
-
 <script>
-
- jQuery( document ).ready(function( $ ) {
+  jQuery( document ).ready(function( $ ) {
     $('#carousel').carousel({
       interval: 3000
-    });
-     $('#carousel2').carousel({
+    }
+                           );
+    $('#carousel2').carousel({
       interval: 3000
-    });
-});
-
-
-
-
-
- </script> 
-
-<script type="text/javascript" src="https://assets.gfycat.com/gfycat.js"></script>
-
-
-
-
-
-
-
-
-
-
-
+    }
+                            );
+  }
+                          );
+</script> 
+<script type="text/javascript" src="https://assets.gfycat.com/gfycat.js">
+</script>
 </body>
-
 </html>
