@@ -338,6 +338,21 @@ border:2em solid #333;
 .nav-up {
     top: -100px;
 }
+@media screen and (max-width: 500px) {
+ .panel-group{display: none;}
+ .catalog{
+ 	margin-top: 30% !important;
+ }
+
+}
+@media screen and (min-width:501px) and (max-width: 769px) {
+   .panel-group{display: none;}
+   .catalog{
+ 	margin-top: 30% !important;
+ }
+
+
+}
 </style>
  
 
@@ -372,21 +387,7 @@ getChildHtml('header') ?>
 </div>
 
 
-  </head>
-  <body
-  <?php echo $this->
-    getBodyClass()?' class="'.$this->
-    getBodyClass().'"':'' ?>
-    >
-    
-    <?php echo $this->
-getChildHtml('after_body_start') ?>
-  
-      
  
-  <?php echo $this->getChildHtml('content') ?>
-    <?php echo $this->
-getChildHtml('header') ?>
 
 
 <div class="tabContent" id="tabContent1">

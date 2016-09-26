@@ -8,66 +8,183 @@
 ?>
 
 <style>
-.form-list .field{
-    width: 100% !important;
+.form-list .field {
+    width: initial !important; 
 }
-.input-box{
-    margin-bottom: 0!important;
-}
-.form-list input.input-text, .form-list select{
-    margin-bottom: 3% !important;
-}
+
 </style>
 <div id="onestepcheckout-address-billing">
     <ul class="form-list">
-        
+        <?php if ($this->customerHasAddresses()): ?>
+            <li>
+                <label for="billing-address-select"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
+                <div class="input-box">
+                    <?php echo $this->getAddressesHtmlSelect('billing') ?>
+                </div>
+            </li>
+        <?php endif; ?>
         <li>
             <ul id="onestepcheckout-billing-address-list"<?php if ($this->customerHasAddresses()): ?> style="overflow: hidden;height: 0px;display:none"<?php endif; ?>>
-            
-                  <li class="fields">
+                
+                <!-- <?php if (!$this->isCustomerLoggedIn()) : ?>
+                    <?php $_tipopessoa = $this->getLayout()->createBlock('onestepcheckout/widget_tipopessoa') ?>
+                    <?php if ($_tipopessoa->isEnabled()): ?>
+                        <li class="control tipopessoa">
+                            <input type="radio" name="billing[radio_tipopessoa]" value="Física" id="billing:fisica" class="radio" title="CPF" <?php if ($this->getDataFromSession('radio_tipopessoa') == 'Física'): ?> checked="checked"<?php endif; ?>/><label for="billing:fisica"><?php echo $this->__('Pessoa Física') ?></label>
+                            <input type="radio" name="billing[radio_tipopessoa]" value="Jurídica" id="billing:juridica" class="radio" title="CNPJ" <?php if ($this->getDataFromSession('radio_tipopessoa') == 'Jurídica'): ?> checked="checked"<?php endif; ?>/><label for="billing:juridica"><?php echo $this->__('Pessoa Jurídica') ?></label>
+                        </li>
+                        <li class="wide hidden">
+                            <?php echo $_tipopessoa->setTipopessoa($this->getDataFromSession('tipopessoa'))->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
+                        </li>
+                    <?php endif ?> -->
+                <?php endif ?>
+                <?php if (!$this->isCustomerLoggedIn()) : ?>
+                    <?php if(Mage::getStoreConfig('onestepcheckout/general/is_show_titles')): ?><li class="osc-title"><?php echo $this->__('Access Information') ?></li><?php endif; ?>
+                    <li class="wide">
+                        
+                        <div class="input-box">
+                            <input placeholder="Email" type="text" name="billing[email]" id="billing:email" title="<?php echo $this->__('Email') ?>" class="input-text validate-email validate-email-exist required-entry fixwidth correctmargin stateselect  " value="<?php echo $this->getDataFromSession('email'); ?>" />
+                        </div>
+                    </li>
+                    <!-- <li>
+                        <ul id="osc-billing-password-area" style="overflow: hidden;<?php if (!$this->getDataFromSession('create_account') && $this->customerMustBeRegistered()): ?>height: 0px;display:none<?php endif; ?>">
+                            <li class="fields">
+                                <div class="field">
+                                    <label for="billing:customer_password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                                    <div class="input-box">
+                                        <input type="password" name="billing[customer_password]" id="billing:customer_password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" />
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label for="billing:confirm_password" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
+                                    <div class="input-box">
+                                        <input type="password" name="billing[confirm_password]" title="<?php echo $this->__('Confirm Password') ?>" id="billing:confirm_password" class="input-text required-entry validate-cpassword" />
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li> 
+                    <li class="control">
+                        <?php if ($this->customerMustBeRegistered()): ?>
+                            <input type="checkbox" name="billing[create_account]" value="1" title="<?php echo $this->__('Create Account') ?>" id="billing:create_account" class="checkbox"<?php if ($this->getDataFromSession('create_account')): ?> checked="checked"<?php endif; ?>/><label for="billing:create_account"><?php echo $this->__('Create Account') ?></label>
+                        <?php else: ?>
+                            <input type="hidden" name="billing[create_account]" value="1" id="billing:create_account" />
+                        <?php endif ?>
+                    </li> -->
+                    <?php if(Mage::getStoreConfig('onestepcheckout/general/is_show_titles')): ?><li class="osc-title"><?php echo $this->__('Personal Information') ?></li><?php endif; ?>
+                    <?php if (!$this->isCustomerLoggedIn()): ?>
+                        <?php if ($this->isTaxvatEnabled()): ?>
+                            <li class="wide">
+                                <?php echo $this->getTaxvatHtml() ?>
+                            </li>
+                        <?php endif; ?>
+                        <!-- <?php $_ie = $this->getLayout()->createBlock('onestepcheckout/widget_ie') ?>
+                        <?php if ($_ie->isEnabled()): ?>
+                            <li class="wide">
+                                <?php echo $_ie->setIe($this->getQuote()->getCustomerIe())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
+                            </li>
+                        <?php endif ?> -->
+                        <li>
+                            <ul id="osc-billing-tipopessoa-area"  style="overflow: hidden;display:block;">
+                                <li class="wide">
+                                    <?php $_dateOfBirthWidget = $this->getCustomerWidgetDateOfBirth(); ?>
+                                    <?php if ($_dateOfBirthWidget->isEnabled()): ?>
+                                        <?php echo $_dateOfBirthWidget->toHtml() ?>
+                                    <?php endif; ?>
+                                </li>
+                                <li class="wide">
+                                    <?php $_genderWidget = $this->getCustomerWidgetGender(); ?>
+                                    <?php if ($_genderWidget->isEnabled()): ?>
+                                        <?php echo $_genderWidget->toHtml() ?>
+                                    <?php endif ?>                                    
+                                </li>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($this->getConfig()->isCompany()): ?>
+                        <li class="wide">
+                            <label for="billing:company"><?php echo $this->__('Company') ?></label>
+                            <div class="input-box">
+                                <input type="text" id="billing:company" name="billing[company]" title="<?php echo $this->__('Company') ?>" class="input-text <?php echo $this->getAttributeValidationClass('company') ?>" value="<?php echo $this->getDataFromSession('company'); ?>" />
+                            </div>
+                        </li>
+                    <?php endif; ?>
+                <?php endif ?>
+
+                <li class="fields">
                     <?php echo $this->getCustomerWidgetName()->toHtml(); ?>
                 </li>
-                <div class="input-box">
-                            <input placeholder="Email" type="text" name="billing[email]" id="billing:email" title="<?php echo $this->__('Email') ?>" class="fixwidth correctmargin stateselect input-text validate-email validate-email-exist required-entry" value="<?php echo $this->getDataFromSession('email'); ?>" />
-                        </div>
+
                 <li class="fields">
                     <div class="field">
-         
+                    
                         <div class="input-box">
-                            <input placeholder="Teléfono" type="text" name="billing[telephone]" title="<?php echo $this->__('Telephone') ?>" class="input-text validate-phone-br <?php echo $this->getAttributeValidationClass('telephone') ?> fixwidth correctmargin stateselect " id="billing:telephone" value="<?php echo $this->getDataFromSession('telephone'); ?>" placeholder="(xx) 4567-8900" />
+                            <input placeholder="Teléfono" type="text" name="billing[telephone]" title="<?php echo $this->__('Telephone') ?>" class="input-text validate-phone-br <?php echo $this->getAttributeValidationClass('telephone') ?> fixwidth correctmargin stateselect  " id="billing:telephone" value="<?php echo $this->getDataFromSession('telephone'); ?>" />
                         </div>
                     </div>
-                  
+                   <!--   <?php if ($this->getConfig()->isFax()): ?>
+                        <div class="field">
+                            <label for="billing:fax"><?php echo $this->__('Fax') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="billing[fax]" title="<?php echo $this->__('Fax') ?>" class="input-text validate-phone-br <?php echo $this->getAttributeValidationClass('fax') ?>" id="billing:fax" value="<?php echo $this->getDataFromSession('fax'); ?>"  placeholder="(xx) x4567-8900" />
+                            </div>
+                        </div>
+                    <?php endif ?> 
                 </li>
-               
+                <?php if(Mage::getStoreConfig('onestepcheckout/general/is_show_titles')): ?><li class="osc-title"><?php echo $this->__('Billing Address') ?></li><?php endif ?>     -->
                 <li class="fields">
                     <div class="field">
-              
+                     
                         <div class="input-box">
-                            <input placeholder="Código postal" type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" class="fixwidth correctmargin stateselect  input-text validate-number <?php echo $this->getAttributeValidationClass('postcode') ?>" value="<?php echo $this->getDataFromSession('postcode') ?>" maxlength="8" onblur="buscaCep('billing');" />
+                            <input placeholder="Código Postal" type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" class="input-text validate-number <?php echo $this->getAttributeValidationClass('postcode') ?> fixwidth correctmargin stateselect" value="<?php echo $this->getDataFromSession('postcode') ?>" maxlength="8" onblur="buscaCep('billing');" />
                         </div>
                     </div>
-                
-                </li>
+                    <!--
+                    <div class="field">
+                        <label>&nbsp;</label>        
+                        <div class="input-box">
+                            <div class="onestepcheckout-postcod-process onestepcheckout-overlay-16">&nbsp;</div>
+                            <a class="nao-sei-cep" href="#" onclick="popWin('http://m.correios.com.br/movel/buscaCep.do', 'I forgot my zipcode', 'width=360,height=370,left=200,top=50,location=no,status=yes,scrollbars=yes,resizable=yes'); return false;"><?php echo $this->__('What is my postcode?') ?></a>
+                        </div>
+                    </div> -->
+                </li> 
+            
                 <?php $_streetValidationClass = $this->getAttributeValidationClass('street'); ?>
                 <?php $streetValues = $this->getDataFromSession('street'); ?>
-                <li class="wide">
+                <li >
+                   
                     <div class="input-box">
                         <input placeholder="Dirección" type="text" title="<?php echo $this->__('Street Address') ?>" name="billing[street][]" id="billing:street1" class="input-text <?php echo $_streetValidationClass ?> fixwidth correctmargin stateselect" value="<?php echo (isset($streetValues[0])) ? $streetValues[0] : ''; ?>" autocomplete="off"/>
                     </div>
                 </li>
-             
+                <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+                <!-- <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+                    <li class="wide">
+                        <label for="billing:street<?php echo $_i ?>" <?php if ($_i != 3): ?> class="required" <?php endif; ?>><?php if ($_i != 3): ?> <em>*</em> <?php endif; ?><?php echo $this->__('Street Address ' . $_i) ?></label>
+                        <div class="input-box">
+                            <input type="text" title="<?php echo $this->__('Street Address ' . $_i) ?>" name="billing[street][<?php echo $_i ?>]" id="billing:street<?php echo $_i ?>" class="input-text <?php if ($_i != 3): ?>required-entry<?php endif; ?>" value="<?php echo $streetValues[$_i]; ?>" autocomplete="off"/>
+                        </div>
+                    </li>
+                <?php endfor; ?> -->
+                <?php if ($this->isVatAttributeVisible()) : ?>
+                    <li class="wide">
+                        <label for="billing:vat_id"><?php echo $this->__('VAT Number') ?></label>
+                        <div class="input-box">
+                            <input type="text" id="billing:vat_id" name="billing[vat_id]" title="<?php echo $this->__('VAT Number') ?>" class="input-text <?php echo $this->getAttributeValidationClass('vat_id'); ?>" value="<?php echo $this->getDataFromSession('vat_id'); ?>" />
+                        </div>
+                    </li>
+                <?php endif; ?>
                 <li class="fields">
                     <div class="field">
-            
+               
                         <div class="input-box">
-                            <input placeholder="Ciudad" type="text" title="<?php echo $this->__('City') ?>" name="billing[city]" class="fixwidth correctmargin stateselect input-text <?php echo $this->getAttributeValidationClass('city') ?>" id="billing:city" value="<?php echo $this->getDataFromSession('city') ?>" />
+                            <input placeholder="Ciudad" type="text" title="<?php echo $this->__('City') ?>" name="billing[city]" class="input-text <?php echo $this->getAttributeValidationClass('city') ?> fixwidth correctmargin stateselect  " id="billing:city" value="<?php echo $this->getDataFromSession('city') ?>" />
                         </div>
                     </div>
                     <div class="field">
-                   
+                        
                         <div class="input-box">
-                            <select placeholder="Provincia" id="billing:region_id" name="billing[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
+                            <select placeholder="Provincia" id="billing:region_id" name="billing[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select fixwidth correctmargin stateselect  " style="display:none;">
                                 <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
                             </select>
                             <script type="text/javascript">
@@ -75,7 +192,7 @@
                                 $('billing:region_id').setAttribute('defaultValue',  "<?php echo $this->getDataFromSession('region_id') ?>");
                                 //]]>
                             </script>
-                            <input placeholder="Provincia" type="text" id="billing:region" name="billing[region]" value="<?php echo $this->getAttributeValidationClass('region') ?>"  title="<?php echo $this->__('State/Province') ?>" class="fixwidth correctmargin stateselect input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" style="display:none;" />
+                            <input placeholder="Provincia" type="text" id="billing:region" name="billing[region]" value="<?php echo $this->getAttributeValidationClass('region') ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?> fixwidth correctmargin stateselect  " style="display:none;" />
                         </div>
                     </div>
                 </li>
@@ -104,6 +221,7 @@
         <?php endif; ?>
     </ul>
     <?php echo $this->getChildHtml('extra'); ?>
+
 </div>
 <script type="text/javascript">
     //<![CDATA[
@@ -144,7 +262,7 @@
             }
         }
         <?php if (is_null($this->getDataFromSession('radio_tipopessoa'))): ?>
-     
+            $$('[name*=billing[radio_tipopessoa]]')[0].click();
         <?php else: ?>
             if ($('billing:tipopessoa')) {
                 setTipopessoaArea('<?php echo $this->getDataFromSession('radio_tipopessoa') ?>');
@@ -153,7 +271,7 @@
     Validation.add('validate-email-exist', '<?php echo $this->__('Please enter a valid email address. For example johndoe@domain.com.') ?>', function(value) {
         if (checkMail(value)) {
             var ok = false;
-            var url = '<?php echo Mage::getBaseUrl(); ?>onestepcheckout/ajax/check_email/';
+            var url = BASE_URL + 'onestepcheckout/ajax/check_email/';
             new Ajax.Request(url, {
                 method: 'post',
                 asynchronous: false,
@@ -182,7 +300,7 @@
     Validation.add('validate-taxvat', '<?php echo $this->__('This is a required field.') ?>', function(value) {
         if (validaCPF(value,0)) {
             var ok = false;
-            var url = '<?php echo Mage::getBaseUrl(); ?>onestepcheckout/ajax/check_taxvat/';
+            var url = BASE_URL + 'onestepcheckout/ajax/check_taxvat/';
             new Ajax.Request(url, {
                 method: 'post',
                 asynchronous: false,

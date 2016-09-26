@@ -1,0 +1,442 @@
+<?php
+
+/**
+
+* The MIT License (MIT)
+
+*
+
+* Copyright (c) 2011-2014 Webcomm Pty Ltd
+
+*
+
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+
+* of this software and associated documentation files (the "Software"), to deal
+
+* in the Software without restriction, including without limitation the rights
+
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+
+* copies of the Software, and to permit persons to whom the Software is
+
+* furnished to do so, subject to the following conditions:
+
+*
+
+* The above copyright notice and this permission notice shall be included in
+
+* all copies or substantial portions of the Software.
+
+*
+
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+
+* THE SOFTWARE.
+
+*/
+
+?>
+
+<?php
+
+/**
+
+* Template for Mage_Page_Block_Html
+
+*/
+
+?>
+
+<!DOCTYPE html>
+
+
+
+
+
+<html>
+
+  
+
+  <head>
+
+  <?php echo $this->
+
+getChildHtml('head') ?>
+
+
+
+<style type="text/css">
+
+/* ============================================================
+
+  SECTIONS
+
+============================================================ */
+
+
+
+section.module.parallax {
+
+
+
+  background-position: 50% 50%;
+
+  background-repeat: no-repeat;
+
+  background-attachment: fixed;
+
+  -webkit-background-size: cover;
+
+  -moz-background-size: cover;
+
+  -o-background-size: cover;
+
+  background-size: cover;
+
+}
+
+section.module.parallax-1 {
+
+  background-image: url("<?php echo $this->getSkinUrl('images/header1.jpg'); ?>");
+
+  background-size: contain;
+
+    background-repeat: no-repeat;
+
+    width: 100%;
+
+    height: 0;
+
+    padding-top: 15.625%; /* (img-height / img-width * width) */
+
+                /* (853 / 1280 * 100) */
+
+  background-position: 0 0 ;
+
+
+
+}
+
+
+
+</style>
+
+<script type="text/javascript">
+
+    
+
+             jQuery(document).ready (function ( $ ) {
+
+    $.fn.stickyTabs = function() {
+
+        context = this
+
+
+
+        // Show the tab corresponding with the hash in the URL, or the first tab.
+
+        var showTabFromHash = function() {
+
+          var hash = window.location.hash;
+
+          var selector = hash ? 'a[href="' + hash + '"]' : 'li.active > a';
+
+          $(selector, context).tab('show');
+
+        }
+
+
+
+        // Set the correct tab when the page loads
+
+        showTabFromHash(context)
+
+
+
+        // Set the correct tab when a user uses their back/forward button
+
+        window.addEventListener('hashchange', showTabFromHash, false);
+
+
+
+        // Change the URL when tabs are clicked
+
+        $('a', context).on('click', function(e) {
+
+          history.pushState(null, null, this.href);
+
+        });
+
+
+
+        return this;
+
+    };
+
+});
+
+      
+
+        </script>
+
+
+
+
+
+  </head>
+
+  <body
+
+  <?php echo $this->
+
+    getBodyClass()?' class="'.$this->
+
+    getBodyClass().'"':'' ?>
+
+    >
+
+    
+
+    <?php echo $this->
+
+getChildHtml('after_body_start') ?>
+
+   
+  
+    
+ 
+  <?php echo $this->getChildHtml('content') ?>
+
+    
+
+    <?php echo $this->
+
+getChildHtml('header') ?>
+
+  
+
+  <div class="catalog container">
+
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     <div class="section group">
+
+                <?php     
+
+                    $category_id=53;
+
+                    $products = Mage::getModel('catalog/category')->load($category_id);
+
+                    $productslist = $products->getProductCollection()->addAttributeToSelect('*')->setOrder('price', 'ASC');;
+
+
+
+                  ?>        
+
+                   <?php foreach ($productslist   as $product){?>
+
+                      <?php if($product->isSaleable()): ?>
+
+                                                <a  href="<?php echo $product->getProductUrl(); ?>   ">
+
+                                                  <div id="ver" class="item col span_1_of_3bis">
+
+
+
+
+
+
+
+                                                       <img src=" <?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(400); ?>"  onmouseover="this.src='
+
+                                                       
+
+                                                      <?php echo $this->helper('catalog/image')->init($product, 'thumbnail')->resize(400); ?>
+
+
+
+                                                       ';"
+
+                                                       onmouseout="this.src='
+
+
+
+                                                      <?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(400); ?>
+
+
+
+                                                       ';" />
+
+                                                       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                       <div class="section group">
+
+
+
+                                                            <div  class="col span_1_of_8">
+
+                                                            </div>
+
+                                                            <div  class="col span_6_of_8">
+
+                                                               <p class="listname"> <?php echo $product->getName(); ?></p>
+
+                                                               <p><?php echo  "$" . round($product->getPrice(), 2) ?></p>
+
+
+
+                                                            </div>
+
+                                                            
+
+                                                             <div  class="col span_1_of_8">
+
+                                                            </div>
+
+                                                      </div>
+
+                                                  </div>
+
+                                                </a>
+
+                                  <?php else: ?>
+
+                                               <a  href="<?php echo $product->getProductUrl(); ?>   ">
+
+                                                  <div   id="ver" class="item col span_1_of_3bis">
+
+                                                       <img src=" <?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(400); ?>" />
+
+                                                       <div class="section group">
+
+                                                            <div  class="col span_1_of_8">
+
+                                                            </div>
+
+                                                            <div  class="col span_6_of_8">
+
+                                                               <p class="listname"> <?php echo $product->getName(); ?></p>
+
+                                                               <p class="soldout">Sin stock</p>
+
+
+
+                                                            </div>
+
+                                                            
+
+                                                             <div  class="col span_1_of_8">
+
+                                                            </div>
+
+                                                      </div>
+
+                                                  </div>
+
+                                                </a>
+
+                                  <?php endif; ?>
+
+                
+
+                    <?php
+
+                    }
+
+                    ?>
+
+
+
+                </div> 
+
+              
+
+  </div>
+
+
+
+  <?php echo $this->getChildHtml('footer') ?>
+
+
+
+ 
+
+
+
+
+
+ 
+
+  <script type="text/javascript">
+
+    jQuery( document ).ready(function( $ ) {
+
+$('.nav-tabs').stickyTabs();
+
+});
+
+   
+
+  </script>
+
+
+
+
+
+  </body>
+
+</html>
+

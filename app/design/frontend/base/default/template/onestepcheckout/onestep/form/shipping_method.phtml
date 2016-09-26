@@ -6,12 +6,51 @@
  * @author     Suporte <suporte@inovarti.com.br>
  */
 ?>
+
+<style>
+
+.error-msg{
+    font-family: montserrat;
+    font-size: 1em;
+    font-weight: 800;
+}
+.methodlabel:focus{
+        border: 3px solid #4CB8C4!important;
+    color: #4cb8c4!important;
+}
+
+.shippmethod h2{
+ font-family: montserrat;
+    font-size: 1.2em;
+    font-weight: 800;
+    font-style: italic;
+    padding: 0.5%;
+    border-bottom:3px solid #333;
+
+}
+
+
+</style>
+
+
+<div class="row">
+<div class="col-md-3">   
+</div>  
+<div class="col-md-6 shippmethod">   
+<h2>
+Seleccioná un método de envío
+</h2> 
+</div>  
+<div class="col-md-3">   
+</div>  
+
+</div>
 <?php if ($this->canShip()) : ?>
     <?php $blockNumber = $this->getBlockNumber(); ?>
     <?php $blockNumberClass = (!is_null($blockNumber)) ? "onestepcheckout-number-{$blockNumber}" : ""; ?>
-
+    <?php if(Mage::getStoreConfig('onestepcheckout/general/is_show_titles')): ?><div class="step-title"><span class="number onestepcheckout-number <?php echo $blockNumberClass; ?>"><?php echo $blockNumber; ?></span><h2><?php echo $this->__('SHIPPING METHOD'); ?></h2></div><?php endif; ?>
     <div class="step a-item">
-        <div id="onestepcheckout-shipping-method" class="onestepcheckout-add-loader-into-this-block">
+        <div style="margin-top:5%;" id="onestepcheckout-shipping-method" class="onestepcheckout-add-loader-into-this-block">
             <?php $_shippingRateGroups = $this->getShippingRates(); ?>
             <?php if (!$_shippingRateGroups) : ?>
                 <p><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
@@ -21,7 +60,8 @@
                     $_sole = count($_shippingRateGroups) == 1;
                     foreach ($_shippingRateGroups as $code => $_rates):
                         ?>
-                        <dt><?php echo $this->escapeHtml($this->getCarrierName($code)) ?></dt>
+                   
+                       
                         <dd>
                             <ul>
                                 <?php
@@ -37,7 +77,9 @@
                                             <?php else: ?>
                                                 <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php if ($_rate->getCode() === $this->getAddressShippingMethod()) echo ' checked="checked"' ?> class="radio"/>
                                             <?php endif; ?>
-                                            <label for="s_method_<?php echo $_rate->getCode() ?>"><?php echo $this->escapeHtml($_rate->getMethodTitle()) ?>
+                                             <button style="padding:none !important;cursor:pointer;" class="btncart methodlabel" type="button">
+                                            <label  style="cursor:pointer;"  for="s_method_<?php echo $_rate->getCode() ?>"><?php echo $this->escapeHtml($_rate->getMethodTitle()) ?>
+                                                <dt><?php echo $this->escapeHtml($this->getCarrierName($code)) ?></dt>
                                                 <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
                                                 <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
                                                 <?php echo $_excl; ?>
@@ -45,11 +87,13 @@
                                                     (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
                                                 <?php endif; ?>
                                             </label>
+                                            </button>   
                                         <?php endif ?>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
                         </dd>
+                   
                     <?php endforeach; ?>
                 </dl>
                 <div class="validation-advice" style="display: none;"></div>

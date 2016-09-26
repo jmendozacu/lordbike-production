@@ -18,8 +18,6 @@
             <action method="addItem"><type>skin_js</type><name>onestepcheckout/js/payment.js</name></action>
             <action method="addItem"><type>skin_js</type><name>onestepcheckout/js/review.js</name></action>
             <action method="addItem"><type>skin_js</type><name>onestepcheckout/js/form.js</name></action>
-            <action method="addItem"><type>skin_js</type><name>onestepcheckout/js/mercadopago_osc.js</name></action>
-            <action method="addItem"><type>skin_js</type><name>onestepcheckout/js/tinyJ.js</name></action>
             <action method="addItem"><type>skin_css</type><name>onestepcheckout/css/onestepcheckout.css</name></action>
         </reference>
         <reference name="content">

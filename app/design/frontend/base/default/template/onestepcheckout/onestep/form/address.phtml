@@ -9,7 +9,7 @@
     <div id="onestepcheckout-address-billing-wrapper">
         <?php $blockNumber = $this->getBlockNumber();?>
         <?php $blockNumberClass = (!is_null($blockNumber))?"onestepcheckout-number-{$blockNumber}":"";?>
-
+        <?php if(Mage::getStoreConfig('onestepcheckout/general/is_show_titles')): ?><div class="step-title"><span class="number onestepcheckout-number <?php echo $blockNumberClass;?>"><?php echo $blockNumber; ?></span><h2><?php echo $this->__('BILLING ADDRESS'); ?></h2></div><?php endif;?>
         <div class="step a-item">
             <?php echo $this->getChildHtml('billing'); ?>
         </div>
@@ -18,7 +18,7 @@
         <div id="onestepcheckout-address-shipping-wrapper" style="overflow: hidden;height: 0px;display:none;">
             <?php $blockNumber = $this->getBlockNumber();?>
             <?php $blockNumberClass = (!is_null($blockNumber))?"onestepcheckout-number-{$blockNumber}":"";?>
-
+            <?php if(Mage::getStoreConfig('onestepcheckout/general/is_show_titles')): ?><div class="step-title"><span class="number onestepcheckout-number <?php echo $blockNumberClass;?>"><?php echo $blockNumber; ?></span><h2><?php echo $this->__('SHIPPING ADDRESS'); ?></h2></div><?php endif;?>
             <div class="step a-item">
                 <?php echo $this->getChildHtml('shipping'); ?>
             </div>

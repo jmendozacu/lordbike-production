@@ -6,44 +6,72 @@
  * @author     Suporte <suporte@inovarti.com.br>
  */
 ?>
+<div class="onestepcheckout">
+<?php echo $this->getChildHtml('title'); ?>
+<?php echo $this->getChildHtml('auth'); ?>
+<div class="col3-set">
+    <form id="onestepcheckout-general-form" method="post" action="#" class="scaffold-form">
 
-
-<div style="text-align:center;" class="container">
-    <form id="onestepcheckout-general-form" method="post" action="#">
-    	<div class="row">
-    		<div class="col-md-3">
-	        </div>
-	        <div class="col-md-6">
-	            <div class="opc">
-	                <div class="section allow active">
-	                    <?php echo $this->getChildHtml('address'); ?>
-	                </div>
-	            </div>
-	        </div>
-	        <div class="col-md-3">
-	        </div>
+        <div class="col-1">
+            <div class="opc">
+                <div class="section allow active">
+                    <?php echo $this->getChildHtml('address'); ?>
+                </div>
+            </div>
         </div>
-        <div class="row" id="onestepcheckout-shipping-method-wrapper">
+        <div class="col-2">
+            <div class="opc">
+                <div class="section allow active">
+                    <div id="onestepcheckout-shipping-method-wrapper">
                         <?php echo $this->getChildHtml('shippingmethod'); ?>
+                    </div>
+                    <div id="onestepcheckout-payment-method-wrapper">
+                        <?php echo $this->getChildHtml('paymentmethod'); ?>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="col-3">
+            <div class="opc">
+                <div class="section allow active">
+                    <?php $blockNumberClass = (!is_null($this->getBlockNumber(false))) ? "onestepcheckout-number-4" : ""; ?>
+                    <?php if(Mage::getStoreConfig('onestepcheckout/general/is_show_titles')): ?><div class="step-title"><span class="number onestepcheckout-number <?php echo $blockNumberClass; ?>">4</span><h2><?php echo $this->__('ORDER REVIEW'); ?></h2></div><?php endif; ?>
+                    <div class="step a-item">
+                        <div id="onestepcheckout-order-review">
+                            <div id="onestepcheckout-order-review-cart-wrapper">
+                                <?php echo $this->getChildHtml('review.cart'); ?>
+                            </div>
+                            <div id="onestepcheckout-order-review-coupon-wrapper">
+                                <?php echo $this->getChildHtml('review.coupon'); ?>
+                            </div>
+                            <div id="onestepcheckout-order-review-comments-wrapper">
+                                <?php echo $this->getChildHtml('review.comments'); ?>
+                            </div>
 
-       <div class="row">
-	        <div class="col-md-12">
-	          
-	                <div class="section allow">
-	              
-	                    <div id="onestepcheckout-place-order">
-	                        <button style="margin:0 !important;" type="button" class="button btn-proceed-checkout btn-checkout btncart " title="<?php echo $this->__('Place Order Now'); ?>" id="onestepcheckout-place-order-button">
-	                            <span><span class="onestepcheckout-place-order-title"><?php echo $this->__('Iniciar Pago'); ?></span></span>
-	                            <span class="onestepcheckout-place-order-amount hide hidden" ><?php echo $this->getGrandTotal(); ?></span>
-	                        </button>
-	                        <div class="onestepcheckout-place-order-please-wait">
-	                            <img src="<?php echo $this->getSkinUrl('onestepcheckout/images/ajax-loader.gif') ?>" />
-	                            <?php echo $this->__('Please wait, processing your order...') ?></div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
+                            <div id="onestepcheckout-order-review-terms-wrapper">
+                                <?php echo $this->getChildHtml('review.terms'); ?>
+                            </div>
+                            <div id="onestepcheckout-order-review-extra-wrapper">
+                                <?php echo $this->getChildHtml('review.extra'); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section allow">
+                    <div id="onestepcheckout-order-review-newsletter-wrapper">
+                        <?php echo $this->getChildHtml('review.newsletter'); ?>
+                    </div>
+                    <div id="onestepcheckout-place-order">
+                        <button type="button" class="button btn-proceed-checkout btn-checkout" title="<?php echo $this->__('Place Order Now'); ?>" id="onestepcheckout-place-order-button">
+                            <span><span class="onestepcheckout-place-order-title"><?php echo $this->__('Place Order'); ?></span></span>
+                            <span class="onestepcheckout-place-order-amount hide hidden" ><?php echo $this->getGrandTotal(); ?></span>
+                        </button>
+                        <div class="onestepcheckout-place-order-please-wait">
+                            <img src="<?php echo $this->getSkinUrl('onestepcheckout/images/ajax-loader.gif') ?>" />
+                            <?php echo $this->__('Please wait, processing your order...') ?></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
     <div id="onestepcheckout-popup" class="onestepcheckout-popup" style="display:none">
@@ -93,6 +121,7 @@
             }
         });
     </script>
+</div>
 </div>
 <script type="text/javascript">
     OnestepcheckoutCore.updateNumbers();
