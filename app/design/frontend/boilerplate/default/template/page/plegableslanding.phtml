@@ -76,6 +76,11 @@
 	width: 100%;
 	height: auto;
 	text-align: left;
+	 -webkit-transition: all 0.01s ease;                  
+    -moz-transition: all 0.01s ease;                 
+    -o-transition: all 0.01s ease;   
+    -ms-transition: all 0.01s ease;          
+    transition: all 0.01s ease;
 }
 .landinghead span{
 	color: rgba(52, 152, 219,0.8) !important;
@@ -455,6 +460,11 @@
   .media-flex {
     position: relative;
     height: 0px;
+    -webkit-transition: all 0.01s ease;                  
+    -moz-transition: all 0.01s ease;                 
+    -o-transition: all 0.01s ease;   
+    -ms-transition: all 0.01s ease;          
+    transition: all 0.01s ease;
 
   }
   .media-flex .gfyitem > div,
@@ -509,11 +519,13 @@ video{
     	   <p>para <span>vos</span></p>
     	   </h1>
     	  
-    	   <button class="vermodelos" >
-    	   		<div class="vcenter" style="position:relative;">
-	    	 		<h3 style="margin-top:0 !important;">Ver Modelos  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></h3>	
-	    		</div>
-	    	</button>
+    	   <a href="<?php  echo Mage::getBaseUrl(); ?>plegables">
+	    	   <button class="vermodelos" >
+	    	   		<div class="vcenter" style="position:relative;">
+		    	 		<h3 style="margin-top:0 !important;">Ver Modelos  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></h3>	
+		    		</div>
+		    	</button>
+		   </a> 	
 	    </div>	
 	
     	   
@@ -594,15 +606,19 @@ video{
 
 
 			</div>
-
-			<div class="vermas">
+			  <a style="text-decoration:none;"  href="<?php  echo Mage::getBaseUrl(); ?>plegables">
+	    	 		<div class="vermas">
 		    	 		<div class="vermasback">		
 		    	 		</div>
 	    	 			<div class="vermasfill">
 	    	 				<h3 style="margin-top:0 !important;">Ver todas!<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></h3>
 	    	 			</div>		
-	    	 </div>
+	    			 </div>
 					
+	    	 	  
+	    	   </a>
+
+		
     </div>
 
 
