@@ -1,0 +1,785 @@
+<?php
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2011-2014 Webcomm Pty Ltd
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+<?php echo $this->getChildHtml('head') ?>
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+
+</head>
+<style>
+.landinghead{
+	width: 100%;
+	height: auto;
+	min-height: 600px;
+	border-bottom: 3px solid #212121 !important;
+	margin-top: -50px;
+	background: url(<div style='position:relative;padding-bottom:32%'><iframe src='https://gfycat.com/ifr/UncommonPresentAfricanfisheagle' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>); ?>);
+	background-position: center ;
+    background-repeat: no-repeat;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+
+
+}
+
+.landinghead h1{
+	font-family: montserrat;
+	font-size: 4em;
+	font-weight: 800;
+	color: rgba(33,33,33 ,0.9);
+	line-height: 1.3em;
+	text-transform: uppercase;
+	z-index: 10;
+	
+
+}
+.headui{
+	position: absolute;
+	padding: 5%;
+	width: 100%;
+	height: auto;
+	text-align: left;
+}
+.landinghead span{
+	color: rgba(52, 152, 219,0.8) !important;
+}
+
+
+.destacados{
+	width: 100%;
+	height: auto;
+	min-height: 400px;
+	text-align: center;
+	background-color: #FAFAFA;
+	padding-bottom: 5%;
+	margin-top: 0!important;
+	z-index: 50;
+	position: relative;
+
+}
+.destacados h3{
+	font-family: montserrat;
+	font-size: 1.3em;
+	text-transform: uppercase;
+	font-weight: 800;
+	font-style: italic;
+	margin-top: 2% !important;
+	margin-bottom: 0 !important;
+}
+
+.vcenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infobar{
+	width: 100%;
+	height: auto;
+	padding: 3%;
+	background-color: #ffffff;
+	z-index: 50;
+	position: relative;
+}
+
+.comparativas, .faq{
+    margin-top: 5%;
+    border: none !important;
+    position: relative;
+    display: block;
+    min-height: 100%;
+    max-width: 100%;
+    border: 3px solid #212121 !important;
+    height: auto;
+    background-color: #ffffff;
+    cursor: pointer;
+    overflow: visible;
+    z-index: 50 !important;
+}
+
+.comparativasback, .faqback{
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+    z-index: -1 !important;
+    border: 3px solid #212121 !important;
+    height: auto;
+    cursor: pointer;
+    left: 3%;
+    bottom: 12%;
+    background-color: rgba(52, 152, 219,0.1);
+    -webkit-transition: background-color 0.3s ease, transform 0.15s ease;                  
+    -moz-transition: background-color 0.3s ease, transform 0.15s ease;                 
+    -o-transition: background-color 0.3s ease, transform 0.15s ease;   
+    -ms-transition: background-color 0.3s ease, transform 0.15s ease;          
+    transition: background-color 0.3s ease, transform 0.15s ease;
+   
+
+}
+
+
+.comparativasfill, .faqfill{
+	height: 100%;
+	width: 100%;
+	background-color: #ffffff;
+}
+
+
+
+
+.comparativas:hover .comparativasback, .faq:hover .faqback{
+	background-color: rgba(52, 152, 219,0.25) !important;
+}
+.comparativas:hover h3, .faq:hover h3{
+	color:rgba(52, 152, 219,1) !important;
+}
+
+.comparativasfill h3, .faqfill h3{
+	font-family: montserrat !important;
+	font-size: 1.5em !important;
+	text-transform: uppercase;
+	font-weight: 800 !important;
+	padding: 10%;
+	color:black !important;
+	font-style: italic !important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	 -webkit-transition: color 0.1s ease;                  
+    -moz-transition: color 0.1s ease;                 
+    -o-transition: color 0.1s ease;   
+    -ms-transition: color 0.1s ease;          
+    transition: color 0.1s ease;
+}
+
+.vermas{
+  
+    border: none !important;
+    position: relative;
+    display: block;
+    min-height: 10%;
+    max-width: 10%;
+    z-index: 10 !important;
+    border: 3px solid #212121 !important;
+    height: auto;
+    background-color: #ffffff;
+    cursor: pointer;
+    overflow: visible;
+    margin-left: 45%;
+    margin-top: 5%;
+
+
+
+}
+.vermasback{
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+    z-index: -1 !important;
+    border: 3px solid #212121 !important;
+    height: auto;
+    cursor: pointer;
+    left: 6%;
+    bottom: 24%;
+    background-color: rgba(52, 152, 219,0.1);
+    -webkit-transition: background-color 0.3s ease, transform 0.15s ease;                  
+    -moz-transition: background-color 0.3s ease, transform 0.15s ease;                 
+    -o-transition: background-color 0.3s ease, transform 0.15s ease;   
+    -ms-transition: background-color 0.3s ease, transform 0.15s ease;          
+    transition: background-color 0.3s ease, transform 0.15s ease;
+
+}
+
+
+.vermasfill{
+	height: 100%;
+	width: 100%;
+	background-color: #ffffff;
+}
+
+
+
+.vermas:hover::after{
+	background-color: rgba(52, 152, 219,0.5) !important;
+    top: -16%;
+	right: -4%;
+}
+.vermas:hover .vermasback{
+	background-color: rgba(52, 152, 219,0.25) !important;
+}
+.vermas:hover h3{
+	color:rgba(52, 152, 219,1) !important;
+}
+
+.vermasfill h3{
+	font-family: montserrat;
+	font-size: 1em;
+	text-transform: uppercase;
+	font-weight: 800;
+	padding: 10%;
+	font-style: italic;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	 -webkit-transition: color 0.1s ease;                  
+    -moz-transition: color 0.1s ease;                 
+    -o-transition: color 0.1s ease;   
+    -ms-transition: color 0.1s ease;          
+    transition: color 0.1s ease;
+}
+
+
+.vermodelos{
+    position: relative;
+    width: 10%;
+    z-index: 10 !important;
+    border: 3px solid #212121;
+    height: auto;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 1%;
+    -webkit-transition: color 0.2s ease, border 0.2s ease;                  
+    -moz-transition: color 0.2s ease, border 0.2s ease;              
+    -o-transition: color 0.2s ease, border 0.2s ease;  
+    -ms-transition:color 0.2s ease, border 0.2s ease;   
+    transition:color 0.2s ease, border 0.2s ease;  
+
+
+
+}
+
+
+.vermodelos h3{
+	font-family: montserrat;
+	font-size: 1em;
+	text-transform: uppercase;
+	font-weight: 800;
+	font-style: italic;
+    color: #212121;
+    -webkit-transition: all 0.2s ease;                  
+    -moz-transition: all 0.2s ease;                 
+    -o-transition: all 0.2s ease;   
+    -ms-transition: all 0.2s ease;          
+    transition: all 0.2s ease;
+    margin-bottom: 0!important;
+}
+.vermodelos span{
+	color:#212121 !important;
+	-webkit-transition: all 0.2s ease;                  
+    -moz-transition: all 0.2s ease;                 
+    -o-transition: all 0.2s ease;   
+    -ms-transition: all 0.2s ease;          
+    transition: all 0.2s ease;
+}
+.vermodelos:hover h3{
+ color: rgba(52, 152, 219,1) !important;
+
+
+}
+.vermodelos:hover span{
+ color: rgba(52, 152, 219,1) !important;
+
+
+}
+.vermodelos:hover{
+
+ border: 3px solid  rgba(52, 152, 219,1) !important;
+
+
+}
+
+
+
+.productslider{
+	min-height: 300px;
+	text-align: center;
+
+}
+.productslider h4{
+	font-family: montserrat;
+	font-size: 1em;
+	text-transform: uppercase;
+	font-weight: 800;
+	color: #212121;
+	 -webkit-transition: color 0.1s ease;                  
+    -moz-transition: color 0.1s ease;                 
+    -o-transition: color 0.1s ease;   
+    -ms-transition: color 0.1s ease;          
+    transition: color 0.1s ease;
+    text-decoration: none;
+
+}
+.productslider h5{
+	font-family: montserrat;
+	font-size: 1.2em;
+	font-weight: 400;
+	font-style: italic;
+	color: #212121;
+	text-decoration: none;
+	 -webkit-transition: color 0.1s ease;                  
+    -moz-transition: color 0.1s ease;                 
+    -o-transition: color 0.1s ease;   
+    -ms-transition: color 0.1s ease;          
+    transition: color 0.1s ease;
+}
+.prev{
+	font-size: 2em;
+	color: #212121;
+	left: 0;
+	background-color: transparent;
+	border: none !important;
+	padding: 2%;
+	position: absolute;
+	z-index: 10;
+
+}
+.next{
+	font-size: 2em;
+	color: #212121;
+	position: absolute;
+	right: 0;
+	background-color: transparent;
+	border: none !important;
+	padding: 2%;
+	position: absolute;
+	z-index: 10;
+	
+}
+.sliderlink{
+	height: auto;
+	display: block;
+		text-decoration: none;
+
+}
+
+.sliderlink:hover h4, .sliderlink:hover h5 {
+	color: rgba(52, 152, 219,1) !important;
+	
+
+
+}
+
+.overlay{
+	z-index: 0;
+}
+
+
+@media (max-width: 1024px) {
+	
+	.vermodelos{
+		width: 30% ;
+
+	}
+	.landinghead h1{
+		text-align: center;
+
+	
+	}
+	.headui{
+		text-align: center;
+	}
+
+}
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+	.vermas{
+		max-width: 50% !important;
+		min-height: 50% !important;
+		margin-left: 25%;
+	}
+	.destacados h3{
+		margin-top: 10% !important;
+	}
+	.vermodelos{
+		width: 50% ;
+	}
+	.landinghead h1{
+		text-align: center;
+	}
+	.headui{
+		text-align: center;
+		margin-top: 10%;
+	}
+
+}
+
+.gfyitem{
+	position: absolute;
+	left: 0;
+	display: block;
+
+}
+
+  .media-flex {
+    position: relative;
+    height: 0px;
+
+  }
+  .media-flex .gfyitem > div,
+  .media-flex .gfyitem .gfyPreLoadCanvas,
+  .media-flex .gfyitem .gfyVid,
+  .media-flex .gfyitem  .gfyGif {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .gfyDotCanvas{
+    display:none!important;
+  }
+  .gfyPreLoadCanvas{
+    display: none;
+  }
+
+
+video{
+	min-width: 100%;
+    min-height: 100%;
+    width: initial !important;
+    height: initial !important;
+}
+</style>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+
+
+      
+ 
+  	<?php echo $this->getChildHtml('content') ?>
+    <?php echo $this->getChildHtml('header') ?>
+
+
+
+
+
+
+    <div style="   overflow: hidden;" class="landinghead">
+	    <div class="media-flex">
+	          <img class='gfyitem' data-id='DistortedTeemingJunebug' data-responsive="true" data-max-heigh="true"  data-controls="false" data-dot="false" data-perimeter="false" ></img>
+	    </div>
+
+    	<div class="headui">
+    	   <h1>
+    	   <p>Encontrá la </p>
+    	   <p>plegable <span>ideal</span></p>
+    	   <p>para <span>vos</span></p>
+    	   </h1>
+    	  
+    	   <button class="vermodelos" >
+    	   		<div class="vcenter" style="position:relative;">
+	    	 		<h3 style="margin-top:0 !important;">Ver Modelos  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></h3>	
+	    		</div>
+	    	</button>
+	    </div>	
+	
+    	   
+
+    </div>
+    <div class="infobar vcenter">
+    	<div class="container">
+	    	 	<div class="col-md-6 ">
+	    	 		
+	    	 		<div class="comparativas">
+		    	 		<div class="comparativasback">		
+		    	 		</div>
+	    	 			<div class="comparativasfill">
+	    	 				<h3>Comparativas y reseñas <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></h3>
+	    	 			</div>		
+	    	 		</div>
+	    	 	</div>
+	    	 	<div class="col-md-6">
+	    	 	  <a style="text-decoration:none;"  href="<?php  echo Mage::getBaseUrl(); ?>faq">
+	    	 		<div class="faq">
+	    	 			<div class="faqback">		
+		    	 		</div>
+	    	 			<div class="faqfill">
+	    	 				<h3>Preguntas Frecuentes<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></h3>
+	    	 			</div>
+	    	 		</div>	
+	    	 	   </a>
+	    	 	</div>	
+	      		
+    	</div>
+    </div>
+    <div class="destacados container">
+    		<h3>Modelos Populares</h3>
+    			
+    			
+    		<div class="multiple-items row vcenter">
+    		
+				
+    			<div class="productslider col-md-4">
+    				<a href="#" class="sliderlink">
+    				  <img style="display:initial !important;" class="img-responsive" src="<?php echo $this->getSkinUrl('images/landingplegables/b7.png'); ?>"  alt="">
+    				  <h4>Tern Link B7</h4>
+    				  <h5>"Para iniciarse"</h5>
+    				</a>
+    				
+    			</div>
+    			
+    			<div class="productslider col-md-4">
+    				<a href="#" class="sliderlink">
+    				  <img style="display:initial !important;" class="img-responsive" src="<?php echo $this->getSkinUrl('images/landingplegables/d8.png'); ?>"  alt="">
+    				  <h4>Tern Link D8</h4>
+    				  <h5>"La clásica"</h5>
+    				</a>
+    			</div>
+    			<div class="productslider col-md-4">
+    				<a href="#" class="sliderlink">
+    				  <img style="display:initial !important;" class="img-responsive" src="<?php echo $this->getSkinUrl('images/landingplegables/node.png'); ?>"  alt="">
+    				  <h4>Tern Node D8</h4>
+    				  <h5>"La de ruedas grandes"</h5>
+    				</a>
+    			</div>
+    			<div class="productslider col-md-4">
+    				<a href="#" class="sliderlink">
+    				  <img style="display:initial !important;" class="img-responsive" src="<?php echo $this->getSkinUrl('images/landingplegables/n8.png'); ?>"  alt="">
+    				  <h4>Tern Verge N8</h4>
+    				  <h5>"La veloz"</h5>
+    				</a>
+    			</div>
+    			<div class="productslider col-md-4">
+    				<a href="#" class="sliderlink">
+    				  <img style="display:initial !important;" class="img-responsive" src="<?php echo $this->getSkinUrl('images/landingplegables/d7i.png'); ?>"  alt="">
+    				  <h4>Tern Link D7i</h4>
+    				  <h5>"Mantenimiento 0"</h5>
+    				</a>
+    			</div>
+
+    			
+
+
+			</div>
+
+			<div class="vermas">
+		    	 		<div class="vermasback">		
+		    	 		</div>
+	    	 			<div class="vermasfill">
+	    	 				<h3 style="margin-top:0 !important;">Ver todas!<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></h3>
+	    	 			</div>		
+	    	 </div>
+					
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <?php echo $this->getChildHtml('footer') ?>
+	<?php echo $this->getChildHtml('before_body_end') ?>
+
+
+</body>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+
+<script>
+
+jQuery( document ).ready(function( $ ) {
+
+
+	 	
+		$('.multiple-items').slick({
+			
+		  	 infinite: true,
+		  	 slidesToShow: 3,
+ 			 slidesToScroll: 1,
+
+ 			 prevArrow: '<button type="button" class="prev" ><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>',
+   			 nextArrow: '<button type="button" class="next" ><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>',
+		  	 responsive: [{
+
+		      breakpoint: 1024,
+		      settings: {
+		        slidesToShow: 2,
+		        infinite: true
+		      }
+
+		    }, {
+
+		      breakpoint: 768,
+		      settings: {
+		        slidesToShow: 1,
+		        infinite: true
+		      }
+
+		    }]
+	
+	
+
+	
+
+		});
+
+		$('.left').click(function(){
+		  $('.multiple-items').slickPrev();
+		})
+		$('.right').click(function(){
+		  $('.multiple-items').slickNext();
+		})
+
+	});
+
+
+
+			
+
+</script>
+
+
+
+<script type="text/javascript">
+	
+
+
+jQuery( document ).ready(function( $ ) {
+
+		
+		jQuery(document).ready(function(){
+			var backContainer = $('.comparativasback');
+			var frontContainer = $('.comparativas');
+			var backFaqContainer = $('.faqback');
+			var frontFaqContainer = $('.faq');
+			var backVermas = $('.vermasback');
+			var frontVermas = $('.vermas');
+
+			function applyTransition(front, back) {
+				var offset = front.offset();
+				offset.right = offset.left + front.width();
+				offset.bottom = offset.top + front.height();
+
+				var sensitivityMultiplier = 0.033;
+				var wrapperOffset = back.offset();
+				var CenterX = wrapperOffset.left + (back.width()/2) ;
+				var CenterY = wrapperOffset.top + (back.height()/2) ;
+				var hovering = false;
+
+				$(window).mousemove(function(e) {
+					var mouseX = e.pageX;
+					var mouseY = e.pageY;
+
+					if( (mouseX >= offset.left && mouseX <= offset.right ) &&
+						(mouseY >= offset.top && mouseY <= offset.bottom ) ) {
+						hovering = true;
+						return doAwesomeness(mouseX,mouseY);
+					}
+
+					back.css('-webkit-transform', 'none');
+					back.css('transform', 'none');
+					hovering = false;
+				});
+
+				function doAwesomeness(mouseX,mouseY){
+					var RelX = ( mouseX - CenterX ) * sensitivityMultiplier * .4;
+					var RelY = ( ( mouseY - CenterY ) * -1 ) * sensitivityMultiplier * 1.5;
+					back.css('-webkit-transform', 'translateX(' + RelY + 'px) translateY(' + RelX + 'px)' );
+					back.css('transform', 'translateX(' + RelY + 'px) translateY(' + RelX + 'px)' );
+				};
+			};
+
+			applyTransition(frontContainer, backContainer);
+			applyTransition(frontFaqContainer, backFaqContainer);
+			applyTransition(frontVermas, backVermas);
+		 
+		 
+		});
+
+
+
+
+
+
+
+
+	});
+
+
+
+
+
+
+
+</script>
+
+
+
+  <script type="text/javascript" src="https://assets.gfycat.com/gfycat.js"></script>
+
+
+<script type="text/javascript">
+	
+
+	jQuery( document ).ready(function( $ ) {
+
+		var top_header = '';
+		$(document).ready(function(){
+		  top_header = $('.media-flex');
+		  header_ui = $('.headui');
+		});
+		$(window).scroll(function () {
+		  var st = $(window).scrollTop();
+		  top_header.css({'top': (st*0.5)+"px"});
+		  header_ui.css({'top': (st*0.7)+"px"});
+
+		});
+
+	});
+
+
+
+
+</script>
+
+
+</html>

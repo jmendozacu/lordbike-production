@@ -1,0 +1,339 @@
+<?php
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2011-2014 Webcomm Pty Ltd
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+<?php echo $this->getChildHtml('head') ?>
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
+
+</head>
+<style>
+.panel-group{
+	margin-top: 2.5%;
+	border: none !important;
+	position: relative;
+	display: block;
+	min-height: 100%;
+	max-width: 100%;
+	z-index: 1 !important;
+	border: 3px solid #212121 !important;
+}
+.panel-group:before{
+  content: "";
+  background-color: rgba(52, 152, 219,0.1) !important;
+  border: 3px solid #212121;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -2vh;
+  right: -1vw;
+  z-index: -1;
+
+}
+
+.panel-heading{
+	background-color:rgba(52, 152, 219,0.5) !important;
+	border: none !important;
+	  -webkit-transition: all 0.3s ease;                  
+    -moz-transition: all 0.3s ease;                 
+    -o-transition: all 0.3s ease;   
+    -ms-transition: all 0.3s ease;          
+    transition: all 0.3s ease;
+}
+.collapsed .panel-heading{
+		background-color: #F5F5F5 !important;
+}
+.collapsed .panel-heading:hover{
+	background-color: rgba(52, 152, 219,0.1) !important;
+}
+
+
+.panel-body{
+	background-color: #F5F5F5 !important;
+	border: none !important;
+	font-family: montserrat;
+	font-weight: 400;
+	padding: 5% !important;
+	font-size: 1.5em;
+	color:#222222;
+	text-decoration: none;
+
+}
+.panel-title{
+	font-family: montserrat;
+	font-weight: 800;
+	font-size: 1.2em;
+	color:#222222;
+	text-transform: uppercase;
+	padding: 2.5% !important;
+	
+}
+.panel-group a{
+	text-decoration: none;
+}
+
+.panel-default{
+	border-top:none !important;
+	border-bottom:1px solid rgba(0,0,0,0.1);
+}
+.panel-default:last-child{
+	border-bottom:none !important;
+}	
+.faq{
+	text-align: center;
+}
+.faq h1{
+	font-family: montserrat;
+	font-size: 1.8em;
+	font-weight: 800;
+	font-style: italic;
+	padding: 5%;
+}
+
+.ver{
+    position: relative;
+    min-width: 20%;
+    border: 3px solid #212121;
+    margin-top: 5%;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    cursor: pointer;
+    -webkit-transition: color 0.2s ease, border 0.2s ease;                  
+    -moz-transition: color 0.2s ease, border 0.2s ease;              
+    -o-transition: color 0.2s ease, border 0.2s ease;  
+    -ms-transition:color 0.2s ease, border 0.2s ease;   
+    transition:color 0.2s ease, border 0.2s ease;  
+
+
+
+}
+
+
+.ver h3{
+	font-family: montserrat;
+	padding: 8%;
+	font-size: 0.8em;
+	text-transform: uppercase;
+	font-weight: 800;
+	font-style: italic;
+    color: #212121;
+    -webkit-transition: all 0.2s ease;                  
+    -moz-transition: all 0.2s ease;                 
+    -o-transition: all 0.2s ease;   
+    -ms-transition: all 0.2s ease;          
+    transition: all 0.2s ease;
+    margin-bottom: 0!important;
+}
+.ver span{
+	color:#212121 !important;
+	-webkit-transition: all 0.2s ease;                  
+    -moz-transition: all 0.2s ease;                 
+    -o-transition: all 0.2s ease;   
+    -ms-transition: all 0.2s ease;          
+    transition: all 0.2s ease;
+}
+.ver:hover h3{
+ color: rgba(52, 152, 219,1) !important;
+
+
+}
+.ver:hover span{
+ color: rgba(52, 152, 219,1) !important;
+
+
+}
+.ver:hover{
+
+ border: 3px solid  rgba(52, 152, 219,1) !important;
+
+
+}
+@media (max-width: 768px) {
+	.panel-group{
+		margin-top: 10%;
+	}
+	.panel-group:before{;
+	  top: -2vh !important;
+	  right: -2vw !important;
+	}
+
+}
+
+
+
+</style>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+
+<!--    <?php echo $this->getChildHtml('after_body_start') ?> -->
+      
+ 
+  <?php echo $this->getChildHtml('content') ?>
+    <?php echo $this->getChildHtml('header') ?>
+    
+
+<div class="container faq">
+	<h1>Preguntas Frecuentes</h1>
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	  <div class="panel panel-default">
+		  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		    <div class="panel-heading" role="tab" id="headingOne">
+		      <h4 class="panel-title">
+		        
+		          ¿Por qué una bicicleta plegable?
+		      
+		      </h4>
+		    </div>
+		  </a>
+	    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+	      <div class="panel-body">
+	        En un ciudad con cada vez menos espacio, una plegable tiene la ventaja sobre la bicis tradicionales de poder ser transportada y guardada en innumerables espacios. Desde el transporte público o tu auto, hasta un reducido rincón en tu casa o en tu oficina, evitando así, dejarla en la calle.
+	      </div>
+	    </div>
+	  </div>
+	  <div class="panel panel-default">
+	 	 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+		    <div class="panel-heading" role="tab" id="headingTwo">
+		      <h4 class="panel-title">
+		          ¿Por qué una Tern?
+		        
+		      </h4>
+		    </div>
+		  </a>
+	    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+	      <div class="panel-body">
+	        Tern es una marca de bicicletas plegables corta trayectoria (2011) pero con una fuerte pisada en el mercado mundial. Con diseños modernos y patentes propias, está marcando un camino en esta nueva tendencia del transporte urbano. Con garantías extendidas de 10 años, y dealers exlusivos Tern para brindar el correcto asesoramiento y servicio posventa, son una opción confiable y de calidad asegurada.
+	      </div>
+	    </div>
+	  </div>
+	  <div class="panel panel-default">
+	 	 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+		    <div class="panel-heading" role="tab" id="headingThree">
+		      <h4 class="panel-title">
+		          Pero, ¿Andan bien las ruedas chiquitas?
+		      </h4>
+		    </div>
+		 </a>
+	    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+	      <div class="panel-body">
+	        Siempre y cuando una bicicleta plegable esté correctamente equipada, no tendrá nada que envidiar de un rodado superior en términos de velocidad, ni tampoco tendremos que hacer más fuerza para avanzar. Independientemente del tamaño de la rueda, lo que da la velocidad a la bicicleta es la relación de transmisión, es decir, el tamaño del plato y de los piñones. Tern equipa a sus modelos con platos de generoso tamaño y amplias combinaciones, lo que les permite tener modelos apuntados desde un uso de paseo, hasta un uso de alta pérformance.
+	      </div>
+	    </div>
+	  </div>
+	  <div class="panel panel-default">
+	     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">	
+		    <div class="panel-heading" role="tab" id="headingThree">
+		      <h4 class="panel-title">
+		          ¿Son resistentes?¿Son rápidas?
+		      </h4>
+		    </div>
+		 </a>
+	    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+	      <div class="panel-body">
+	      La resistencia de una bicicelta plegable está dada, principalmente, por la calidad de sus bisagras. En el caso de las bicicletas Tern, equipadas con algunas de las mejores tecnologias en bisagras, brindan un cuadro increíblemente sólido. Año tras año, intentamos sacarlas del contexto urbano para ponerlas a prueba en condiciones extremas. Desde un cruce por la cordillera de los andes, hasta competencias de alta velocidad, obteniendo en todos los casos una respuesta óptima. Podés ver éstas, y mas aventuras en nuestro blog!
+	       <div class="row">
+		        <button class="ver" >
+	    	   		<div class="vcenter" style="position:relative;">
+		    	 		<h3 style="margin-top:0 !important;">Ver Blog  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></h3>	
+		    		</div>
+		    	</button>
+	    	</div>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="panel panel-default">
+	  	 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+		    <div class="panel-heading" role="tab" id="headingFive">
+		      <h4 class="panel-title">
+		          ¿Que diferencia hay entre modelos?
+		      </h4>
+		    </div>
+		 </a>    
+	    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+	      <div class="panel-body">
+	        Cada modelo está apuntado a un uso distinto. Principalmente se pueden distinguir los modelos para un uso urbano con comodidad plena, y por otro lado aquellos dirigidos a obtener una mayor agilidad y velocidad. Si no estás segur@ cuál es la indicada para vos, te recomendamos leer la seccion de comparativas en nuestro blog!
+	         <div class="row">
+		        <button class="ver" >
+	    	   		<div class="vcenter" style="position:relative;">
+		    	 		<h3 style="margin-top:0 !important;">Ver Blog  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></h3>	
+		    		</div>
+		    	</button>
+	    	</div>
+	      
+	    </div>
+	  </div>
+	  <div class="panel panel-default">
+	  	<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+		    <div class="panel-heading" role="tab" id="headingSix">
+		      <h4 class="panel-title">
+		          ¿Son fáciles de plegar?
+		      </h4>
+		    </div>
+	    </a>
+	    <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+	      <div class="panel-body">
+	        El sistema de Tern es sorprendentemente rápido de plegar, y sencillo de aprender. Por manual, se pliegan en 10 segúndos. Nosotros lo hacemos en menos.
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>	
+
+
+
+    <?php echo $this->getChildHtml('footer') ?>
+<?php echo $this->getChildHtml('before_body_end') ?>
+
+
+</body>
+
+
+
+<script type="text/javascript">
+	jQuery( document ).ready(function( $ ) {
+
+		jQuery('.panel-default a').click(function() {
+		    $('.panel-heading').removeClass('actives');
+		    $(this).parents('.panel-heading').addClass('actives');
+		});
+
+
+	});
+
+
+
+</script>
+
+</html>

@@ -41,128 +41,213 @@ $currentid= Mage::registry('current_product')->getId();
   var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <style>
-                  body{
-                    background-color: #ffffff !important;
-                  }
-                  @media (max-width: 768px) {
-                     .promo{
-                    min-height: 350px !important;
-                    height: auto;
-                    z-index: 20;
-                    padding: 0 !important;
-                    text-align: center;
+  body{
+    background-color: #ffffff !important;
+    text-align: initial !important;
+  }
+  @media (max-width: 768px) {
+    .promo{
+      min-height: 350px !important;
+      height: auto;
+      z-index: 20;
+      padding: 0 !important;
+      text-align: center;
+    }
+    .promohead{
+      min-height: 50px !important;
+      height: auto;
+    }
+    .promobody{
+      min-height: 300px !important;
+      height: auto;
+      position: relative;
+    }
+    .modal-dialog{
+      margin:0!important;
+      width: 100% !important;
+    }
+    .close{
+      font-size: 3em;
+    }
+  }
+  .promo{
+    min-height: 400px;
+    height: auto;
+    z-index: 20;
+    padding: 0 !important;
+    text-align: center;
+  }
+  .promohead{
+    min-height: 100px;
+    height: auto;
+  }
+  .promobody{
+    min-height: 300px;
+    height: auto;
+    position: relative;
+  }
+  .modal-header{
+    border: none !important;
+  }
+  .modal-body{
+    padding: 0 !important;
+  }
+  .modal-content{
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  .promo p{
+    font-family: montserrat;
+    font-weight: 800;
+    font-size: 1em;
+    text-transform: uppercase;
+    line-height: 7em;
+  }
+  .promo a{
+    font-family: montserrat;
+    font-weight: 800;
+    font-size: 1em;
+    text-decoration:none !important;
+  }
+  .promo .presenciales{
+    font-family: montserrat;
+    font-weight: 400;
+    font-size: 1em;
+    font-style: italic;
+  }
+  .arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    position: absolute;
+    left: 50%;
+    margin-left: -20px;
+    z-index: 999;
+  }
+  .verticalalign{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .beneficiostext {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70%;
+    margin-left: 15%;
+  }
+  .beneficiostext p {
+    font-family: montserrat;
+    font-weight: 700;
+    font-size: 1.5em !important;
+    line-height: 7em;
+    text-align: center;
+    line-height: initial !important;
+  }
+  .vcenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-                    }
-                    .promohead{
-                      min-height: 50px !important;
-                      height: auto; 
-                    
-                    }
-                    .promobody{
-                      min-height: 300px !important;
-                      height: auto;
-                          position: relative;
-                      
-                    }
-                    .modal-dialog{
-                      margin:0!important;
-                      width: 100% !important;
-                    }
-                    .close{
-                      font-size: 3em;
-                    }
-                  }
-                  .promo{
-                    min-height: 400px;
-                    height: auto;
-                    z-index: 20;
-                    padding: 0 !important;
-                    text-align: center;
+.infobar{
+  width: 100%;
+  height: auto;
+  padding: 3%;
+  background-color: #ffffff;
+  z-index: 50;
+  position: relative;
+}
 
-                  }
-                  .promohead{
-                    min-height: 100px;
-                    height: auto; 
-                  
-                  }
-                  .promobody{
-                    min-height: 300px;
-                    height: auto;
-                        position: relative;
-                    
-                  }
-                  .modal-header{
-                    border: none !important;
-                  }
-                  .modal-body{
-                    padding: 0 !important;
-                  }
-                  .modal-content{
-                    border: none !important;
-                    box-shadow: none !important;
-                    border-radius: 0 !important;
-                  }
-                  .promo p{
-                    font-family: montserrat;
-                    font-weight: 800;
-                    font-size: 1em;
-                    text-transform: uppercase;
-                    line-height: 7em;
-                  }
-                  .promo a{
-                    font-family: montserrat;
-                    font-weight: 800;
-                    font-size: 1em;
-                    text-decoration:none !important;
-                    
-                  }
-                  .promo .presenciales{
-                    font-family: montserrat;
-                    font-weight: 400;
-                    font-size: 1em;
-                    font-style: italic;
+.comparativas, .faq{
+    margin-top: 5%;
+    border: none !important;
+    position: relative;
+    display: block;
+    min-height: 100%;
+    max-width: 100%;
+    border: 3px solid #212121 !important;
+    height: auto;
+    background-color: #ffffff;
+    cursor: pointer;
+    overflow: visible;
+    z-index: 50 !important;
+}
+
+.comparativasback, .faqback{
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+    z-index: -1 !important;
+    border: 3px solid #212121 !important;
+    height: auto;
+    cursor: pointer;
+    left: 3%;
+    bottom: 12%;
+    background-color: rgba(52, 152, 219,0.1);
+    -webkit-transition: background-color 0.3s ease, transform 0.15s ease;                  
+    -moz-transition: background-color 0.3s ease, transform 0.15s ease;                 
+    -o-transition: background-color 0.3s ease, transform 0.15s ease;   
+    -ms-transition: background-color 0.3s ease, transform 0.15s ease;          
+    transition: background-color 0.3s ease, transform 0.15s ease;
+   
+
+}
 
 
-                  }
-                  .arrow-down {
-                    width: 0; 
-                    height: 0; 
-                    border-left: 20px solid transparent;
-                    border-right: 20px solid transparent;
-                    position: absolute;
-                    left: 50%;
-                    margin-left: -20px;
-                   z-index: 999;
+.comparativasfill, .faqfill{
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
+}
 
-                  }
-                
 
-                  .verticalalign{
-                      position: absolute;
-                        top: 50%;
-                        transform: translateY(-50%);
-                  }
-                  .beneficiostext {
 
-                        position: absolute;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        width: 70%;
-                        margin-left: 15%;
 
-                  }
-                  .beneficiostext p {
+.comparativas:hover .comparativasback, .faq:hover .faqback{
+  background-color: rgba(52, 152, 219,0.25) !important;
+}
+.comparativas:hover h3, .faq:hover h3{
+  color:rgba(52, 152, 219,1) !important;
+}
 
-                    font-family: montserrat;
-                    font-weight: 700;
-                    font-size: 1.5em !important;
-                    line-height: 7em;
-                    text-align: center;
-                    line-height: initial !important;
+.comparativasfill h3, .faqfill h3{
+  font-family: montserrat !important;
+  font-size: 1.2em !important;
+  text-transform: uppercase;
+  font-weight: 800 !important;
+  padding: 10%;
+  color:black !important;
+  font-style: italic !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+   -webkit-transition: color 0.1s ease;                  
+    -moz-transition: color 0.1s ease;                 
+    -o-transition: color 0.1s ease;   
+    -ms-transition: color 0.1s ease;          
+    transition: color 0.1s ease;
+}
+.infobar{
+    background-color: #FAFAFA;
+}
+.helptitle{
+  text-align: center;
 
-                  }
-           
-                  
+}
+.helptitle h4{
+    font-family: montserrat !important;
+  font-size: 1.3em !important;
+  text-transform: uppercase;
+  font-weight: 800 !important;
+  padding: 2%;
+  color:black !important;
+
+}
+.contenidoview{
+  min-height: 75vh;
+}
 </style>
 <div id="fullhide" >
   <div class="product-essential">
@@ -276,63 +361,60 @@ if($categoryId==4):?>
             <div style="text-align:center;"  class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div  style="z-index:100; margin-left:10%; width:80%;" class="modal-dialog">
                 <div class="modal-content">
-                      
-
                   <div class="modal-body">
-                   <button style="padding:1%;" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                   
-                 
-                 
+                    <button style="padding:1%;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×
+                      </span>
+                    </button>
                     <div   style="margin-left:0 !important;"   class="section group">  
-                      
-                            <div class="col-md-4 promo">
-                               <div style="background-color:#FAFAFA;" class="promohead">
-                                 <p>50 cuotas sin interés</p>
-                               </div>
-                               <div style="border-top: 20px solid #FAFAFA;" class="arrow-down"></div>
-                              <div  style="background-color:#F5F5F5;" class="promobody">                       
-                                   <div class="verticalalign">
-                                         <img src="https://lordbike.com.ar/skin/frontend/boilerplate/default/images/Logo_Banco_Ciudad.svg.png" width="50%" height="auto" />
-                                      <p class="presenciales">Compras presenciales</p>
-                                  </div>
-
-                              </div>
-                            </div> 
-                            <div class="col-md-4 promo">
-                               <div style="background-color:#EEEEEE;" class="promohead">
-                                 <p>12 cuotas sin interés</p>
-                               </div>
-                                <div style="border-top: 20px solid #EEEEEE;" class="arrow-down"></div>
-                              <div  style="background-color:#E0E0E0;" class="promobody">
-                                   <div class="verticalalign">
-                                      <img src="https://lordbike.com.ar/skin/frontend/boilerplate/default/images/640px-MasterCard_logo.png" width="50%" height="auto" />
-                                      <p class="presenciales">Compras presenciales</p>
-                                  </div>
-
-                              </div>
-                            </div>
-                            <div class="col-md-4 promo">
-                               <div style="background-color:#FAFAFA;" class="promohead">
-                                 <p>12 cuotas sin interés</p>
-                               </div>
-                                <div style="border-top: 20px solid #FAFAFA;" class="arrow-down"></div>
-                              <div  style="background-color:#F5F5F5;" class="promobody">
-                                   <div class="verticalalign">
-                                       <img src="https://lordbike.com.ar/skin/frontend/boilerplate/default/images/logo-mercadopago.png" width="50%" height="auto" />
-                                      <p class="presenciales">Compras Online</p>
-                                      <a target="_blank" href="https://www.mercadopago.com/mla/credit_card_promos.htm" style="color:#222222;text-decoration:underline;">Ver promociones
-                                      </a>
-                                  </div>
-
-                              </div>
-                            </div>
-
-                        
-                    
-
-
-
-                  </div>
+                      <div class="col-md-4 promo">
+                        <div style="background-color:#FAFAFA;" class="promohead">
+                          <p>50 cuotas sin interés
+                          </p>
+                        </div>
+                        <div style="border-top: 20px solid #FAFAFA;" class="arrow-down">
+                        </div>
+                        <div  style="background-color:#F5F5F5;" class="promobody">                       
+                          <div class="verticalalign">
+                            <img src="https://lordbike.com.ar/skin/frontend/boilerplate/default/images/Logo_Banco_Ciudad.svg.png" width="50%" height="auto" />
+                            <p class="presenciales">Compras presenciales
+                            </p>
+                          </div>
+                        </div>
+                      </div> 
+                      <div class="col-md-4 promo">
+                        <div style="background-color:#EEEEEE;" class="promohead">
+                          <p>12 cuotas sin interés
+                          </p>
+                        </div>
+                        <div style="border-top: 20px solid #EEEEEE;" class="arrow-down">
+                        </div>
+                        <div  style="background-color:#E0E0E0;" class="promobody">
+                          <div class="verticalalign">
+                            <img src="https://lordbike.com.ar/skin/frontend/boilerplate/default/images/640px-MasterCard_logo.png" width="50%" height="auto" />
+                            <p class="presenciales">Compras presenciales
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 promo">
+                        <div style="background-color:#FAFAFA;" class="promohead">
+                          <p>12 cuotas sin interés
+                          </p>
+                        </div>
+                        <div style="border-top: 20px solid #FAFAFA;" class="arrow-down">
+                        </div>
+                        <div  style="background-color:#F5F5F5;" class="promobody">
+                          <div class="verticalalign">
+                            <img src="https://lordbike.com.ar/skin/frontend/boilerplate/default/images/logo-mercadopago.png" width="50%" height="auto" />
+                            <p class="presenciales">Compras Online
+                            </p>
+                            <a target="_blank" href="https://www.mercadopago.com/mla/credit_card_promos.htm" style="color:#222222;text-decoration:underline;">Ver promociones
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -341,65 +423,58 @@ if($categoryId==4):?>
               Garantía y beneficios
             </button>
             <!-- Modal -->
-              <div style="text-align:center;"  class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div style="text-align:center;"  class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div  style="z-index:100; margin-left:10%; width:80%;" class="modal-dialog">
                 <div class="modal-content">
-                      
-
                   <div class="modal-body">
-                   <button style="padding:1%;" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                   
-                 
-                 
+                    <button style="padding:1%;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×
+                      </span>
+                    </button>
                     <div   style="margin-left:0 !important;"   class="section group">  
-                      
-                            <div class="col-md-4 promo">
-                               <div style="background-color:#FAFAFA;" class="promohead">
-                                 <p>10 años</p>
-                               </div>
-                               <div style="border-top: 20px solid #FAFAFA;" class="arrow-down"></div>
-                              <div  style="background-color:#F5F5F5;" class="promobody">                       
-                                   <div class="beneficiostext">
-                                       
-                                      <p class="presenciales">En cuadro y bisagras, por defectos de fabricación.</p>
-                                  </div>
-
-                              </div>
-                            </div> 
-                            <div class="col-md-4 promo">
-                               <div style="background-color:#EEEEEE;" class="promohead">
-                                 <p>1 año</p>
-                               </div>
-                                <div style="border-top: 20px solid #EEEEEE;" class="arrow-down"></div>
-                              <div  style="background-color:#E0E0E0;" class="promobody">
-                                   <div class="beneficiostext">
-                  
-                                      <p class="presenciales">En todos los componentes marca Tern y Biologic, por defectos de fabricación</p>
-                                  </div>
-
-                              </div>
-                            </div>
-                            <div class="col-md-4 promo">
-                               <div style="background-color:#FAFAFA;" class="promohead">
-                                 <p>1° Service Gratuito</p>
-                               </div>
-                                <div style="border-top: 20px solid #FAFAFA;" class="arrow-down"></div>
-                              <div  style="background-color:#F5F5F5;" class="promobody">
-                                   <div class="beneficiostext">
-                                     
-                                      <p class="presenciales">Con la compra de tu bicicelta, accedes a un primer service gratuito.</p>
-                                  
-                                  </div>
-
-                              </div>
-                            </div>
-
-                        
-                    
-
-
-
-                  </div>
+                      <div class="col-md-4 promo">
+                        <div style="background-color:#FAFAFA;" class="promohead">
+                          <p>10 años
+                          </p>
+                        </div>
+                        <div style="border-top: 20px solid #FAFAFA;" class="arrow-down">
+                        </div>
+                        <div  style="background-color:#F5F5F5;" class="promobody">                       
+                          <div class="beneficiostext">
+                            <p class="presenciales">En cuadro y bisagras, por defectos de fabricación.
+                            </p>
+                          </div>
+                        </div>
+                      </div> 
+                      <div class="col-md-4 promo">
+                        <div style="background-color:#EEEEEE;" class="promohead">
+                          <p>1 año
+                          </p>
+                        </div>
+                        <div style="border-top: 20px solid #EEEEEE;" class="arrow-down">
+                        </div>
+                        <div  style="background-color:#E0E0E0;" class="promobody">
+                          <div class="beneficiostext">
+                            <p class="presenciales">En todos los componentes marca Tern y Biologic, por defectos de fabricación
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 promo">
+                        <div style="background-color:#FAFAFA;" class="promohead">
+                          <p>1° Service Gratuito
+                          </p>
+                        </div>
+                        <div style="border-top: 20px solid #FAFAFA;" class="arrow-down">
+                        </div>
+                        <div  style="background-color:#F5F5F5;" class="promobody">
+                          <div class="beneficiostext">
+                            <p class="presenciales">Con la compra de tu bicicelta, accedes a un primer service gratuito.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -603,8 +678,122 @@ $Acc4Product = Mage::getModel('catalog/product')->load($Acc4);
     </div>  
   </div>
 </div>
+
+
+<div class="row">
+  <div class="helptitle col-md-12">
+    <h4>¿No estás segur@ cual es la plegable para vos?</h4>
+  </div> 
+  <div class="infobar vcenter">
+      <div class="container">
+          <div class="col-md-6 ">
+            
+            <div class="comparativas">
+              <div class="comparativasback">    
+              </div>
+              <div class="comparativasfill">
+               <p> <h3>Comparativas<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></h3></p>
+              </div>    
+            </div>
+          </div>
+          <div class="col-md-6">
+            <a style="text-decoration:none;"  href="<?php  echo Mage::getBaseUrl(); ?>faq">
+            <div class="faq">
+              <div class="faqback">   
+              </div>
+              <div class="faqfill">
+                <p><h3>Preguntas Frecuentes<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></h3></p>
+              </div>
+            </div>  
+             </a>
+          </div>  
+            
+      </div>
+    </div>
+
+
+
+
+
+</div> 
+
+
+
+
+
+
+
 <?php endif; ?>
 </div>
+<script type="text/javascript">
+  
+
+
+jQuery( document ).ready(function( $ ) {
+
+    
+    jQuery(document).ready(function(){
+      var backContainer = $('.comparativasback');
+      var frontContainer = $('.comparativas');
+      var backFaqContainer = $('.faqback');
+      var frontFaqContainer = $('.faq');
+
+      function applyTransition(front, back) {
+        var offset = front.offset();
+        offset.right = offset.left + front.width();
+        offset.bottom = offset.top + front.height();
+
+        var sensitivityMultiplier = 0.033;
+        var wrapperOffset = back.offset();
+        var CenterX = wrapperOffset.left + (back.width()/2) ;
+        var CenterY = wrapperOffset.top + (back.height()/2) ;
+        var hovering = false;
+
+        $(window).mousemove(function(e) {
+          var mouseX = e.pageX;
+          var mouseY = e.pageY;
+
+          if( (mouseX >= offset.left && mouseX <= offset.right ) &&
+            (mouseY >= offset.top && mouseY <= offset.bottom ) ) {
+            hovering = true;
+            return doAwesomeness(mouseX,mouseY);
+          }
+
+          back.css('-webkit-transform', 'none');
+          back.css('transform', 'none');
+          hovering = false;
+        });
+
+        function doAwesomeness(mouseX,mouseY){
+          var RelX = ( mouseX - CenterX ) * sensitivityMultiplier * .4;
+          var RelY = ( ( mouseY - CenterY ) * -1 ) * sensitivityMultiplier * 1.5;
+          back.css('-webkit-transform', 'translateX(' + RelY + 'px) translateY(' + RelX + 'px)' );
+          back.css('transform', 'translateX(' + RelY + 'px) translateY(' + RelX + 'px)' );
+        };
+      };
+
+      applyTransition(frontContainer, backContainer);
+      applyTransition(frontFaqContainer, backFaqContainer);
+
+     
+    });
+
+
+
+
+
+
+
+
+  });
+
+
+
+
+
+
+
+</script>
 <script type="text/javascript">
   //<![CDATA[
   var productAddToCartForm = new VarienForm('product_addtocart_form');
@@ -694,5 +883,6 @@ $Acc4Product = Mage::getModel('catalog/product')->load($Acc4);
 </script> 
 <script type="text/javascript" src="https://assets.gfycat.com/gfycat.js">
 </script>
+
 </body>
 </html>

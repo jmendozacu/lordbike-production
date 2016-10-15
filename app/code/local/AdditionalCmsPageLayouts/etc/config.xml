@@ -135,6 +135,18 @@
 					<template>page/pagos.phtml</template>
 				</pagos>
 			</layouts>
+			<layouts>
+				<faq>
+					<label>faq</label>
+					<template>page/faq.phtml</template>
+				</faq>
+			</layouts>
+			<layouts>
+				<plegableslanding>
+					<label>plegableslanding</label>
+					<template>page/plegableslanding.phtml</template>
+				</plegableslanding>
+			</layouts>
 
 
 		</page>
