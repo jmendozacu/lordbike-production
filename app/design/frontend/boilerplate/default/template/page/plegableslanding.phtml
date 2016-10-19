@@ -76,11 +76,11 @@
 	width: 100%;
 	height: auto;
 	text-align: left;
-	 -webkit-transition: all 0.01s ease;                  
-    -moz-transition: all 0.01s ease;                 
-    -o-transition: all 0.01s ease;   
-    -ms-transition: all 0.01s ease;          
-    transition: all 0.01s ease;
+	 -webkit-transition: all 0s ease;                  
+    -moz-transition: all 0s ease;                 
+    -o-transition: all 0s ease;   
+    -ms-transition: all 0s ease;          
+    transition: all 0s ease;
 }
 .landinghead span{
 	color: rgba(52, 152, 219,0.8) !important;
@@ -788,7 +788,7 @@ jQuery( document ).ready(function( $ ) {
 		$(window).scroll(function () {
 		  var st = $(window).scrollTop();
 		  top_header.css({'top': (st*0.5)+"px"});
-		  header_ui.css({'top': (st*0.7)+"px"});
+		  header_ui.css({'top': (st*0.4)+"px"});
 
 		});
 
