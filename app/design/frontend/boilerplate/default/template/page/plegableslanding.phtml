@@ -787,8 +787,8 @@ jQuery( document ).ready(function( $ ) {
 		});
 		$(window).scroll(function () {
 		  var st = $(window).scrollTop();
-		  top_header.css({'top': (st*0.5)+"px"});
-		  header_ui.css({'top': (st*0.4)+"px"});
+		  top_header.css({"transform": "translate3d(0px,"+(st*0.5)+"px,0px)"});
+		  header_ui.css({"transform": "translate3d(0px,"+(st*0.4)+"px,0px)"});
 
 		});
 
