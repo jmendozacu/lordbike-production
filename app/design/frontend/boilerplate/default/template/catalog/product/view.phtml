@@ -69,6 +69,9 @@ $currentid= Mage::registry('current_product')->getId();
     .close{
       font-size: 3em;
     }
+     .vcenter {
+       display: initial !important;
+    }
   }
   .promo{
     min-height: 400px;
@@ -91,6 +94,7 @@ $currentid= Mage::registry('current_product')->getId();
   }
   .modal-body{
     padding: 0 !important;
+    text-align: center;
   }
   .modal-content{
     border: none !important;
@@ -146,11 +150,7 @@ $currentid= Mage::registry('current_product')->getId();
     text-align: center;
     line-height: initial !important;
   }
-  .vcenter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+ 
 
 .infobar{
   width: 100%;
@@ -159,6 +159,11 @@ $currentid= Mage::registry('current_product')->getId();
   background-color: #ffffff;
   z-index: 50;
   position: relative;
+}
+.vcenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .comparativas, .faq{
@@ -245,8 +250,55 @@ $currentid= Mage::registry('current_product')->getId();
   color:black !important;
 
 }
-.contenidoview{
-  min-height: 75vh;
+
+#primario{
+  text-align: center !important;
+}
+#precio p{
+  float: initial!important;
+}
+.add{
+  text-align: center !important;
+}
+#color a{
+  font-size: 1em !important;
+  font-family: montserrat !important;
+  font-weight: 800 !important;
+  float: initial !important;
+  text-transform: uppercase;
+}
+.swatchesContainer{
+  text-align: center !important;
+}
+.swatchContainer{
+  float: initial !important;
+}
+.swatch{
+  float: initial !important;
+}
+.product-options dl{
+  margin:0;
+}
+
+@media (max-width: 1023px) and (min-width: 768px){
+.swatchContainer {
+    left: 0% !important;
+}
+}
+#currentname h1{
+  font-family: montserrat!important;
+  font-weight: 800!important;
+  font-style: normal !important;
+  text-transform: uppercase;
+  font-size: 0.9em!important;
+  float: initial !important;
+}
+#currentname{
+  border:none !important;
+  text-align: center;
+}
+#precio{
+  text-align: center;
 }
 </style>
 <div id="fullhide" >
@@ -260,7 +312,7 @@ $currentid= Mage::registry('current_product')->getId();
       <input type="hidden" name="related_product" id="related-products-field" value="" />
     </div>
     <div class="contenidoview"> 
-      <div class="container">
+      <div  style="height:70vh; overflow: hidden;" class="container vcenter">
         <div id="foto" class="col span_6_of_8">
           <div id="currentname" class="section group product-name mobileshow" >
             <h1>
@@ -272,7 +324,7 @@ $currentid= Mage::registry('current_product')->getId();
           <span tyle="margin-top:2%;" id="precio" class="mobileshow">
             <a id="fold" >
             </a>
-            <p style="float:right;">  Precio: $ 
+            <p style="float:right;">  $ 
               <?php echo number_format($_product->getPrice(), '0', '.', ',')?> 
             </p>    
           </span>
@@ -289,35 +341,17 @@ $currentid= Mage::registry('current_product')->getId();
             <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
             <input type="hidden" name="related_product" id="related-products-field" value="" />
           </div> 
-          <div id="currentname"class="section group product-name mobilehide">
-            <h2
-                style="
-                       font-family: Lato,sans-serif!important;
-                       font-weight: 400!important;
-                       font-style: italic!important;
-                       font-size: 1.2em!important;
-                       "
-                >
+          <div id="currentname" class="section group product-name mobilehide">
+            <h1>
               <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
-            </h2>   
+            </h1>   
           </div>  
-          <div id="precio"class="section group mobilehide">
-            <p
-               style="
-                      font-family: Lato,sans-serif!important; 
-                      font-weight: 700!important;
-                      font-style: normal!important;
-                      font-size: 1.5em!important;
-                      "
-               >$
-              <?php echo number_format($_product->getPrice(), '0', '.', ',')?> 
-            </p>    
-          </div>
+          
           <div style="margin-bottom:0%;margin-top:5%;">
             <?php
-$ids = $_product->getCategoryIds();
-$categoryId = (isset($ids[0]) ? $ids[0] : null);
-if($categoryId==4):?>
+              $ids = $_product->getCategoryIds();
+              $categoryId = (isset($ids[0]) ? $ids[0] : null);
+              if($categoryId==4):?>
             <?php if($_product->getData('guardabarros')==1):?>
             <p style="
                       font-family: Lato,sans-serif;
@@ -501,6 +535,18 @@ if($categoryId==4):?>
           </P>
         <?php endif; ?>
       </div>
+      <div id="precio" class="section group mobilehide">
+            <p
+               style="
+                      font-family: Lato,sans-serif!important; 
+                      font-weight: 700!important;
+                      font-style: normal!important;
+                      font-size: 1.5em!important;
+                      "
+               >$
+              <?php echo number_format($_product->getPrice(), '0', '.', ',')?> 
+            </p>    
+          </div>
       <div style="margin-top:5%;">
         <?php if($_product->isSaleable()): ?>
         <?php echo $this->getChildHtml('addtocart') ?>
