@@ -147,6 +147,12 @@
 					<template>page/plegableslanding.phtml</template>
 				</plegableslanding>
 			</layouts>
+			<layouts>
+				<urbanas>
+					<label>urbanas</label>
+					<template>page/urbanas.phtml</template>
+				</urbanas>
+			</layouts>
 
 
 		</page>
