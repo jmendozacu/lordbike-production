@@ -60,6 +60,146 @@
   -o-transition: all  0.3s  ease-in-out;
   transition: all  0.3s  ease-in-out;
 }
+.homevideo{
+background-color: black !important;
+}
+.hometop {
+  background-color: black !important;
+}
+.bird{
+  width: 60%;
+  height: auto;
+}
+
+.rojitext{
+  font-size: 2em;
+  font-family: montserrat;
+  font-weight: 800;
+  color: white;
+  font-style: italic;
+  margin-top: -5%;
+}
+.newlinetext{
+  font-size: 1em;
+  font-family: montserrat;
+  font-weight: 800;
+  color: white;
+  text-transform: uppercase;
+  margin-top: 10%;
+}
+.vermodelos{
+    position: relative;
+    width: 50%;
+    z-index: 10 !important;
+    border: 3px solid #ffffff;
+    height: auto;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 2%;
+     margin-top: 5%;
+    -webkit-transition: color 0.2s ease, border 0.2s ease;                  
+    -moz-transition: color 0.2s ease, border 0.2s ease;              
+    -o-transition: color 0.2s ease, border 0.2s ease;  
+    -ms-transition:color 0.2s ease, border 0.2s ease;   
+    transition:color 0.2s ease, border 0.2s ease;  
+
+
+
+}
+
+
+.vermodelos h3{
+  font-family: montserrat;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-style: italic;
+    color: #ffffff;
+    -webkit-transition: all 0.2s ease;                  
+    -moz-transition: all 0.2s ease;                 
+    -o-transition: all 0.2s ease;   
+    -ms-transition: all 0.2s ease;          
+    transition: all 0.2s ease;
+    margin-bottom: 0!important;
+}
+.vermodelos span{
+  color:#ffffff !important;
+  -webkit-transition: all 0.2s ease;                  
+    -moz-transition: all 0.2s ease;                 
+    -o-transition: all 0.2s ease;   
+    -ms-transition: all 0.2s ease;          
+    transition: all 0.2s ease;
+}
+.vermodelos:hover h3{
+ color: rgba(52, 152, 219,1) !important;
+
+
+}
+.vermodelos:hover span{
+ color: rgba(52, 152, 219,1) !important;
+
+
+}
+.vermodelos:hover{
+
+ border: 3px solid  rgba(52, 152, 219,1) !important;
+
+
+}
+.bannerroji{
+  height:87%;
+  width: 87%;
+  border:5px solid #ffffff;
+  margin-left: 6.5%;
+  padding: 10%;
+  text-align: center;
+}
+.rojicontainer{
+
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  text-align: center;
+  background-color: black !important;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+
+}
+.videocontainer{
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  text-align: center;
+  background-color: black !important;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex:1;
+}
+.videocontainer .overlay{
+  cursor:initial !important;
+  z-index: 1;
+}
+
+
+@media (min-width: 768px){
+.rojirow{
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  text-align: center;
+  background-color: black !important;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+}
+}
 
 </style>
 
@@ -73,48 +213,37 @@
 
 <?php echo $this->getChildHtml('content') ?>
 
-     <div class="hometop mobileshow">
+     
       
-      <div id="carousel" class="carousel slide carousel-fade"><!-- class of slide for animation -->
-         <a  class="left carousel-control" href="#carousel"  data-slide="prev"> <img src="<?php echo $this->getSkinUrl('images/blkleft.png'); ?>" /></a>
-          <a  class="right carousel-control" href="#carousel"  data-slide="next"><img src="<?php echo $this->getSkinUrl('images/blkright.png'); ?>" /></a>
-
-          <div class="carousel-inner">
-              
-             <div class="item active"><!-- class of active since it's the first item -->
-                 <img src="<?php echo $this->getSkinUrl('images/visor/2mobile.jpg'); ?>"  alt="">
-             </div>
-              <div class="item"><!-- class of active since it's the first item -->
-                 <img src="<?php echo $this->getSkinUrl('images/visor/3mobile.jpg'); ?>"  alt="">
-             </div>
-          </div>
- 
-      </div>
-
-     </div>
-      <div class="hometop mobilehide">
+      <div style="  background-color: black !important;" class="rojirow row">
       
-      <div id="carousel2" class="carousel slide carousel-fade"><!-- class of slide for animation -->
-          <a class="left carousel-control" href="#carousel2"  data-slide="prev"> <img  class="flecha" style=" border-radius: 15px;box-shadow: 0 0 0 2px rgba(255,255,255,0.5);background-color:rgba(255,255,255,0.5);"
-           src="<?php echo $this->getSkinUrl('images/blkleft.png'); ?>" /></a>
-          <a  class="right carousel-control" href="#carousel2"  data-slide="next"><img  class="flecha" style=" border-radius: 15px;box-shadow: 0 0 0 2px rgba(255,255,255,0.5);background-color:rgba(255,255,255,0.5);"
-           src="<?php echo $this->getSkinUrl('images/blkright.png'); ?>" /></a>
+            <div  class="col-md-8" >
+                <div style="cursor:none!important;" class="videocontainer" ><!-- class of active since it's the first item -->
+                  <img style="cursor:none!important;" class="gfyitem" data-id="FatalScornfulBubblefish" data-controls="false" data-dot="false" data-perimeter="false" />
+                </div>
+            </div>
+            <div  class="col-md-4 rojicontainer" >
+                <div class="bannerroji">
+                    <div class="col-md-12">
+                      <img class="bird" src="<?php echo $this->getSkinUrl('images/bird.png'); ?>" ></img>
+                    </div>
+                    <h2 class="rojitext">Roji</h2>
+                    <h2 class="newlinetext">Nueva linea de bicicletas!</h2>
+                    <a href="<?php  echo Mage::getBaseUrl(); ?>plegables">
+                       <button class="vermodelos" >
+                          <div class="vcenter" style="position:relative;">
+                          <h3 style="margin-top:0 !important;">Ver Modelos  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></h3> 
+                        </div>
+                      </button>
+                   </a>
+               </div>   
 
-              <div class="carousel-inner">
-           
-              <div class="item active"><!-- class of active since it's the first item -->
-                 <img src="<?php echo $this->getSkinUrl('images/visor/3.jpg'); ?>"  alt="">
-             </div>
+            </div>
+
        
-              <div class="item "><!-- class of active since it's the first item -->
-                 <img src="<?php echo $this->getSkinUrl('images/visor/2.jpg'); ?>"  alt="">
-             </div>
-          </div>
- 
- 
       </div>
 
-     </div>
+
    
 
  <div class="section group">
@@ -327,6 +456,33 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 
 </script>
 
+<style>
+  .media-flex {
+    position: relative;
+    height: 0px;
+  }
+  .media-flex .gfyitem > div,
+  .media-flex .gfyitem .gfyPreLoadCanvas,
+  .media-flex .gfyitem .gfyVid,
+  .media-flex .gfyitem  .gfyGif {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .gfyDotCanvas{
+    display:none!important;
+  }
+  .gfyPreLoadCanvas{
+    display: none;
+  }
+</style>
+
+<script type="text/javascript" src="https://assets.gfycat.com/gfycat.js">
+</script>
 
 
 </body>
