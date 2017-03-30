@@ -436,7 +436,7 @@ echo $content;
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     var feed = new Instafeed({
         get: 'user',
-        clientId: '3daf22a41e6d43e5874ac1c1f7f3a4f9'
+        clientId: '3daf22a41e6d43e5874ac1c1f7f3a4f9',
         limit:4,
         resolution: 'thumbnail',
         template: '<a style="padding:2%;"class="instahover"href="{{link}}"><img  class="" src="{{image}}" /></a>'
@@ -446,15 +446,13 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
  else{
      var userFeed = new Instafeed({
         get: 'user',
-        clientId: '3daf22a41e6d43e5874ac1c1f7f3a4f9'
+        clientId: '3daf22a41e6d43e5874ac1c1f7f3a4f9',
         limit:6,
         resolution: 'low_resolution',
         template: '<a style="padding:2%;"class="instahover"href="{{link}}"><img  class="" src="{{image}}" /></a>'
 
     });
     feed.run();
- 
- 
  
 }
 
