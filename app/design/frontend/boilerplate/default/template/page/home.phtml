@@ -434,28 +434,25 @@ echo $content;
 <script type="text/javascript">
 
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    var userFeed = new Instafeed({
+    var feed = new Instafeed({
         get: 'user',
-        userId: 520962122,
+        clientId: '3daf22a41e6d43e5874ac1c1f7f3a4f9'
         limit:4,
         resolution: 'thumbnail',
-        accessToken: '520962122.0de90bd.1d3e462d800a467da77f9b5ad26dffc9',
         template: '<a style="padding:2%;"class="instahover"href="{{link}}"><img  class="" src="{{image}}" /></a>'
-
     });
-    userFeed.run();
+    feed.run();
 } 
  else{
      var userFeed = new Instafeed({
         get: 'user',
-        userId: 520962122,
+        clientId: '3daf22a41e6d43e5874ac1c1f7f3a4f9'
         limit:6,
         resolution: 'low_resolution',
-        accessToken: '520962122.0de90bd.1d3e462d800a467da77f9b5ad26dffc9',
         template: '<a style="padding:2%;"class="instahover"href="{{link}}"><img  class="" src="{{image}}" /></a>'
 
     });
-    userFeed.run();
+    feed.run();
  
  
  
