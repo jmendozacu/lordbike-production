@@ -1,9 +1,6 @@
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css" />
-<script src="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js">
-</script>
-<script src="//cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js">
-</script>
+
+
 <?php require(Mage::getBaseDir().DS.'lib'.DS.'Mobile_Detect.php');?>
 <style>
   .navbar{
@@ -215,14 +212,6 @@
         <a id="nav"  class="cartupdate" href="<?php  echo Mage::getBaseUrl(); ?>checkout/cart">Carrito
         </a>
       </li>
-      <?php $detect = new Mobile_Detect; if( $detect->isMobile() ):?>
-      <?php else: ?>
-      <li>
-        <span>
-          <?php echo $this->getChildHtml('topSearch') ?>
-        </span> 
-      </li>
-      <?php endif; ?>
     </ul>
   </div>
 </div>
